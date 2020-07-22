@@ -6,16 +6,13 @@ public class PlayerController : MonoBehaviour
 {
 
     private float hInput;
-    private float vInput;
-    public float speed = 10f;
+    public float speed = 1f;
+    public float jumpForce = 10f;
 
     private Rigidbody2D rBody;
 
     void Start()
     {
-        hInput = 0f;
-        vInput = 0f;
-
         rBody = GetComponent<Rigidbody2D>();
     }
 
@@ -27,11 +24,10 @@ public class PlayerController : MonoBehaviour
     void updateMovement()
 	{
         hInput = Input.GetAxis("Horizontal");
+        Vector3 movement = new Vector3(hInput, 0, 0) * speed * Time.deltaTime;
+        transform.position += movement;
 
-        vInput = Input.GetAxis("Vertical");
-
-        Vector2 movement = new Vector2(hInput, vInput);
-
-        rBody.AddForce(movement * speed);
+        if(Input.GetButtonDown("Jump") && rBody.velocity.y < 0.0001f)
+            rBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
     }
 }

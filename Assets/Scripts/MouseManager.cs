@@ -23,9 +23,9 @@ public class MouseManager : MonoBehaviour
 	void handleMouseInput()
 	{
 		// if you are clicking left then delete this tile
-		if (Input.GetAxisRaw("Fire1") > 0)
+		if (Input.GetButtonDown("Fire1"))
 			chunkManager.getChunk(mousePositionAsInt).removeTile(mousePositionAsInt);
-		else if (Input.GetAxisRaw("Fire2") > 0)
+		else if (Input.GetButtonDown("Fire2"))
 			chunkManager.getChunk(mousePositionAsInt).addTile(mousePositionAsInt, null);
 	}
 
