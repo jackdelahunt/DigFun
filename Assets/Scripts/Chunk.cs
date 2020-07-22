@@ -19,7 +19,13 @@ public class Chunk : MonoBehaviour
 
 	public void addTile(Vector3Int pos, Tile tile)
 	{
-		if(tilemap.GetTile(pos + new Vector3Int(0, 1, 0)) == null)
+		if (pos.y < ChunkData.chunkHeight - 5)
+		{
+			tilemap.SetTile(pos, tiles[2]);
+			return;
+		}
+
+		if (tilemap.GetTile(pos + new Vector3Int(0, 1, 0)) == null)
 			tilemap.SetTile(pos, tiles[1]);
 		else
 			tilemap.SetTile(pos, tiles[0]);

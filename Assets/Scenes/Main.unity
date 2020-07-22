@@ -237,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mousePosition: {x: 0, y: 0, z: 0}
   mousePositionAsInt: {x: 0, y: 0, z: 0}
-  chunkManager: {fileID: 0}
+  world: {fileID: 0}
 --- !u!1 &1782470802
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 1782470805}
   - component: {fileID: 1782470806}
   m_Layer: 0
-  m_Name: ChunkManager
+  m_Name: World
   m_TagString: ChunkManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -335,6 +335,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chunkPrefab: {fileID: 6608732129719083111, guid: fe96749684679df4eb7b330d16d6ada0,
     type: 3}
+  player: {fileID: 0}
+  currentLoadedChunks: []
 --- !u!1001 &5518505250643264509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -345,17 +347,17 @@ PrefabInstance:
     - target: {fileID: 5518505251541066120, guid: a95e46ccf6b8cbb41ae29231b8e3203c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 118
+      value: 116.1
       objectReference: {fileID: 0}
     - target: {fileID: 5518505251541066120, guid: a95e46ccf6b8cbb41ae29231b8e3203c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 67.29
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 5518505251541066120, guid: a95e46ccf6b8cbb41ae29231b8e3203c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.6424274
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5518505251541066120, guid: a95e46ccf6b8cbb41ae29231b8e3203c,
         type: 3}

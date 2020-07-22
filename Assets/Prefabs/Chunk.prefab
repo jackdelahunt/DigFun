@@ -174,5 +174,6 @@ MonoBehaviour:
   tiles:
   - {fileID: 11400000, guid: 9d996ae2554b79c48962750648c701da, type: 2}
   - {fileID: 11400000, guid: 7a922268509c83146969c4459c819fe3, type: 2}
+  - {fileID: 11400000, guid: ef946a9c2557172428d539be78438c07, type: 2}
   chunkX: 0
   chunkY: 0

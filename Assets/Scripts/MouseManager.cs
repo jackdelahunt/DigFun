@@ -7,11 +7,11 @@ public class MouseManager : MonoBehaviour
 {
     [SerializeField] Vector3 mousePosition;
     [SerializeField] Vector3Int mousePositionAsInt;
-	[SerializeField] ChunkManager chunkManager;
+	[SerializeField] World world;
 
 	private void Start()
 	{
-		chunkManager = GameObject.FindGameObjectWithTag("ChunkManager").GetComponent<ChunkManager>();
+		world = GameObject.FindGameObjectWithTag("ChunkManager").GetComponent<World>();
 	}
 
 	private void Update()
@@ -24,9 +24,9 @@ public class MouseManager : MonoBehaviour
 	{
 		// if you are clicking left then delete this tile
 		if (Input.GetButtonDown("Fire1"))
-			chunkManager.getChunk(mousePositionAsInt).removeTile(mousePositionAsInt);
+			world.getChunk(mousePositionAsInt).removeTile(mousePositionAsInt);
 		else if (Input.GetButtonDown("Fire2"))
-			chunkManager.getChunk(mousePositionAsInt).addTile(mousePositionAsInt, null);
+			world.getChunk(mousePositionAsInt).addTile(mousePositionAsInt, null);
 	}
 
 	Vector3Int getMousePosition()
