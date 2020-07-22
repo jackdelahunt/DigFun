@@ -6,10 +6,20 @@ public class ChunkManager : MonoBehaviour
 {
 	private Chunk[] chunks = new Chunk[10];
 	public GameObject chunkPrefab;
+	public PlayerController player;
 
 	private void Start()
 	{
-		for (int i = 0; i < chunks.Length; i++) {
+
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+		generateBaseTerrain();
+		InvokeRepeating("chunksForLoading", 0f, 1f);
+		
+	}
+
+	public void generateBaseTerrain() {
+		for (int i = 0; i < chunks.Length; i++)
+		{
 			Chunk addingChunk = Instantiate(chunkPrefab, gameObject.transform).GetComponent<Chunk>();
 			addingChunk.chunkX = i * ChunkData.chunkWidth;
 			addingChunk.chunkY = 0;
@@ -24,5 +34,14 @@ public class ChunkManager : MonoBehaviour
 				return chunks[i];
 
 		return null;
+	}
+
+	public void chunksForLoading()
+	{
+		for (int i = 0; i < chunks.Length; i++)
+			if (Mathf.Abs(player.transform.position.x - chunks[i].chunkX) < 32)
+				chunks[i].gameObject.SetActive(true);
+			else
+				chunks[i].gameObject.SetActive(false);
 	}
 }
