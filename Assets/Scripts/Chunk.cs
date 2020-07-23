@@ -22,7 +22,7 @@ public class Chunk : MonoBehaviour
 		if (tilemap.GetTile(pos) == null)
 		{
 			if(tile == null)
-				tilemap.SetTile(pos, tiles[0]);
+				tilemap.SetTile(pos, tiles[1]);
 			else
 				tilemap.SetTile(pos, tile);
 		}
