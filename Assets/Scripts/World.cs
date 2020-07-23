@@ -7,13 +7,13 @@ public class World : MonoBehaviour
 {
 	private Dictionary<int, Chunk> chunks;
 	public GameObject chunkPrefab;
-	public PlayerController player;
+	public GameObject player;
 	public List<Chunk> currentLoadedChunks;
 
 	private void Start()
 	{
 		chunks = new Dictionary<int, Chunk>();
-		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+		player = GameObject.FindGameObjectWithTag("Player");
 
 		// call the chunkloader every second
 		InvokeRepeating("updateChunksToLoad", 0f, 1f);
