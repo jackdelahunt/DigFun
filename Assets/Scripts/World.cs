@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -41,8 +42,9 @@ public class World : MonoBehaviour
 			currentLoadedChunks.Add(addingChunk);
 		}
 	}
-		
-	public Chunk getChunk(Vector3 worldPosition) {
+
+	public Chunk getChunk(Vector3 worldPosition)
+	{
 		Chunk found;
 		chunks.TryGetValue(ChunkData.getRealtiveChunkCoord(worldPosition), out found);
 		return found;
