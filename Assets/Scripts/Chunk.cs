@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class Chunk : MonoBehaviour
 {
     private Tilemap tilemap;
-	public List<Tile> tiles;
+	private TileManager tileManager;
 
 	public int chunkX;
 	public int chunkY;
@@ -14,6 +14,7 @@ public class Chunk : MonoBehaviour
 	private void Start()
 	{
 		tilemap = GetComponent<Tilemap>();
+		tileManager = GameObject.FindGameObjectWithTag("TileManager").GetComponent<TileManager>();
 		generateStartTerrain();
 	}
 
@@ -22,7 +23,7 @@ public class Chunk : MonoBehaviour
 		if (tilemap.GetTile(pos) == null)
 		{
 			if(tile == null)
-				tilemap.SetTile(pos, tiles[1]);
+				tilemap.SetTile(pos, tileManager.tiles[1]);
 			else
 				tilemap.SetTile(pos, tile);
 		}
@@ -47,11 +48,11 @@ public class Chunk : MonoBehaviour
 					continue;
 
 				if (y == ChunkData.chunkHeight - 1) 
-					addTile(new Vector3Int(x, y, 0), tiles[1]);
+					addTile(new Vector3Int(x, y, 0), tileManager.tiles[1]);
 				else if (y > ChunkData.chunkHeight - 5)
-					addTile(new Vector3Int(x, y, 0), tiles[0]);
+					addTile(new Vector3Int(x, y, 0), tileManager.tiles[0]);
 				else
-					addTile(new Vector3Int(x, y, 0), tiles[2]);
+					addTile(new Vector3Int(x, y, 0), tileManager.tiles[2]);
 
 			}
 		}
@@ -64,7 +65,7 @@ public class Chunk : MonoBehaviour
 
 			for (int y = 0; y < heightOfTerrainHere; y++)
 			{
-				addTile(new Vector3Int(x, ChunkData.chunkHeight - terrainHeight + y, 0), tiles[0]);
+				addTile(new Vector3Int(x, ChunkData.chunkHeight - terrainHeight + y, 0), tileManager.tiles[0]);
 			}
 		}
 	}
