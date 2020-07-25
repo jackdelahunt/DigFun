@@ -18,17 +18,20 @@ public class Chunk : MonoBehaviour
 		generateStartTerrain();
 	}
 
-	public void addTile(Vector3Int pos, Tile tile)
+	// add a tile to a position in this chunk
+	public bool addTile(Vector3Int pos, Tile tile)
 	{
+		// if there is no tile in this area then add the new one else return false
 		if (tilemap.GetTile(pos) == null)
 		{
-			if(tile == null)
-				tilemap.SetTile(pos, tileManager.tiles[1]);
-			else
-				tilemap.SetTile(pos, tile);
+			tilemap.SetTile(pos, tile); 
+			return true;
 		}
+		else
+			return false;
 	}
 
+	// removes a tile from the location asked
     public void removeTile(Vector3Int pos) 
 	{
         tilemap.SetTile(pos, null);

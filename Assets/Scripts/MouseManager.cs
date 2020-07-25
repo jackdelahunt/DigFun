@@ -18,10 +18,10 @@ public class MouseManager : MonoBehaviour
 
 	void handleMouseInput()
 	{
-		// if you are clicking left then delete this tile
+		// if you are clicking left the tell playerToWorld to delete the block
 		if (Input.GetButtonDown("Fire1"))
 			playerToWorld.removeTile(mousePositionAsInt);
-		else if (Input.GetButtonDown("Fire2"))
+		else if (Input.GetButtonDown("Fire2")) // if the player is right clicking then tell playerToWorld they are doing so
 			playerToWorld.addTile(mousePositionAsInt);
 	}
 
