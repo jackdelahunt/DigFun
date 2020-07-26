@@ -36,5 +36,25 @@ public class Inventory : MonoBehaviour
 		if (quantaties[selectedItem] <= 0)
 			items[selectedItem] = null;
 	}
+
+	public bool addItem(Item item)
+	{
+		for(int i = 0; i < items.Length; i++)
+		{
+			// if we already have a item of the same type then add one
+			if (items[i].tileID == item.tileID)
+			{
+				quantaties[i] += 1;
+				return true;
+			}// if the slot is empty then set the item to this, and it's quantaty to 1
+			else if (items[i] == null)
+			{
+				items[i] = item;
+				quantaties[i] = 1;
+				return true;
+			}
+		}
+		return false;
+	}
 }
  
