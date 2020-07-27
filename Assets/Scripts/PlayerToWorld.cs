@@ -34,4 +34,9 @@ public class PlayerToWorld : MonoBehaviour
 		if (world.getChunk(pos).addTile(pos, refrenceManager.tiles[IDOfItemSelectedInInventory], IDOfItemSelectedInInventory))
 			inventory.decrementCurrentItem();
 	}
+
+	public bool addItemToInventory(Item item)
+	{
+		return inventory.addItem(item);
+	}
 }
