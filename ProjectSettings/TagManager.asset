@@ -6,8 +6,8 @@ TagManager:
   tags:
   - Chunk
   - World
-  - TileManager
   - Inventory
+  - RefrenceManager
   layers:
   - Default
   - TransparentFX

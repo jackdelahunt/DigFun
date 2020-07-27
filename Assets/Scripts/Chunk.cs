@@ -6,35 +6,43 @@ using UnityEngine.Tilemaps;
 public class Chunk : MonoBehaviour
 {
     private Tilemap tilemap;
-	private TileManager tileManager;
+	private RefrenceManager refrenceManager;
+	private int[,] tileIDs;
 
 	public int chunkX;
 	public int chunkY;
 
 	private void Start()
 	{
+		tileIDs = new int[ChunkData.chunkWidth, ChunkData.chunkHeight];
+
 		tilemap = GetComponent<Tilemap>();
-		tileManager = GameObject.FindGameObjectWithTag("TileManager").GetComponent<TileManager>();
+		refrenceManager = GameObject.FindGameObjectWithTag("RefrenceManager").GetComponent<RefrenceManager>();
 		generateStartTerrain();
 	}
 
 	// add a tile to a position in this chunk
-	public bool addTile(Vector3Int pos, Tile tile)
+	public bool addTile(Vector3Int pos, Tile tile, int itemRefrence)
 	{
 		// if there is no tile in this area then add the new one else return false
 		if (tilemap.GetTile(pos) == null)
 		{
-			tilemap.SetTile(pos, tile); 
+			tilemap.SetTile(pos, tile);
+			tileIDs[pos.x, pos.y] = itemRefrence;
 			return true;
 		}
 		else
 			return false;
 	}
 
-	// removes a tile from the location asked
-    public void removeTile(Vector3Int pos) 
+	// removes a tile from the location asked and returns the 
+	// id of that tile
+    public int removeTile(Vector3Int pos) 
 	{
         tilemap.SetTile(pos, null);
+		int idOfThatTile = tileIDs[pos.x, pos.y];
+		tileIDs[pos.x, pos.y] = 0;
+		return idOfThatTile;
 	}
 
 	public void generateStartTerrain()
@@ -51,11 +59,11 @@ public class Chunk : MonoBehaviour
 					continue;
 
 				if (y == ChunkData.chunkHeight - 1) 
-					addTile(new Vector3Int(x, y, 0), tileManager.tiles[1]);
+					addTile(new Vector3Int(x, y, 0), refrenceManager.tiles[2] , 2);
 				else if (y > ChunkData.chunkHeight - 5)
-					addTile(new Vector3Int(x, y, 0), tileManager.tiles[0]);
+					addTile(new Vector3Int(x, y, 0), refrenceManager.tiles[1], 1);
 				else
-					addTile(new Vector3Int(x, y, 0), tileManager.tiles[2]);
+					addTile(new Vector3Int(x, y, 0), refrenceManager.tiles[3], 3);
 
 			}
 		}
@@ -68,7 +76,7 @@ public class Chunk : MonoBehaviour
 
 			for (int y = 0; y < heightOfTerrainHere; y++)
 			{
-				addTile(new Vector3Int(x, ChunkData.chunkHeight - terrainHeight + y, 0), tileManager.tiles[0]);
+				addTile(new Vector3Int(x, ChunkData.chunkHeight - terrainHeight + y, 0), refrenceManager.tiles[1], 1);
 			}
 		}
 	}

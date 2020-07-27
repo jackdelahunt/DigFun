@@ -75,7 +75,7 @@
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerToWorld.cs" />
-    <Compile Include="Assets\Scripts\TileManager.cs" />
+    <Compile Include="Assets\Scripts\RefrenceManager.cs" />
     <Compile Include="Assets\Scripts\World.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

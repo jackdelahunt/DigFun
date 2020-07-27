@@ -6,12 +6,12 @@ public class PlayerToWorld : MonoBehaviour
 {
     [SerializeField] World world;
 	[SerializeField] Inventory inventory;
-	[SerializeField] TileManager tileManager;
+	[SerializeField] RefrenceManager refrenceManager;
 
 	private void Start()
 	{
 		world = GameObject.FindGameObjectWithTag("World").GetComponent<World>();
-		tileManager = GameObject.FindGameObjectWithTag("TileManager").GetComponent<TileManager>();
+		refrenceManager = GameObject.FindGameObjectWithTag("RefrenceManager").GetComponent<RefrenceManager>();
 	}
 
 	// tells the world object to get the chunk that we are in and reomve the tile
@@ -31,7 +31,7 @@ public class PlayerToWorld : MonoBehaviour
 
 		// if this bloack was added then decrease the count in the inventory  by one
 		// this will not happen if there is already a block in that area
-		if (world.getChunk(pos).addTile(pos, tileManager.tiles[IDOfItemSelectedInInventory]))
+		if (world.getChunk(pos).addTile(pos, refrenceManager.tiles[IDOfItemSelectedInInventory], IDOfItemSelectedInInventory))
 			inventory.decrementCurrentItem();
 	}
 }
