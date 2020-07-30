@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Stone
   m_EditorClassIdentifier: 
   itemName: Stone
-  tileID: 2
+  tileID: 3
   sprite: {fileID: 21300000, guid: 498f379bc4981f44d95a0488ddab3c4e, type: 3}

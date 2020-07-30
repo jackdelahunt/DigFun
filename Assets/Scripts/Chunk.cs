@@ -24,12 +24,15 @@ public class Chunk : MonoBehaviour
     // add a tile to a position in this chunk
     public bool addTile(Vector3Int pos, Tile tile, int itemRefrence)
     {
+        Vector3Int local = convertWorldCoordToLocalCoord(pos);
+
+        if(!isThisTileInThisChunk(local))
+            return false;
+
         // if there is no tile in this area then add the new one else return false
         if (tilemap.GetTile(pos) == null)
         {
-            Vector3Int local = convertWorldCoordToLocalCoord(pos);
             tileIDs[local.x, local.y] = itemRefrence;
-            print(tile.name);
             tilemap.SetTile(pos, tile);
             return true;
         }
@@ -41,13 +44,25 @@ public class Chunk : MonoBehaviour
     // id of that tile
     public int removeTile(Vector3Int pos)
     {
-        tilemap.SetTile(pos, null);
-
         Vector3Int local = convertWorldCoordToLocalCoord(pos);
-        int idOfThatTile = tileIDs[local.x, local.y];
-        print(local.x);
-        tileIDs[local.x, local.y] = 0;
-        return idOfThatTile;
+
+        // if this tile is in the chunk bounds then return the tileID 
+        // at that location, else return the flag - 1
+        if(isThisTileInThisChunk(local)) {
+
+            // remove that tile from the til map
+            tilemap.SetTile(pos, null);
+
+            // get the id of the tile that is there
+            int idOfThatTile = tileIDs[local.x, local.y];
+
+            // set the id of the tile in out tileID array to 0
+            tileIDs[local.x, local.y] = 0;
+
+            // return the id of the tile we broke
+            return idOfThatTile;
+        } else
+            return -1;
     }
 
     public void generateStartTerrain()
@@ -65,11 +80,11 @@ public class Chunk : MonoBehaviour
                     continue;
 
                 if (y == ChunkData.chunkHeight - 1)
-                    addTile(new Vector3Int(x, y, 0), refrenceManager.tiles[2], 2);
+                    addTile(new Vector3Int(x, y, 0), refrenceManager.getTile(2), 2);
                 else if (y > ChunkData.chunkHeight - 5)
-                    addTile(new Vector3Int(x, y, 0), refrenceManager.tiles[1], 1);
+                    addTile(new Vector3Int(x, y, 0), refrenceManager.getTile(1), 1);
                 else
-                    addTile(new Vector3Int(x, y, 0), refrenceManager.tiles[3], 3);
+                    addTile(new Vector3Int(x, y, 0), refrenceManager.getTile(3), 3);
 
             }
         }
@@ -82,14 +97,29 @@ public class Chunk : MonoBehaviour
 
             for (int y = 0; y < heightOfTerrainHere; y++)
             {
-                addTile(new Vector3Int(x, ChunkData.chunkHeight - terrainHeight + y, 0), refrenceManager.tiles[1], 1);
+                addTile(new Vector3Int(x, ChunkData.chunkHeight - terrainHeight + y, 0), refrenceManager.getTile(1), 1);
             }
         }
     }
 
-    // converts a position that is in world space to the local chunk space
+    // converts a vector3 that represents a tile in this chunk from it's world coords
+    // to local co-ordinates for this chunk
     public Vector3Int convertWorldCoordToLocalCoord(Vector3Int pos)
     {
         return new Vector3Int(Mathf.Abs(Mathf.FloorToInt(chunkX - pos.x)), pos.y, 0);
+    }
+
+    // used to verify if a tiles postion is within the chunkHeight * chunkWidth
+    // tileID array
+    public bool isThisTileInThisChunk(Vector3Int tilePosition) {
+
+        // checking if the x position is in the range of the tile id array x
+        bool xCorrect = tilePosition.x >= 0 && tilePosition.x <= tileIDs.GetLength(0) - 1;
+
+        // checking if the x position is in the range of the tile id array x
+        bool yCorrect = tilePosition.y >= 0 && tilePosition.y <= tileIDs.GetLength(1) - 1;
+
+        // only true if both are in range
+        return xCorrect && yCorrect;
     }
 }   

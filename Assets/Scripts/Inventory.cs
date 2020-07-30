@@ -13,8 +13,6 @@ public class Inventory : MonoBehaviour
 	{
 		selectedItem = 0;
 		quantaties = new int[items.Length];
-		for (int i = 0; i < quantaties.Length; i++)
-			quantaties[i] = 10;
 	}
 
 	// get the tileID of the current item selected in the inventory
@@ -36,18 +34,21 @@ public class Inventory : MonoBehaviour
 
 	public bool addItem(Item item)
 	{
+		// if the item we are trying to add is null then return false
+		if(item == null)
+			return false;
+
 		for(int i = 0; i < items.Length; i++)
 		{
-			// if we already have a item of the same type then add one
-			if (items[i].tileID == item.tileID)
-			{
-				quantaties[i] += 1;
-				return true;
-			}// if the slot is empty then set the item to this, and it's quantaty to 1
-			else if (items[i] == null)
+			// if the slot is empty then set the item to this, and it's quantaty to 1
+			if (items[i] == null)
 			{
 				items[i] = item;
 				quantaties[i] = 1;
+				return true;
+			} else if (items[i].tileID == item.tileID)
+			{
+				quantaties[i] += 1;
 				return true;
 			}
 		}

@@ -17,7 +17,8 @@ public class PlayerToWorld : MonoBehaviour
 	// tells the world object to get the chunk that we are in and reomve the tile
 	public void removeTile(Vector3Int pos)
 	{
-		world.getChunk(pos).removeTile(pos);
+		int tileID = world.getChunk(pos).removeTile(pos);
+		inventory.addItem(refrenceManager.getItem(tileID));
 	}
 
 	public void addTile(Vector3Int pos)
@@ -31,7 +32,7 @@ public class PlayerToWorld : MonoBehaviour
 
 		// if this block was added then decrease the count in the inventory  by one
 		// this will not happen if there is already a block in that area
-		if (world.getChunk(pos).addTile(pos, refrenceManager.tiles[IDOfItemSelectedInInventory], IDOfItemSelectedInInventory))
+		if (world.getChunk(pos).addTile(pos, refrenceManager.getTile(IDOfItemSelectedInInventory), IDOfItemSelectedInInventory))
 			inventory.decrementCurrentItem();
 	}
 
