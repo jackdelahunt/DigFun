@@ -164,7 +164,8 @@ PrefabInstance:
         type: 3}
       propertyPath: items.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 0079e4b79e1546749a1d59e782c36892,
+        type: 2}
     - target: {fileID: 7407124334507380150, guid: 2d2d55823226daf47b1eee9957fd2028,
         type: 3}
       propertyPath: items.Array.data[1]
@@ -205,7 +206,8 @@ PrefabInstance:
         type: 3}
       propertyPath: tiles.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 305eca2d929fbc44cb02243a1b241106,
+        type: 2}
     - target: {fileID: 7407124334507380151, guid: 2d2d55823226daf47b1eee9957fd2028,
         type: 3}
       propertyPath: m_LocalPosition.x

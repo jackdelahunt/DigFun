@@ -16,7 +16,7 @@ public class MouseManager : MonoBehaviour
 		handleMouseInput();
 	}
 
-	void handleMouseInput()
+	public void handleMouseInput()
 	{
 		// if you are clicking left the tell playerToWorld to delete the block
 		if (Input.GetButtonDown("Fire1"))
@@ -25,7 +25,7 @@ public class MouseManager : MonoBehaviour
 			playerToWorld.addTile(mousePositionAsInt);
 	}
 
-	Vector3Int getMousePosition()
+	public Vector3Int getMousePosition()
 	{
 		mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z));
 		mousePositionAsInt = new Vector3Int(Mathf.FloorToInt(mousePosition.x), Mathf.FloorToInt(mousePosition.y), 0);

@@ -27,9 +27,10 @@ public class Chunk : MonoBehaviour
         // if there is no tile in this area then add the new one else return false
         if (tilemap.GetTile(pos) == null)
         {
-            tilemap.SetTile(pos, tile);
             Vector3Int local = convertWorldCoordToLocalCoord(pos);
             tileIDs[local.x, local.y] = itemRefrence;
+            print(tile.name);
+            tilemap.SetTile(pos, tile);
             return true;
         }
         else
@@ -44,6 +45,7 @@ public class Chunk : MonoBehaviour
 
         Vector3Int local = convertWorldCoordToLocalCoord(pos);
         int idOfThatTile = tileIDs[local.x, local.y];
+        print(local.x);
         tileIDs[local.x, local.y] = 0;
         return idOfThatTile;
     }
@@ -88,6 +90,6 @@ public class Chunk : MonoBehaviour
     // converts a position that is in world space to the local chunk space
     public Vector3Int convertWorldCoordToLocalCoord(Vector3Int pos)
     {
-        return new Vector3Int(Mathf.Abs(chunkX - pos.x), pos.y, 0);
+        return new Vector3Int(Mathf.Abs(Mathf.FloorToInt(chunkX - pos.x)), pos.y, 0);
     }
-}
+}   

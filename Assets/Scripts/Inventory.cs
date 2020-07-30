@@ -22,14 +22,11 @@ public class Inventory : MonoBehaviour
 	{
 		// if there is a item in the slot then return that id
 		// else return the flag -1
-		if (items[selectedItem] != null)
-			return items[selectedItem].tileID;
-		else
-			return -1;
+		return items[selectedItem] == null ? -1 : items[selectedItem].tileID;
 	}
 
 	// decrease the current selected item by 1
-	// if there is 0 of that item remove it
+	// if there is 0 of that item remove it     
 	public void decrementCurrentItem()
 	{
 		quantaties[selectedItem] -= 1;
