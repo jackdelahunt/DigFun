@@ -7,7 +7,7 @@ public class ItemEntity : MonoBehaviour
     public Item item;
     public SpriteRenderer spriteRenderer;
     public Vector2 entityScale;
-
+    
     public void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }

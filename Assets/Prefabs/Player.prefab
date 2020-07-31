@@ -132,6 +132,7 @@ MonoBehaviour:
   mousePosition: {x: 0, y: 0, z: 0}
   mousePositionAsInt: {x: 0, y: 0, z: 0}
   playerToWorld: {fileID: 4079845383392759559}
+  playerTransform: {fileID: 5518505251541066120}
 --- !u!1 &5518505251541066127
 GameObject:
   m_ObjectHideFlags: 0
