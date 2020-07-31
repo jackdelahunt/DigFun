@@ -14,7 +14,7 @@ public class Chunk : MonoBehaviour
 
     private void Start()
     {
-        tileIDs = new int[ChunkData.chunkWidth, ChunkData.chunkHeight];
+        tileIDs = new int[LookUpData.chunkWidth, LookUpData.chunkHeight];
 
         tilemap = GetComponent<Tilemap>();
         refrenceManager = GameObject.FindGameObjectWithTag("RefrenceManager").GetComponent<RefrenceManager>();
@@ -72,16 +72,16 @@ public class Chunk : MonoBehaviour
         float scale = 0.1f;
         // generate the cave structure
         // chunkHeight - terrainHeight = undergroundHeight??
-        for (int y = chunkY; y < chunkY + ChunkData.chunkHeight - terrainHeight; y++)
+        for (int y = chunkY; y < chunkY + LookUpData.chunkHeight - terrainHeight; y++)
         {
-            for (int x = chunkX; x < chunkX + ChunkData.chunkWidth; x++)
+            for (int x = chunkX; x < chunkX + LookUpData.chunkWidth; x++)
             {
                 if (!Noise.caveNoise(x, y, 0.4f, 0.15f, 0))
                     continue;
 
-                if (y == ChunkData.chunkHeight - 1)
+                if (y == LookUpData.chunkHeight - 1)
                     addTile(new Vector3Int(x, y, 0), refrenceManager.getTile(2), 2);
-                else if (y > ChunkData.chunkHeight - 5)
+                else if (y > LookUpData.chunkHeight - 5)
                     addTile(new Vector3Int(x, y, 0), refrenceManager.getTile(1), 1);
                 else
                     addTile(new Vector3Int(x, y, 0), refrenceManager.getTile(3), 3);
@@ -90,14 +90,14 @@ public class Chunk : MonoBehaviour
         }
 
         // generate the above terrain
-        for (int x = chunkX; x < chunkX + ChunkData.chunkWidth; x++)
+        for (int x = chunkX; x < chunkX + LookUpData.chunkWidth; x++)
         {
             float noise = Noise.terrainNoise(x, terrainHeight, scale, 100);
             int heightOfTerrainHere = Mathf.FloorToInt(terrainHeight * noise);
 
             for (int y = 0; y < heightOfTerrainHere; y++)
             {
-                addTile(new Vector3Int(x, ChunkData.chunkHeight - terrainHeight + y, 0), refrenceManager.getTile(1), 1);
+                addTile(new Vector3Int(x, LookUpData.chunkHeight - terrainHeight + y, 0), refrenceManager.getTile(1), 1);
             }
         }
     }

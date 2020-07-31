@@ -6,11 +6,13 @@ public class Inventory : MonoBehaviour
 {
 	public Item[] items;
     public int[] quantaties;
-
+	public UIInventory uIInventory;
     [SerializeField] private int selectedItem;
 
 	private void Start()
 	{
+		uIInventory = FindObjectOfType<UIInventory>();
+
 		selectedItem = 0;
 		quantaties = new int[items.Length];
 	}
@@ -30,6 +32,8 @@ public class Inventory : MonoBehaviour
 		quantaties[selectedItem] -= 1;
 		if (quantaties[selectedItem] <= 0)
 			items[selectedItem] = null;
+
+		uIInventory.updateUIContents();
 	}
 
 	public bool addItem(Item item)
@@ -45,10 +49,16 @@ public class Inventory : MonoBehaviour
 			{
 				items[i] = item;
 				quantaties[i] = 1;
+				uIInventory.updateUIContents();
 				return true;
 			} else if (items[i].tileID == item.tileID)
 			{
+				// if this slot has reached the max items go to the next slot
+				if(quantaties[i] >= LookUpData.maxNumberOfItemsPerSlot)
+					continue;
+
 				quantaties[i] += 1;
+				uIInventory.updateUIContents();
 				return true;
 			}
 		}

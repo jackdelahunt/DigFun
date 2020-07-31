@@ -24,7 +24,7 @@ public class World : MonoBehaviour
 	{
 		//create a blank chunk list
 		List<Chunk> newChunks = new List<Chunk>();
-		for (int i = ChunkData.getRealtiveChunkCoord(player.transform.position) - (ChunkData.renderDisctance * ChunkData.chunkWidth); i <= ChunkData.getRealtiveChunkCoord(player.transform.position) + (ChunkData.renderDisctance * ChunkData.chunkWidth); i += ChunkData.chunkWidth)
+		for (int i = ChunkHelpers.getRealtiveChunkCoord(player.transform.position) - (LookUpData.renderDisctance * LookUpData.chunkWidth); i <= ChunkHelpers.getRealtiveChunkCoord(player.transform.position) + (LookUpData.renderDisctance * LookUpData.chunkWidth); i += LookUpData.chunkWidth)
 		{
 			// get the chunk at this position
 			Chunk newLoadedChunk = generateChunk(i);
@@ -74,7 +74,7 @@ public class World : MonoBehaviour
 		Chunk found;
 		
 		// get what chunk is at this x position, if there is none then it is null
-		chunks.TryGetValue(ChunkData.getRealtiveChunkCoord(worldPosition), out found);
+		chunks.TryGetValue(ChunkHelpers.getRealtiveChunkCoord(worldPosition), out found);
 		return found;
 	}
 }
