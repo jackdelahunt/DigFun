@@ -43,3 +43,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d19f184139e794382bb576abf13a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 11400000, guid: 305eca2d929fbc44cb02243a1b241106, type: 2}
+  - {fileID: 11400000, guid: 6f7f85e6e1fb45440b430dc281980144, type: 2}
+  - {fileID: 11400000, guid: 7a922268509c83146969c4459c819fe3, type: 2}
+  - {fileID: 11400000, guid: ef946a9c2557172428d539be78438c07, type: 2}
+  - {fileID: 11400000, guid: af536bf1f2080b740974b76c1e12f971, type: 2}
+  items:
+  - {fileID: 11400000, guid: 0079e4b79e1546749a1d59e782c36892, type: 2}
+  - {fileID: 11400000, guid: 6ebebef1aecd5ff4eaf3b2ad0ec085b2, type: 2}
+  - {fileID: 11400000, guid: 6304a92ef5eda7749a0911b492f509d1, type: 2}
+  - {fileID: 11400000, guid: 959276f9b3d33df418c9551f1233ab39, type: 2}
+  - {fileID: 11400000, guid: 021e3c06a9dc369449e907fd1a0c4922, type: 2}
