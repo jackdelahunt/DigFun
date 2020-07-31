@@ -171,9 +171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6bb2f7163fa5124db5eb92062140b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiles:
-  - {fileID: 11400000, guid: 6f7f85e6e1fb45440b430dc281980144, type: 2}
-  - {fileID: 11400000, guid: 7a922268509c83146969c4459c819fe3, type: 2}
-  - {fileID: 11400000, guid: ef946a9c2557172428d539be78438c07, type: 2}
+  biome: {fileID: 11400000, guid: 1ba15737f4b426640af6cac2ea99a7da, type: 2}
   chunkX: 0
   chunkY: 0

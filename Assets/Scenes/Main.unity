@@ -316,12 +316,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!4 &1386924618 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5518505251541066120, guid: a95e46ccf6b8cbb41ae29231b8e3203c,
-    type: 3}
-  m_PrefabInstance: {fileID: 5518505250643264509}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1409086005 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4284357338836727097, guid: 17f4eadbb35791e4ca1b3873c3818e87,
@@ -619,10 +613,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 883348254, guid: a95e46ccf6b8cbb41ae29231b8e3203c, type: 3}
-      propertyPath: playerTransform
-      value: 
-      objectReference: {fileID: 1386924618}
     - target: {fileID: 5518505251541066120, guid: a95e46ccf6b8cbb41ae29231b8e3203c,
         type: 3}
       propertyPath: m_LocalPosition.x

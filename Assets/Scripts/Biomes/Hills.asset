@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   biomeName: Grassy Hills
   terrainHeight: 32
-  terrainScale: 0.3
+  terrainScale: 0.1
+  surfaceTileId: 2
+  subSurfaceTileId: 1
