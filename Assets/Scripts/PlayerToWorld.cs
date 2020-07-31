@@ -40,4 +40,8 @@ public class PlayerToWorld : MonoBehaviour
 	{
 		return inventory.addItem(item);
 	}
+
+	public void changeSelectedItem(int amount) {
+		inventory.changeSelectedItem(amount);
+	}
 }

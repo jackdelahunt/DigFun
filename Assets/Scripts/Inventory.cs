@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
 	public Item[] items;
     public int[] quantaties;
 	public UIInventory uIInventory;
-    [SerializeField] private int selectedItem;
+	public int selectedItem;
 
 	private void Start()
 	{
@@ -23,6 +23,22 @@ public class Inventory : MonoBehaviour
 		// if there is a item in the slot then return that id
 		// else return the flag -1
 		return items[selectedItem] == null ? -1 : items[selectedItem].tileID;
+	}
+
+	// change the selected
+	public void changeSelectedItem(int amount) {
+		
+		// change the selected item
+		selectedItem -= amount;
+
+		// if the selected item is out of the item array bounds then
+		// wrap it to the other end of the array
+		if(selectedItem < 0)
+			selectedItem = items.Length - 1;
+		else if(selectedItem > items.Length - 1)
+			selectedItem = 0;
+
+		uIInventory.updateItemSelect();
 	}
 
 	// decrease the current selected item by 1

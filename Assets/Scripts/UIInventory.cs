@@ -10,6 +10,7 @@ public class UIInventory : MonoBehaviour
     public Inventory playerInventory;
     public Image[] hotbarImages;
     public TMP_Text[] hotbarCounts;
+    public GameObject itemSelectGameObject;
 
     public void Start() {
         playerInventory = FindObjectOfType<Inventory>();
@@ -31,6 +32,11 @@ public class UIInventory : MonoBehaviour
             hotbarImages[i].sprite = playerInventory.items[i].sprite;
             hotbarImages[i].gameObject.SetActive(true);
         }
+    }
+
+    public void updateItemSelect() {
+        GameObject slotGameObject =  hotbarCounts[playerInventory.selectedItem].gameObject.transform.parent.gameObject;
+        itemSelectGameObject.transform.position = slotGameObject.transform.position;
     }
 
 }

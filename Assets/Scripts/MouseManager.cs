@@ -23,6 +23,8 @@ public class MouseManager : MonoBehaviour
 			playerToWorld.removeTile(mousePositionAsInt);
 		else if (Input.GetButtonDown("Fire2")) // if the player is right clicking then tell playerToWorld they are doing so
 			playerToWorld.addTile(mousePositionAsInt);
+
+		playerToWorld.changeSelectedItem((int)Input.mouseScrollDelta.y);
 	}
 
 	public Vector3Int getMousePosition()
