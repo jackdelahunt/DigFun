@@ -78,14 +78,7 @@ public class Chunk : MonoBehaviour
             {
                 if (!Noise.caveNoise(x, y, 0.4f, 0.15f, 0))
                     continue;
-
-                if (y == LookUpData.chunkHeight - 1)
-                    addTile(new Vector3Int(x, y, 0), refrenceManager.getTile(2), 2);
-                else if (y > LookUpData.chunkHeight - 5)
-                    addTile(new Vector3Int(x, y, 0), refrenceManager.getTile(1), 1);
-                else
                     addTile(new Vector3Int(x, y, 0), refrenceManager.getTile(3), 3);
-
             }
         }
 
@@ -97,7 +90,10 @@ public class Chunk : MonoBehaviour
 
             for (int y = 0; y < heightOfTerrainHere; y++)
             {
-                addTile(new Vector3Int(x, LookUpData.chunkHeight - terrainHeight + y, 0), refrenceManager.getTile(1), 1);
+                if(y == heightOfTerrainHere - 1)
+                    addTile(new Vector3Int(x, LookUpData.chunkHeight - terrainHeight + y, 0), refrenceManager.getTile(2), 2);
+                else
+                    addTile(new Vector3Int(x, LookUpData.chunkHeight - terrainHeight + y, 0), refrenceManager.getTile(1), 1);
             }
         }
     }

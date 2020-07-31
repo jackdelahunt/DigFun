@@ -36,14 +36,15 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Biomes\Biome.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
      <Compile Include="Assets\Scripts\ChunkHelpers.cs" />
      <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
      <Compile Include="Assets\Scripts\Inventory\UIInventory.cs" />
+     <Compile Include="Assets\Scripts\Items\Item.cs" />
      <Compile Include="Assets\Scripts\LookUpData.cs" />
-     <Compile Include="Assets\Scripts\Models\Biome.cs" />
      <Compile Include="Assets\Scripts\Models\Chunk.cs" />
-     <Compile Include="Assets\Scripts\Models\Item.cs" />
+     <Compile Include="Assets\Scripts\Models\ItemEntity.cs" />
      <Compile Include="Assets\Scripts\Models\World.cs" />
      <Compile Include="Assets\Scripts\Noise.cs" />
      <Compile Include="Assets\Scripts\Player\CharacterController2D.cs" />

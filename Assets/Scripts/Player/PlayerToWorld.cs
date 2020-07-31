@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerToWorld : MonoBehaviour
 {
-    [SerializeField] World world;
-	[SerializeField] Inventory inventory;
-	[SerializeField] RefrenceManager refrenceManager;
+    [SerializeField] private World world;
+	[SerializeField] private Inventory inventory;
+	[SerializeField] private RefrenceManager refrenceManager;
+	[SerializeField] private GameObject itemEntityPrefab;
 
 	private void Start()
 	{
@@ -17,8 +18,24 @@ public class PlayerToWorld : MonoBehaviour
 	// tells the world object to get the chunk that we are in and reomve the tile
 	public void removeTile(Vector3Int pos)
 	{
+		// get the id of the item that the tile is that is being removed
 		int tileID = world.getChunk(pos).removeTile(pos);
-		inventory.addItem(refrenceManager.getItem(tileID));
+
+		// get the item based on the tileID
+		Item tileItem = refrenceManager.getItem(tileID);
+
+		// if the item is actually an item
+		if(tileItem != null) {
+			
+			// create a entity 
+			ItemEntity itemEntity = Instantiate(itemEntityPrefab, new Vector3(pos.x + 0.5f, pos.y + 0.5f, pos.z), new Quaternion(0f, 0f, 0f, 0f)).GetComponent<ItemEntity>();
+
+			// set the item of the itemEntity to the item based on the id
+			itemEntity.item = tileItem;
+
+			// initzialize the entity	
+			itemEntity.init();
+		}
 	}
 
 	public void addTile(Vector3Int pos)
@@ -43,5 +60,13 @@ public class PlayerToWorld : MonoBehaviour
 
 	public void changeSelectedItem(int amount) {
 		inventory.changeSelectedItem(amount);
+	}
+
+	void OnCollisionEnter2D(Collision2D col) {
+		if(col.collider.tag == "ItemEntity") {
+			Item item = col.collider.gameObject.GetComponent<ItemEntity>().item;
+			if(addItemToInventory(item))
+				Destroy(col.collider.gameObject);
+		}
 	}
 }
