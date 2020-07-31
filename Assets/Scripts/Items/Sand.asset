@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a0cd3524c17b44bbf0a64a79bb25bc, type: 3}
   m_Name: Sand
   m_EditorClassIdentifier: 
-  itemName: 
-  tileID: 0
-  sprite: {fileID: 0}
+  itemName: Sand
+  tileID: 4
+  sprite: {fileID: 21300000, guid: d172f945dbca90d4bb38f341d068c035, type: 3}

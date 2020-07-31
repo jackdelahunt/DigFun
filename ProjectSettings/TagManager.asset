@@ -9,6 +9,7 @@ TagManager:
   - Inventory
   - RefrenceManager
   - ItemEntity
+  - LodeManager
   layers:
   - Default
   - TransparentFX

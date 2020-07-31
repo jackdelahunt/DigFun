@@ -10,10 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b8187b3c0813364ebd6b9219fd74659, type: 3}
-  m_Name: Dessert
+  m_Name: Desert
   m_EditorClassIdentifier: 
-  biomeName: 
-  terrainHeight: 0
-  terrainScale: 0
-  surfaceTileId: 0
-  subSurfaceTileId: 0
+  biomeName: Desert
+  terrainHeight: 16
+  terrainScale: 0.2
+  surfaceTileId: 4
+  subSurfaceTileId: 5
+  noiseOffset: 0
+  biomeLodes:
+  - lodeName: Sand
+    blockID: 4
+    minHeight: 32
+    maxHeight: 60
+    scale: 0.3
+    threshold: 0.6
+    noiseOffset: 0

@@ -19,7 +19,7 @@ public class Chunk : MonoBehaviour
         tilemap = GetComponent<Tilemap>();
         refrenceManager = GameObject.FindGameObjectWithTag("RefrenceManager").GetComponent<RefrenceManager>();
         
-        setTileToIdArray(Noise.generateChunkTiles(chunkX, chunkY, biome));
+        setTileToIdArray(TerrainGeneration.generateChunkTiles(chunkX, chunkY, biome));
     }
 
     // add a tile to a position in this chunk
