@@ -53,18 +53,28 @@ public class PlayerToWorld : MonoBehaviour
 			inventory.decrementCurrentItem();
 	}
 
+	// attempts to add a item to the inventory
 	public bool addItemToInventory(Item item)
 	{
+		// true if the item was added false if it was not
 		return inventory.addItem(item);
 	}
 
+	// changed the selected item in the inventory by the input amount
 	public void changeSelectedItem(int amount) {
 		inventory.changeSelectedItem(amount);
 	}
 
+	// called when the player collides with another surface
 	void OnCollisionEnter2D(Collision2D col) {
+
+		// if that other surface was an itemEntity
 		if(col.collider.tag == "ItemEntity") {
+
+			// get the item that the entity was storing 
 			Item item = col.collider.gameObject.GetComponent<ItemEntity>().item;
+
+			// if the item was succefully added to the inventory then destroy it
 			if(addItemToInventory(item))
 				Destroy(col.collider.gameObject);
 		}

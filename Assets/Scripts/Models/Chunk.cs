@@ -7,33 +7,48 @@ public class Chunk : MonoBehaviour
 {
     private Tilemap tilemap;
     private RefrenceManager refrenceManager;
+
+    // an array of tile ids that refer to the ids of the tiles in the chunk
     public int[,] tileIDs;
+
+    // the biome of this chunk
     public Biome biome;
+
+    // the xCoord of the chunk
     public int chunkX;
+
+    // the yCoord of the chunk
     public int chunkY;
 
     private void Start()
     {
+        // create the tile id array, all values are 0
         tileIDs = new int[LookUpData.chunkWidth, LookUpData.chunkHeight];
 
         tilemap = GetComponent<Tilemap>();
         refrenceManager = GameObject.FindGameObjectWithTag("RefrenceManager").GetComponent<RefrenceManager>();
         
+        // get the chunk daat from the terrain generator class and set the tilemap to it
         setTileToIdArray(TerrainGeneration.generateChunkTiles(chunkX, chunkY, biome));
     }
 
     // add a tile to a position in this chunk
     public bool addTile(Vector3Int worldPos, Tile tile, int itemRefrence)
     {
+        // get the locaion of this tile but to the local chunk Coord
         Vector3Int localPos = convertWorldCoordToLocalCoord(worldPos);
 
+        // if the tile is outside the chunk then do not add it
         if(!isThisTileInThisChunk(localPos))
             return false;
 
         // if there is no tile in this area then add the new one else return false
         if (tilemap.GetTile(worldPos) == null)
         {
+            // set the correct value in the tile id array 
             tileIDs[localPos.x, localPos.y] = itemRefrence;
+
+            // change the tile map to fit that change
             tilemap.SetTile(worldPos, tile);
             return true;
         }
@@ -43,7 +58,11 @@ public class Chunk : MonoBehaviour
 
     // called when 
     public void setTileToIdArray(int[,] ids) {
+
+        // set all of the tileIds in the chunk to the input
         tileIDs = ids;
+
+        // go through each id and set it's respective tile in the tilemap 
         for(int y = 0; y < ids.GetLength(1); y++) {
             for(int x = 0; x < ids.GetLength(0); x++) {
                 tilemap.SetTile(convertLocalCoordToWorldCoord(new Vector3Int(x, y, 0)), refrenceManager.getTile(ids[x, y]));

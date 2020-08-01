@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+
+	// an array of all the items that the inventory stores
 	public Item[] items;
+
+	// the respective quantaties of each item in the inventory
     public int[] quantaties;
+
+	// the ui that this inventory needs to use to update the hotbar
 	public UIInventory uIInventory;
+
+	// the current selected item in the inventory
 	public int selectedItem;
 
 	private void Start()
@@ -38,6 +46,7 @@ public class Inventory : MonoBehaviour
 		else if(selectedItem > items.Length - 1)
 			selectedItem = 0;
 
+		// once this has changed tell the inventory ui to update
 		uIInventory.updateItemSelect();
 	}
 
@@ -46,9 +55,12 @@ public class Inventory : MonoBehaviour
 	public void decrementCurrentItem()
 	{
 		quantaties[selectedItem] -= 1;
+
+		// if there is none of the item left net remove it from the items array
 		if (quantaties[selectedItem] <= 0)
 			items[selectedItem] = null;
 
+		// once this has changed tell the inventory ui to update
 		uIInventory.updateUIContents();
 	}
 
@@ -60,24 +72,36 @@ public class Inventory : MonoBehaviour
 
 		for(int i = 0; i < items.Length; i++)
 		{
-			// if the slot is empty then set the item to this, and it's quantaty to 1
+			// if the slot is empty then set the item to this
 			if (items[i] == null)
 			{
+				// set the item
 				items[i] = item;
-				quantaties[i] = 1;
-				uIInventory.updateUIContents();
-				return true;
-			} else if (items[i].tileID == item.tileID)
-			{
-				// if this slot has reached the max items go to the next slot
-				if(quantaties[i] >= LookUpData.maxNumberOfItemsPerSlot)
-					continue;
 
-				quantaties[i] += 1;
+				// this is the first item so set the quantatie to 1
+				quantaties[i] = 1;
+
+				// update the UI
 				uIInventory.updateUIContents();
+
+				// return that we added the item
+				return true;
+			} // if the item we are adding is in this slot and it is not full add it, else just continue the loop
+			else if (items[i].tileID == item.tileID && quantaties[i] < LookUpData.maxNumberOfItemsPerSlot)
+			{
+				// add the amount
+				quantaties[i] += 1;
+
+				// update the UI
+				uIInventory.updateUIContents();
+
+				// return that we added the item
 				return true;
 			}
 		}
+
+		// if the loop ended and we have nod added the item then
+		// return false as we did not add it 
 		return false;
 	}
 }

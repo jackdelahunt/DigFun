@@ -16,11 +16,11 @@ MonoBehaviour:
   terrainHeight: 16
   terrainScale: 0.2
   surfaceTileId: 4
-  subSurfaceTileId: 5
+  subSurfaceTileId: 4
   noiseOffset: 0
   biomeLodes:
-  - lodeName: Sand
-    blockID: 4
+  - lodeName: SandStone
+    blockID: 5
     minHeight: 32
     maxHeight: 60
     scale: 0.3

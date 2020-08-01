@@ -5,9 +5,13 @@ using UnityEngine;
 
 public class World : MonoBehaviour
 {
+	// a dictionary that stores the chunkX as the key and
+	// the chunk object as the value
 	private Dictionary<int, Chunk> chunks;
 	public GameObject chunkPrefab;
 	public GameObject player;
+
+	// a list of all the loaded chunks in the scene
 	public List<Chunk> currentLoadedChunks;
 
 	private void Start()

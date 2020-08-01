@@ -5,10 +5,14 @@ using UnityEngine.Tilemaps;
 
 public class MouseManager : MonoBehaviour
 {
-    [SerializeField] private Vector3 mousePosition;
-    [SerializeField] private Vector3Int mousePositionAsInt;
-	[SerializeField] private PlayerToWorld playerToWorld;
 
+	// mouse pos as a raw vector3
+    [SerializeField] private Vector3 mousePosition;
+
+	// mouse pos as a vector3Int for use with the tile map
+    [SerializeField] private Vector3Int mousePositionAsInt;
+
+	[SerializeField] private PlayerToWorld playerToWorld;
 	[SerializeField] private Transform playerTransform;	
 
 	private void Update()
@@ -19,8 +23,11 @@ public class MouseManager : MonoBehaviour
 
 	public void handleMouseInput()
 	{
+		// if the mouse is in the range of the player
 		if(isMouseClickInRange()) {
+
 			// if you are clicking left the tell playerToWorld to delete the block
+			// if they are clicking right then try and add a block
 			if (Input.GetButtonDown("Fire1")) {
 					playerToWorld.removeTile(mousePositionAsInt);
 			}
@@ -38,7 +45,10 @@ public class MouseManager : MonoBehaviour
 
 	public Vector3Int getMousePositionAsInt()
 	{
+		// get the mouse position in world coords from the camera
 		mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z));
+
+		// convert that to use ints
 		mousePositionAsInt = new Vector3Int(Mathf.FloorToInt(mousePosition.x), Mathf.FloorToInt(mousePosition.y), 0);
 
 		return mousePositionAsInt;
