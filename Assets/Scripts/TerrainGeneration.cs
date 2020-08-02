@@ -19,8 +19,8 @@ public static class TerrainGeneration
 					// if we can spawn a block here
 					if(Noise.caveNoise(chunkX + x, chunkY + y, seed, 0.4f, 0.2f, 0)) {
 
-						// first generate stone an then add lodes later
-						ids[x, y] = 3;
+						// first generate default tile and then add lodes later
+						ids[x, y] = biome.caveTileId;
 
 						// first go through each global lode and try spawn a block
 						foreach(Lode lode in LodeManager.globalLodes) {

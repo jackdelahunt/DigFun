@@ -23,6 +23,9 @@ public class Biome : ScriptableObject
     // the tile id of the block below the surface in the terrain
     public int subSurfaceTileId;
 
+    // the tile id for the cave tile
+    public int caveTileId;
+
     // offset for the noise function
     public int noiseOffset;
 

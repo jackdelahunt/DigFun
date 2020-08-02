@@ -18,12 +18,13 @@ MonoBehaviour:
   terrainScale: 0.1
   surfaceTileId: 4
   subSurfaceTileId: 4
+  caveTileId: 3
   noiseOffset: 0
   biomeLodes:
-  - lodeName: SandStone
+  - lodeName: Sandstone
     blockID: 5
     minHeight: 96
     maxHeight: 128
     scale: 0.3
-    threshold: 0.55
+    threshold: 0.3
     noiseOffset: 0

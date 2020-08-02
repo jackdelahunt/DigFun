@@ -18,5 +18,6 @@ MonoBehaviour:
   terrainScale: 0.1
   surfaceTileId: 2
   subSurfaceTileId: 1
+  caveTileId: 3
   noiseOffset: 0
   biomeLodes: []

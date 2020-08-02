@@ -18,6 +18,7 @@ MonoBehaviour:
   terrainScale: 0.1
   surfaceTileId: 3
   subSurfaceTileId: 3
+  caveTileId: 3
   noiseOffset: 0
   biomeLodes:
   - lodeName: Cobblestone

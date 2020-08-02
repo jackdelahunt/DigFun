@@ -486,7 +486,7 @@ MonoBehaviour:
   chunkPrefab: {fileID: 6608732129719083111, guid: fe96749684679df4eb7b330d16d6ada0,
     type: 3}
   player: {fileID: 0}
-  seed: 69
+  seed: 0
   refrenceManager: {fileID: 0}
   currentLoadedChunks: []
   weightedBiomeList: 
