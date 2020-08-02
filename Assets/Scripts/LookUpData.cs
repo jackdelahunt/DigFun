@@ -1,6 +1,9 @@
 ﻿public static class LookUpData
 {
 
+    // the seed of the world
+    public static int seed = 0;
+
     // the maximum amount of items the inventory can hold in a single slot 
     public static readonly int maxNumberOfItemsPerSlot = 10;
 

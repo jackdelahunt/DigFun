@@ -16,8 +16,6 @@ public static class Noise
         float sampleY = (y * scale) + 0.01f;
 
         float value = Mathf.PerlinNoise(sampleX + offset + seedOffsetX, sampleY + offset + seedOffsetY);
-        Debug.Log(value);
-        Mathf.Clamp(value, 0, 1);
         return value;
     }
 

@@ -24,6 +24,7 @@ public class World : MonoBehaviour
 
     private void Start()
     {
+        seed = LookUpData.seed;
         chunks = new Dictionary<int, Chunk>();
         player = GameObject.FindGameObjectWithTag("Player");
         refrenceManager = GameObject.FindGameObjectWithTag("RefrenceManager").GetComponent<RefrenceManager>();

@@ -10,6 +10,7 @@ TagManager:
   - RefrenceManager
   - ItemEntity
   - LodeManager
+  - SeedTextField
   layers:
   - Default
   - TransparentFX
