@@ -57,7 +57,7 @@ public static class TerrainGeneration
             // constructing terrain all the way up to the max height 
             for (int y = caveHeight; y <= caveHeight + terrainHeightAtThisPoint; y++)
             {
-                ids[x, y] = y < caveHeight + terrainHeightAtThisPoint ? biome.subSurfaceTileId : biome.surfaceTileId;
+                ids[x, y] = y <= caveHeight + terrainHeightAtThisPoint - biome.surfaceThickness ? biome.subSurfaceTileId : biome.surfaceTileId;
             }
         }
 

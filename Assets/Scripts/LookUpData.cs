@@ -17,11 +17,11 @@
     public static readonly float playerMouseRange = 3f;
 
     // noise scale for biome generation
-    public static readonly float biomeGenerationScale = 0.1f;
+    public static readonly float biomeGenerationScale = 0.9f;
 
     // threshold for cave generation
     public static readonly float caveGenerationThreshold = 0.4f;
 
     // scale of the cave generation
-    public static readonly float caveScale = 0.001f;
+    public static readonly float caveScale = 0.2f;
 }

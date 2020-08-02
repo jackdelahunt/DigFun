@@ -12,11 +12,12 @@ public static class Noise
         float seedOffsetX = prng.Next(-100000, 100000);
         float seedOffsetY = prng.Next(-100000, 100000);
 
-        float sampleX = ((x / LookUpData.chunkWidth) * scale) + 0.01f;
-        float sampleY = ((y / LookUpData.chunkHeight) * scale) + 0.01f;
+        float sampleX = (x * scale) + 0.01f;
+        float sampleY = (y * scale) + 0.01f;
 
         float value = Mathf.PerlinNoise(sampleX + offset + seedOffsetX, sampleY + offset + seedOffsetY);
         Debug.Log(value);
+        Mathf.Clamp(value, 0, 1);
         return value;
     }
 

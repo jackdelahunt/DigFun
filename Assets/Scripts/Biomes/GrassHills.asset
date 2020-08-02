@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b8187b3c0813364ebd6b9219fd74659, type: 3}
+  m_Name: GrassHills
+  m_EditorClassIdentifier: 
+  biomeName: Grassy Hills
+  weight: 20
+  terrainRatio: 0.1
+  caveRatio: 0.5
+  terrainScale: 0.05
+  surfaceThickness: 1
+  surfaceTileId: 2
+  subSurfaceTileId: 1
+  caveTileId: 3
+  noiseOffset: 0
+  biomeLodes: []

@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: StoneHills
   m_EditorClassIdentifier: 
   biomeName: Stone Hills
-  weight: 20
+  weight: 10
   terrainRatio: 0.1
   caveRatio: 0.5
-  terrainScale: 0.1
+  terrainScale: 0.05
+  surfaceThickness: 1
   surfaceTileId: 3
   subSurfaceTileId: 3
   caveTileId: 3

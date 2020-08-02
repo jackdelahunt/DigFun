@@ -20,6 +20,9 @@ public class Biome : ScriptableObject
     // scale for the noise function
     public float terrainScale;
 
+    // how many block does the surface tile take up
+    public int surfaceThickness;
+
     // the tile id of the surface block
     public int surfaceTileId;
 
