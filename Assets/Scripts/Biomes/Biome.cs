@@ -10,13 +10,16 @@ public class Biome : ScriptableObject
 
     // how often does this biome generate
     public int weight;
-    
-    // the height of the terrain section of the generation
-    public int terrainHeight;
+
+    // proportion of of the chunk the terrain takes up
+    public float terrainRatio;
+
+    // proportion of of the chunk the cave takes up
+    public float caveRatio;
 
     // scale for the noise function
     public float terrainScale;
-    
+
     // the tile id of the surface block
     public int surfaceTileId;
 
@@ -34,13 +37,14 @@ public class Biome : ScriptableObject
 }
 
 [System.Serializable]
-public class Lode {
+public class Lode
+{
 
     // the name of the lode
     public string lodeName;
 
     // the tile id of the tile that this lode represents
-    public int blockID;
+    public int tileID;
 
     // the minimum height this lode can be generated
     public int minHeight;
@@ -51,7 +55,7 @@ public class Lode {
 
     // the noise scale for generation
     public float scale;
-    
+
     // the threshold value the noise function needs to reach 
     // for the lode to generate
     public float threshold;
@@ -59,9 +63,10 @@ public class Lode {
     // offset for the noise function
     public int noiseOffset;
 
-    public Lode(string lodeName, int blockID, int minHeight, int maxHeight, float scale, float threshold, int noiseOffset) {
+    public Lode(string lodeName, int tileID, int minHeight, int maxHeight, float scale, float threshold, int noiseOffset)
+    {
         this.lodeName = lodeName;
-        this.blockID = blockID;
+        this.tileID = tileID;
         this.minHeight = minHeight;
         this.maxHeight = maxHeight;
         this.scale = scale;

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   biomeName: Desert
   weight: 10
-  terrainHeight: 16
+  terrainRatio: 0.1
+  caveRatio: 0.5
   terrainScale: 0.1
   surfaceTileId: 4
   subSurfaceTileId: 4
@@ -22,9 +23,9 @@ MonoBehaviour:
   noiseOffset: 0
   biomeLodes:
   - lodeName: Sandstone
-    blockID: 5
-    minHeight: 96
+    tileID: 5
+    minHeight: 20
     maxHeight: 128
     scale: 0.3
-    threshold: 0.3
+    threshold: 0.5
     noiseOffset: 0

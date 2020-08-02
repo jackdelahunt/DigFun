@@ -5,70 +5,63 @@ using UnityEngine;
 public static class TerrainGeneration
 {
 
-    public static int[,] generateChunkTiles(int chunkX, int chunkY, int seed, Biome biome) {
+    public static int[,] generateChunkTiles(int chunkX, int chunkY, int seed, Biome biome)
+    {
 
-		int[,] ids = new int[LookUpData.chunkWidth, LookUpData.chunkHeight];
+        int[,] ids = new int[LookUpData.chunkWidth, LookUpData.chunkHeight];
 
-		// chunkHeight - terrainHeight = undergroundHeight
-		for(int y = 0; y < ids.GetLength(1); y++) {
-            for(int x = 0; x < ids.GetLength(0); x++) {
+        // the height of the cave portion of the chunk
+        int caveHeight = Mathf.RoundToInt(LookUpData.chunkHeight * biome.caveRatio);
 
-				// cavePass
-				if(y < LookUpData.chunkHeight - biome.terrainHeight) {
+        // height of the terrain portion of the chunk
+        int terrainHeight = Mathf.RoundToInt(LookUpData.chunkHeight * biome.terrainRatio);
 
-					// if we can spawn a block here
-					if(Noise.caveNoise(chunkX + x, chunkY + y, seed, 0.4f, 0.2f, 0)) {
+        // cave generation
+        for (int y = 0; y < caveHeight; y++)
+        {
+            for (int x = 0; x < LookUpData.chunkWidth; x++)
+            {
+                // check if we are able to place a tile here 
+                if (Noise.caveNoise(chunkX + x, chunkY + y, seed, LookUpData.caveGenerationThreshold, LookUpData.caveScale, 0))
+                {
+                    // set it to stone first and maybe change with a lode after
+                    ids[x, y] = 3;
 
-						// first generate default tile and then add lodes later
-						ids[x, y] = biome.caveTileId;
+                    foreach (Lode globalLode in LodeManager.globalLodes)
+                    {
+                        if (Noise.lodeNoise(chunkX + x, chunkY + y, seed, globalLode))
+                        {
+                            ids[x, y] = globalLode.tileID;
+                        }
+                    }
 
-						// first go through each global lode and try spawn a block
-						foreach(Lode lode in LodeManager.globalLodes) {
+                    foreach (Lode biomeLode in biome.biomeLodes)
+                    {
+                        if (Noise.lodeNoise(chunkX + x, chunkY + y, seed, biomeLode))
+                        {
+                            ids[x, y] = biomeLode.tileID;
+                        }
+                    }
+                }
 
-							// if we are in the lodes range
-                    		if(y >= lode.minHeight && y <= lode.maxHeight && y < LookUpData.chunkHeight - biome.terrainHeight) {
-								
-								// if this lode can spawn spawn it and move to the next tile
-                        		if(Noise.lodeNoise(chunkX + x, chunkY + y, lode.threshold, lode.scale, lode.noiseOffset)) {
-                            		ids[x, y] = lode.blockID;
-									break;
-								}
-                        	}
-                		}
-
-						// go through the biomes specific lodes next
-						foreach(Lode lode in biome.biomeLodes) {
-
-							// if we are in the lodes range
-                    		if(y >= lode.minHeight && y <= lode.maxHeight && y < LookUpData.chunkHeight - biome.terrainHeight) {
-
-								// if this lode can spawn here
-                        		if(Noise.lodeNoise(chunkX + x, chunkY + y, lode.threshold, lode.scale, lode.noiseOffset)) {
-
-									// set the tile to the id and go to next tile
-                            		ids[x, y] = lode.blockID;
-									break;  
-								}
-                			}   
-						}
-					}
-				}			
             }
         }
 
-		// terrain pass
-		for(int x = 0; x < LookUpData.chunkWidth; x++) {
+        // terrain generation
+        // going through all of the x values in the terrain
+        for (int x = 0; x < LookUpData.chunkWidth; x++)
+        {
+            // getting the max of the terrain at this x value based on noise
+            int terrainHeightAtThisPoint = Mathf.FloorToInt(Noise.terrainNoise(chunkX + x, chunkY, seed, biome.terrainScale, biome.noiseOffset) * terrainHeight);
 
-			int heightAtThisPoint = Mathf.FloorToInt(biome.terrainHeight * Noise.terrainNoise(chunkX + x, chunkY, seed, biome.terrainScale, biome.noiseOffset));
-			int highestPointAtThisPos =  LookUpData.chunkHeight - biome.terrainHeight + heightAtThisPoint;
-			for(int y = LookUpData.chunkHeight - biome.terrainHeight; y <= highestPointAtThisPos; y++) {
+            // constructing terrain all the way up to the max height 
+            for (int y = caveHeight; y <= caveHeight + terrainHeightAtThisPoint; y++)
+            {
+                ids[x, y] = y < caveHeight + terrainHeightAtThisPoint ? biome.subSurfaceTileId : biome.surfaceTileId;
+            }
+        }
 
-				if(y == highestPointAtThisPos)
-					ids[x, y] = biome.surfaceTileId;
-				else
-					ids[x,y] = biome.subSurfaceTileId;
-			}
-		}
-		return ids;
-	}
+
+        return ids;
+    }
 }

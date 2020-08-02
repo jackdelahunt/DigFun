@@ -4,37 +4,49 @@ using UnityEngine;
 
 public static class Noise
 {
-    
-	// returns a float form 0-1 based on the inputs
+
+    // returns a float form 0-1 based on the inputs
     public static float terrainNoise(int x, int y, int seed, float scale, int offset)
-	{
-		System.Random prng = new System.Random(seed);
-		float seedOffsetX = prng.Next(-100000, 100000);
-		float seedOffsetY = prng.Next(-100000, 100000);
+    {
+        System.Random prng = new System.Random(seed);
+        float seedOffsetX = prng.Next(-100000, 100000);
+        float seedOffsetY = prng.Next(-100000, 100000);
 
-		return Mathf.PerlinNoise((x * scale) + offset + seedOffsetX, (y * scale) + offset + seedOffsetY);
-	}
+        float sampleX = ((x / LookUpData.chunkWidth) * scale) + 0.01f;
+        float sampleY = ((y / LookUpData.chunkHeight) * scale) + 0.01f;
 
-	// returns true or false if the noise form the inputs is above the threshold
-	public static bool caveNoise(int x, int y, int seed, float threshold, float scale, int offset)
-	{
-		return terrainNoise(x, y, seed, scale, offset) > threshold;
-	}
+        float value = Mathf.PerlinNoise(sampleX + offset + seedOffsetX, sampleY + offset + seedOffsetY);
+        Debug.Log(value);
+        return value;
+    }
 
-	// returns true if the lode should be generated in the x y position
-	public static bool lodeNoise(int x, int y, float threshold, float scale, int offset) {
+    // returns true or false if the noise form the inputs is above the threshold
+    public static bool caveNoise(int x, int y, int seed, float threshold, float scale, int offset)
+    {
+        return terrainNoise(x, y, seed, scale, offset) > threshold;
+    }
 
-		float xf = (x + offset + 0.1f) * scale;
-        float yf = (y + offset + 0.1f) * scale;
+    // returns true if the lode should be generated in the x y position
+    public static bool lodeNoise(int x, int y, int seed, Lode lode)
+    {
+        if (y < lode.minHeight || y > lode.maxHeight)
+            return false;
 
-		// sample two points of noise 
+        System.Random prng = new System.Random(seed);
+        float seedOffsetX = prng.Next(-100000, 100000);
+        float seedOffsetY = prng.Next(-100000, 100000);
+
+        float xf = (x + lode.noiseOffset + 0.1f) * lode.scale + lode.noiseOffset + seedOffsetX;
+        float yf = (y + lode.noiseOffset + 0.1f) * lode.scale + lode.noiseOffset + seedOffsetY;
+
+        // sample two points of noise 
         float AB = Mathf.PerlinNoise(xf, yf);
         float BA = Mathf.PerlinNoise(yf, xf);
 
-		// if the sum of the noise values is above the threshold return true
-        if ((AB + BA) / 2f > threshold)
+        // if the sum of the noise values is above the threshold return true
+        if ((AB + BA) / 2f > lode.threshold)
             return true;
         else
             return false;
-	}
+    }
 }

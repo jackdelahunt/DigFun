@@ -4,3 +4,4 @@
 3  - Stone
 4 - Sand
 5 - Sandstone
+6 - Cobblestone
