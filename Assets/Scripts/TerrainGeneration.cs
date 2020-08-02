@@ -12,26 +12,47 @@ public static class TerrainGeneration
 		// chunkHeight - terrainHeight = undergroundHeight
 		for(int y = 0; y < ids.GetLength(1); y++) {
             for(int x = 0; x < ids.GetLength(0); x++) {
-                
+
 				// cavePass
 				if(y < LookUpData.chunkHeight - biome.terrainHeight) {
-					if(Noise.caveNoise(chunkX + x, chunkY + y, 0.4f, 0.2f, 0))
+
+					// if we can spawn a block here
+					if(Noise.caveNoise(chunkX + x, chunkY + y, 0.4f, 0.2f, 0)) {
+
+						// first generate stone an then add lodes later
 						ids[x, y] = 3;
-				}
 
-                foreach(Lode lode in LodeManager.globalLodes) {
-                    if(y >= lode.minHeight && y <= lode.maxHeight && y < LookUpData.chunkHeight - biome.terrainHeight)
-                        if(Noise.lodeNoise(chunkX + x, chunkY + y, lode.threshold, lode.scale, lode.noiseOffset)) {
-                            ids[x, y] = lode.blockID;
-                        }
-                }	
+						// first go through each global lode and try spawn a block
+						foreach(Lode lode in LodeManager.globalLodes) {
 
-                foreach(Lode lode in biome.biomeLodes) {
-                    if(y >= lode.minHeight && y <= lode.maxHeight && y < LookUpData.chunkHeight - biome.terrainHeight)
-                        if(Noise.lodeNoise(chunkX + x, chunkY + y, lode.threshold, lode.scale, lode.noiseOffset)) {
-                            ids[x, y] = lode.blockID;
-                        }
-                }   			
+							// if we are in the lodes range
+                    		if(y >= lode.minHeight && y <= lode.maxHeight && y < LookUpData.chunkHeight - biome.terrainHeight) {
+								
+								// if this lode can spawn spawn it and move to the next tile
+                        		if(Noise.lodeNoise(chunkX + x, chunkY + y, lode.threshold, lode.scale, lode.noiseOffset)) {
+                            		ids[x, y] = lode.blockID;
+									break;
+								}
+                        	}
+                		}
+
+						// go through the biomes specific lodes next
+						foreach(Lode lode in biome.biomeLodes) {
+
+							// if we are in the lodes range
+                    		if(y >= lode.minHeight && y <= lode.maxHeight && y < LookUpData.chunkHeight - biome.terrainHeight) {
+
+								// if this lode can spawn here
+                        		if(Noise.lodeNoise(chunkX + x, chunkY + y, lode.threshold, lode.scale, lode.noiseOffset)) {
+
+									// set the tile to the id and go to next tile
+                            		ids[x, y] = lode.blockID;
+									break;  
+								}
+                			}   
+						}
+					}
+				}			
             }
         }
 
