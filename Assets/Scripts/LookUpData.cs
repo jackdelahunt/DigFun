@@ -5,7 +5,7 @@
     public static readonly int maxNumberOfItemsPerSlot = 10;
 
     // the height of all chunks
-    public static readonly int chunkHeight = 64;
+    public static readonly int chunkHeight = 128;
 
     // the width of all chunks
 	public static readonly int chunkWidth = 16;

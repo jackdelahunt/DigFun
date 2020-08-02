@@ -20,6 +20,9 @@ public class Chunk : MonoBehaviour
     // the yCoord of the chunk
     public int chunkY;
 
+    // the seed of the world
+    public int seed;
+
     private void Awake()
     {
         // create the tile id array, all values are 0
@@ -30,7 +33,7 @@ public class Chunk : MonoBehaviour
 
     public void init() {
          // get the chunk daat from the terrain generator class and set the tilemap to it
-        setTileToIdArray(TerrainGeneration.generateChunkTiles(chunkX, chunkY, biome));
+        setTileToIdArray(TerrainGeneration.generateChunkTiles(chunkX, chunkY, seed, biome));
     }
 
     // add a tile to a position in this chunk

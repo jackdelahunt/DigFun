@@ -5,7 +5,7 @@ using UnityEngine;
 public static class TerrainGeneration
 {
 
-    public static int[,] generateChunkTiles(int chunkX, int chunkY, Biome biome) {
+    public static int[,] generateChunkTiles(int chunkX, int chunkY, int seed, Biome biome) {
 
 		int[,] ids = new int[LookUpData.chunkWidth, LookUpData.chunkHeight];
 
@@ -17,7 +17,7 @@ public static class TerrainGeneration
 				if(y < LookUpData.chunkHeight - biome.terrainHeight) {
 
 					// if we can spawn a block here
-					if(Noise.caveNoise(chunkX + x, chunkY + y, 0.4f, 0.2f, 0)) {
+					if(Noise.caveNoise(chunkX + x, chunkY + y, seed, 0.4f, 0.2f, 0)) {
 
 						// first generate stone an then add lodes later
 						ids[x, y] = 3;
@@ -59,7 +59,7 @@ public static class TerrainGeneration
 		// terrain pass
 		for(int x = 0; x < LookUpData.chunkWidth; x++) {
 
-			int heightAtThisPoint = Mathf.FloorToInt(biome.terrainHeight * Noise.terrainNoise(chunkX + x, chunkY, biome.terrainScale, biome.noiseOffset));
+			int heightAtThisPoint = Mathf.FloorToInt(biome.terrainHeight * Noise.terrainNoise(chunkX + x, chunkY, seed, biome.terrainScale, biome.noiseOffset));
 			int highestPointAtThisPos =  LookUpData.chunkHeight - biome.terrainHeight + heightAtThisPoint;
 			for(int y = LookUpData.chunkHeight - biome.terrainHeight; y <= highestPointAtThisPos; y++) {
 

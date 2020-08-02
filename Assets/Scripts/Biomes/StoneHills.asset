@@ -22,7 +22,7 @@ MonoBehaviour:
   biomeLodes:
   - lodeName: Cobblestone
     blockID: 6
-    minHeight: 32
+    minHeight: 64
     maxHeight: 128
     scale: 0.2
     threshold: 0.5

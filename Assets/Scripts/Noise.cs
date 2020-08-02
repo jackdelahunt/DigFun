@@ -6,15 +6,19 @@ public static class Noise
 {
     
 	// returns a float form 0-1 based on the inputs
-    public static float terrainNoise(int x, int y, float scale, int offset)
+    public static float terrainNoise(int x, int y, int seed, float scale, int offset)
 	{
-		return Mathf.PerlinNoise((x * scale) + offset, (y * scale) + offset);
+		System.Random prng = new System.Random(seed);
+		float seedOffsetX = prng.Next(-100000, 100000);
+		float seedOffsetY = prng.Next(-100000, 100000);
+
+		return Mathf.PerlinNoise((x * scale) + offset + seedOffsetX, (y * scale) + offset + seedOffsetY);
 	}
 
 	// returns true or false if the noise form the inputs is above the threshold
-	public static bool caveNoise(int x, int y, float threshold, float scale, int offset)
+	public static bool caveNoise(int x, int y, int seed, float threshold, float scale, int offset)
 	{
-		return terrainNoise(x, y, scale, offset) > threshold;
+		return terrainNoise(x, y, seed, scale, offset) > threshold;
 	}
 
 	// returns true if the lode should be generated in the x y position

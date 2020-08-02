@@ -11,6 +11,9 @@ public class World : MonoBehaviour
 	public GameObject chunkPrefab;
 	public GameObject player;
 
+	// the seed of the world
+	public int seed;
+
 	public RefrenceManager refrenceManager;
 
 	// a list of all the loaded chunks in the scene
@@ -72,6 +75,7 @@ public class World : MonoBehaviour
 			found = Instantiate(chunkPrefab, gameObject.transform).GetComponent<Chunk>();
 			found.chunkX = x;
 			found.chunkY = 0;
+			found.seed = seed;
 			found.biome = getBiomeAtThisChunk(found.chunkX, found.chunkY);
 			found.init();
 			
@@ -113,7 +117,7 @@ public class World : MonoBehaviour
 
 		// get the noise value at this point and rount it to an int between 0 and the length of the biome list
 		// goto the weighted biome list and check which biome this number is and get that biome in the refrence manager
-		int noise = Mathf.RoundToInt(Noise.terrainNoise(chunkX, chunkY, LookUpData.biomeGenerationScale, 0) * (weightedBiomeList.Length - 1));
+		int noise = Mathf.RoundToInt(Noise.terrainNoise(chunkX, chunkY, seed, LookUpData.biomeGenerationScale, 0) * (weightedBiomeList.Length - 1));
 		print(noise);
 		return refrenceManager.getBiome( weightedBiomeList[noise]);
 	}
