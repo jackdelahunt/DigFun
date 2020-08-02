@@ -15,4 +15,7 @@
 
     // the range of the mouse from the player
     public static readonly float playerMouseRange = 3f;
+
+    // noise scale for biome generation
+    public static readonly float biomeGenerationScale = 0.1f;
 }

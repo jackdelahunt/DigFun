@@ -486,7 +486,9 @@ MonoBehaviour:
   chunkPrefab: {fileID: 6608732129719083111, guid: fe96749684679df4eb7b330d16d6ada0,
     type: 3}
   player: {fileID: 0}
+  refrenceManager: {fileID: 0}
   currentLoadedChunks: []
+  weightedBiomeList: 
 --- !u!1001 &4284357337555109644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -737,6 +739,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6828565581986479421, guid: d3eb976c6c0e73a40a8e8dc0fcb6c202,
+        type: 3}
+      propertyPath: tiles.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6828565581986479421, guid: d3eb976c6c0e73a40a8e8dc0fcb6c202,
+        type: 3}
+      propertyPath: biomes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6828565581986479421, guid: d3eb976c6c0e73a40a8e8dc0fcb6c202,
+        type: 3}
+      propertyPath: items.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6828565581986479421, guid: d3eb976c6c0e73a40a8e8dc0fcb6c202,
+        type: 3}
+      propertyPath: tiles.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: b69f85e5f03fbd84e94bf02e45aa5128,
+        type: 2}
+    - target: {fileID: 6828565581986479421, guid: d3eb976c6c0e73a40a8e8dc0fcb6c202,
+        type: 3}
+      propertyPath: items.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: aca85741e030fca4084ecded0845f712,
+        type: 2}
+    - target: {fileID: 6828565581986479421, guid: d3eb976c6c0e73a40a8e8dc0fcb6c202,
+        type: 3}
+      propertyPath: biomes.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: a0b3772d08b476b4181dc4e2df1ef541,
+        type: 2}
+    - target: {fileID: 6828565581986479421, guid: d3eb976c6c0e73a40a8e8dc0fcb6c202,
+        type: 3}
+      propertyPath: items.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b1e09b02bf867f4e83718ab9af23b9b,
+        type: 2}
     - target: {fileID: 6828565581986479422, guid: d3eb976c6c0e73a40a8e8dc0fcb6c202,
         type: 3}
       propertyPath: m_Name

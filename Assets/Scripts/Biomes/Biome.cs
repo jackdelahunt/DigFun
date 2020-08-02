@@ -7,6 +7,9 @@ public class Biome : ScriptableObject
 {
     // the name of this biome
     public string biomeName;
+
+    // how often does this biome generate
+    public int weight;
     
     // the height of the terrain section of the generation
     public int terrainHeight;

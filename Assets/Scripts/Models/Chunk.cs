@@ -20,15 +20,16 @@ public class Chunk : MonoBehaviour
     // the yCoord of the chunk
     public int chunkY;
 
-    private void Start()
+    private void Awake()
     {
         // create the tile id array, all values are 0
         tileIDs = new int[LookUpData.chunkWidth, LookUpData.chunkHeight];
-
         tilemap = GetComponent<Tilemap>();
         refrenceManager = GameObject.FindGameObjectWithTag("RefrenceManager").GetComponent<RefrenceManager>();
-        
-        // get the chunk daat from the terrain generator class and set the tilemap to it
+    }
+
+    public void init() {
+         // get the chunk daat from the terrain generator class and set the tilemap to it
         setTileToIdArray(TerrainGeneration.generateChunkTiles(chunkX, chunkY, biome));
     }
 
