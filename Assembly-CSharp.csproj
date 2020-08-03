@@ -39,6 +39,7 @@
      <Compile Include="Assets\Scripts\Biomes\Biome.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
      <Compile Include="Assets\Scripts\ChunkHelpers.cs" />
+     <Compile Include="Assets\Scripts\Debug.cs" />
      <Compile Include="Assets\Scripts\GameSession.cs" />
      <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
      <Compile Include="Assets\Scripts\Inventory\UIInventory.cs" />

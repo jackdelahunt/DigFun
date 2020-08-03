@@ -7,7 +7,7 @@ public class World : MonoBehaviour
 {
     // a dictionary that stores the chunkX as the key and
     // the chunk object as the value
-    private Dictionary<int, Chunk> chunks;
+    public Dictionary<int, Chunk> chunks;
     public GameObject chunkPrefab;
     public GameObject player;
 
@@ -28,8 +28,9 @@ public class World : MonoBehaviour
         chunks = new Dictionary<int, Chunk>();
         player = GameObject.FindGameObjectWithTag("Player");
         refrenceManager = GameObject.FindGameObjectWithTag("RefrenceManager").GetComponent<RefrenceManager>();
-
         weightedBiomeList = generateWeightedBiomeList(refrenceManager.getBiomes());
+
+        setPlayerAtSpawn();
 
         // call the chunkloader every second
         InvokeRepeating("updateChunksToLoad", 0f, 1f);
@@ -124,5 +125,11 @@ public class World : MonoBehaviour
         // goto the weighted biome list and check which biome this number is and get that biome in the refrence manager
         int noise = Mathf.RoundToInt(Noise.terrainNoise(chunkX, chunkY, seed, LookUpData.biomeGenerationScale, 0) * (weightedBiomeList.Length - 1));
         return refrenceManager.getBiome(weightedBiomeList[noise]);
+    }
+
+    public void setPlayerAtSpawn()
+    {
+        // sets the player to x pos 0 and above the terrain
+        player.transform.position = new Vector3(0, LookUpData.chunkHeight, 0);
     }
 }

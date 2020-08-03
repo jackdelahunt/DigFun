@@ -15,9 +15,10 @@ public class GameSession : MonoBehaviour
     {
         // get the text input field
         seedInput = GameObject.FindGameObjectWithTag("SeedTextField").GetComponent<TMP_InputField>();
+        DontDestroyOnLoad(this.gameObject);
     }
 
-    public void loadWorld()
+    public void loadLoadingScreen()
     {
         // try and convert the text field text to an int
         // if that fails then generate our own random number
@@ -32,6 +33,12 @@ public class GameSession : MonoBehaviour
             LookUpData.seed = prng.Next(-100000, 100000);
         }
 
+        SceneManager.LoadScene("Loading");
+        Invoke("loadWorld", 3f);
+    }
+
+    public void loadWorld()
+    {
         SceneManager.LoadScene("Main");
     }
 }
