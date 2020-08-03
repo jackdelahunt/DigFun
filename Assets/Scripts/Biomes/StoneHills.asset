@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StoneHills
   m_EditorClassIdentifier: 
   biomeName: Stone Hills
-  weight: 10
+  weight: 15
   terrainRatio: 0.1
   caveRatio: 0.5
   terrainScale: 0.05
@@ -25,7 +25,7 @@ MonoBehaviour:
   biomeLodes:
   - lodeName: Cobblestone
     tileID: 6
-    minHeight: 64
+    minHeight: 55
     maxHeight: 128
     scale: 0.2
     threshold: 0.5

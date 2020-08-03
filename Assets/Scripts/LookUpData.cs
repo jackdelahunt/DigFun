@@ -5,7 +5,7 @@
     public static int seed = 0;
 
     // the maximum amount of items the inventory can hold in a single slot 
-    public static readonly int maxNumberOfItemsPerSlot = 10;
+    public static readonly int maxNumberOfItemsPerSlot = 64;
 
     // the height of all chunks
     public static readonly int chunkHeight = 128;

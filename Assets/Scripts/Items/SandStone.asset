@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: SandStone
   tileID: 5
-  sprite: {fileID: 21300000, guid: 039b42aee2dec5240975df15cf2723a5, type: 3}
+  sprite: {fileID: 6708733205153277002, guid: a67c56d261232de479799bebfe156300, type: 3}
