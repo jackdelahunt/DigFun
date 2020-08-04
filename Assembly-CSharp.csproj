@@ -52,7 +52,7 @@
      <Compile Include="Assets\Scripts\Noise.cs" />
      <Compile Include="Assets\Scripts\Player\CharacterController2D.cs" />
      <Compile Include="Assets\Scripts\Player\MouseManager.cs" />
-     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerToWorld.cs" />
      <Compile Include="Assets\Scripts\RefrenceManager.cs" />
      <Compile Include="Assets\Scripts\TerrainGeneration.cs" />
