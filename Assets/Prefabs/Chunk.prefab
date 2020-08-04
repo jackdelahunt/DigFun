@@ -132,8 +132,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1083867477
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -171,6 +171,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6bb2f7163fa5124db5eb92062140b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chunkBackgroundPrefab: {fileID: 4089247346441092757, guid: 29838543260eb3a42a0af310603e9467,
+    type: 3}
   biome: {fileID: 0}
   chunkX: 0
   chunkY: 0
+  seed: 0
+  chunkBackground: {fileID: 0}

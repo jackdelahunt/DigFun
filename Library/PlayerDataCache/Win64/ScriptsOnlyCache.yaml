@@ -11,7 +11,7 @@ ScriptsOnlyBuild:
     - Item
     - ItemEntity
     - MouseManager
-    - PlayerMovement
+    - Player
     - PlayerToWorld
     - RefrenceManager
     - UIInventory
@@ -87,7 +87,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13690}
     - Class: 114
-      Script: {instanceID: 14302}
+      Script: {instanceID: 14304}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -123,9 +123,13 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 62
       Script: {instanceID: 0}
-    - Class: 70
+    - Class: 74
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -170,9 +174,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13690}
     - Class: 114
-      Script: {instanceID: 14302}
+      Script: {instanceID: 14212}
     - Class: 114
-      Script: {instanceID: 17728}
+      Script: {instanceID: 14304}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -247,7 +251,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13966}
     - Class: 114
-      Script: {instanceID: 14302}
+      Script: {instanceID: 14304}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -705,10 +709,10 @@ ScriptsOnlyBuild:
     className: AudioTrack
   - hash:
       serializedVersion: 2
-      Hash: edf0b3a60b934a550566974ead0b5b43
+      Hash: 514be160406d778f2690ff34046f6c2b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: PlayerMovement
+    className: Player
   - hash:
       serializedVersion: 2
       Hash: ae83e830e7a90c0aff918c4c2e520825
@@ -769,6 +773,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Outline
+  - hash:
+      serializedVersion: 2
+      Hash: fc5a1cef8347f7d3217ba96824ab9943
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Debug
   - hash:
       serializedVersion: 2
       Hash: a63fc1a3b035e5a0b5839cd7f7b3086e
@@ -835,15 +845,9 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: aafc05e8e3831c5f757a93673afde6ba
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Debug
   platform: 19
   scenePathNames:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/Loading.unity
   - Assets/Scenes/Main.unity
-  playerPath: C:/Users/Jack Delahunt/Desktop/Alpha.V1.3.Win.x86/Terrain.exe
+  playerPath: C:/Users/Jack Delahunt/Desktop/Alpha.V1.4.Win.x86/Terrain.exe

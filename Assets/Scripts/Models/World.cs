@@ -47,7 +47,7 @@ public class World : MonoBehaviour
             Chunk newLoadedChunk = generateChunk(i);
 
             // set it to active if it is not
-            newLoadedChunk.gameObject.SetActive(true);
+            newLoadedChunk.setLoadStatus(true);
 
             // add this chunk to the newly loaded chunks
             newChunks.Add(newLoadedChunk);
@@ -59,7 +59,7 @@ public class World : MonoBehaviour
             // if the chunk is not in the new list of chunks to
             // load then set active to false (unloading)
             if (!newChunks.Contains(currentLoadedChunks[i]))
-                currentLoadedChunks[i].gameObject.SetActive(false);
+                currentLoadedChunks[i].setLoadStatus(false);
         }
 
         // set the current loaded chunks to the new list of chunks

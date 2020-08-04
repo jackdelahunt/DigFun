@@ -7,6 +7,7 @@ public class Chunk : MonoBehaviour
 {
     private Tilemap tilemap;
     private RefrenceManager refrenceManager;
+    public GameObject chunkBackgroundPrefab;
 
     // an array of tile ids that refer to the ids of the tiles in the chunk
     public int[,] tileIDs;
@@ -23,27 +24,68 @@ public class Chunk : MonoBehaviour
     // the seed of the world
     public int seed;
 
+    // list of all entities item entities in this chunk
+    public List<GameObject> entities;
+
+    // the background tile map for this chunk
+    public ChunkBackground chunkBackground;
+
+    // is this object active or not
+    public bool loaded;
+
     private void Awake()
     {
         // create the tile id array, all values are 0
         tileIDs = new int[LookUpData.chunkWidth, LookUpData.chunkHeight];
         tilemap = GetComponent<Tilemap>();
+
         refrenceManager = GameObject.FindGameObjectWithTag("RefrenceManager").GetComponent<RefrenceManager>();
     }
 
-    public void init() {
-         // get the chunk daat from the terrain generator class and set the tilemap to it
+    public void init()
+    {
+        // get the chunk daat from the terrain generator class and set the tilemap to it
         setTileToIdArray(TerrainGeneration.generateChunkTiles(chunkX, chunkY, seed, biome));
+
+        // create the chunk background object
+        createChunkBackground();
+
+        // set the backgrounds tiles correctly based on our tile id
+        chunkBackground.setTileToIdArray(TerrainGeneration.generateChunkBackground(tileIDs, biome));
+    }
+
+    public void setLoadStatus(bool loaded)
+    {
+        // save the load value
+        this.loaded = loaded;
+
+        // update the entities to react to the load update
+        updateEntities();
+
+        // load or unload the chunk based on the input
+        gameObject.SetActive(loaded);
+    }
+
+    public void createChunkBackground()
+    {
+        // create the chunk background object
+        chunkBackground = Instantiate(chunkBackgroundPrefab, gameObject.transform).GetComponent<ChunkBackground>();
+
+        // set it's chunkX to ours
+        chunkBackground.chunkX = chunkX;
+
+        // set it's chunkY to ours 
+        chunkBackground.chunkY = chunkY;
     }
 
     // add a tile to a position in this chunk
     public bool addTile(Vector3Int worldPos, Tile tile, int itemRefrence)
     {
         // get the locaion of this tile but to the local chunk Coord
-        Vector3Int localPos = convertWorldCoordToLocalCoord(worldPos);
+        Vector3Int localPos = ChunkHelpers.convertWorldCoordToLocalCoord(worldPos, chunkX);
 
         // if the tile is outside the chunk then do not add it
-        if(!isThisTileInThisChunk(localPos))
+        if (!isThisTileInThisChunk(localPos))
             return false;
 
         // if there is no tile in this area then add the new one else return false
@@ -61,14 +103,18 @@ public class Chunk : MonoBehaviour
     }
 
     // called when 
-    public void setTileToIdArray(int[,] ids) {
+    public void setTileToIdArray(int[,] ids)
+    {
 
         // set all of the tileIds in the chunk to the input
         tileIDs = ids;
 
         // go through each id and set it's respective tile in the tilemap 
-        for(int y = 0; y < ids.GetLength(1); y++) {
-            for(int x = 0; x < ids.GetLength(0); x++) {
+        for (int y = 0; y < ids.GetLength(1); y++)
+        {
+            for (int x = 0; x < ids.GetLength(0); x++)
+            {
+                // go through each id in the ids array and add it to the tilemap 
                 tilemap.SetTile(convertLocalCoordToWorldCoord(new Vector3Int(x, y, 0)), refrenceManager.getTile(ids[x, y]));
             }
         }
@@ -78,11 +124,12 @@ public class Chunk : MonoBehaviour
     // id of that tile
     public int removeTile(Vector3Int worldPos)
     {
-        Vector3Int localPos = convertWorldCoordToLocalCoord(worldPos);
+        Vector3Int localPos = ChunkHelpers.convertWorldCoordToLocalCoord(worldPos, chunkX);
 
         // if this tile is in the chunk bounds then return the tileID 
         // at that location, else return the flag - 1
-        if(isThisTileInThisChunk(localPos)) {
+        if (isThisTileInThisChunk(localPos))
+        {
 
             // remove that tile from the til map
             tilemap.SetTile(worldPos, null);
@@ -95,24 +142,20 @@ public class Chunk : MonoBehaviour
 
             // return the id of the tile we broke
             return idOfThatTile;
-        } else
+        }
+        else
             return -1;
     }
 
-    // converts a vector3 that represents a tile in this chunk from it's world coords
-    // to local co-ordinates for this chunk
-    public Vector3Int convertWorldCoordToLocalCoord(Vector3Int worldPos)
+    public Vector3Int convertLocalCoordToWorldCoord(Vector3Int localPos)
     {
-        return new Vector3Int(Mathf.Abs(Mathf.FloorToInt(chunkX - worldPos.x)), worldPos.y, 0);
-    }
-
-    public Vector3Int convertLocalCoordToWorldCoord(Vector3Int localPos) {
         return new Vector3Int(chunkX + localPos.x, localPos.y, localPos.z);
     }
 
     // used to verify if a tiles postion is within the chunkHeight * chunkWidth
     // tileID array
-    public bool isThisTileInThisChunk(Vector3Int tilePosition) {
+    public bool isThisTileInThisChunk(Vector3Int tilePosition)
+    {
 
         // checking if the x position is in the range of the tile id array x
         bool xCorrect = tilePosition.x >= 0 && tilePosition.x <= tileIDs.GetLength(0) - 1;
@@ -123,4 +166,35 @@ public class Chunk : MonoBehaviour
         // only true if both are in range
         return xCorrect && yCorrect;
     }
-}   
+
+    public void updateEntities()
+    {
+        // if this chunk is not active then do not update
+        if (!gameObject.activeSelf)
+            return;
+
+        // go through each entity in the list
+        for (int i = 0; i < entities.Count; i++)
+        {
+            // if the entity is null or the entity is about to be mergerd
+            // with another entity then remove it 
+            if (entities[i] == null || entities[i].GetComponent<ItemEntity>().mergedWithOtherEntity)
+            {
+                entities.RemoveAt(i);
+                continue;
+            }
+
+            // if the chunk is loaded then set the entity to the load state and 
+            // update it 
+            if (loaded)
+            {
+                entities[i].SetActive(true);
+                entities[i].GetComponent<ItemEntity>().lookForOtherEntities();
+            }
+            else
+            {
+                entities[i].SetActive(false);
+            }
+        }
+    }
+}

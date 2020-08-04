@@ -5,29 +5,33 @@ using UnityEngine.Tilemaps;
 
 public class RefrenceManager : MonoBehaviour
 {
-    [SerializeField]private Tile[] tiles;
-    [SerializeField]private Item[] items;
-    [SerializeField]private Biome[] biomes;
+    [SerializeField] private Tile[] tiles;
+    [SerializeField] private Item[] items;
+    [SerializeField] private Biome[] biomes;
 
-    public Item getItem(int index) {
-        if(index > 0 && index < items.Length)
+    public Item getItem(int index)
+    {
+        if (index > 0 && index < items.Length)
             return items[index];
-        else 
+        else
             return null;
     }
 
-    public Tile getTile(int index) {
-        if(index > 0 && index < tiles.Length)
+    public Tile getTile(int index)
+    {
+        if (index > 0 && index < tiles.Length)
             return tiles[index];
-        else 
+        else
             return null;
     }
 
-    public Biome[] getBiomes() {
+    public Biome[] getBiomes()
+    {
         return biomes;
     }
 
-    public Biome getBiome(int index) {
+    public Biome getBiome(int index)
+    {
         return biomes[index];
     }
 }

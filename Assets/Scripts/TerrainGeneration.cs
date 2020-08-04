@@ -25,18 +25,25 @@ public static class TerrainGeneration
                 if (Noise.caveNoise(chunkX + x, chunkY + y, seed, LookUpData.caveGenerationThreshold, LookUpData.caveScale, 0))
                 {
                     // set it to stone first and maybe change with a lode after
-                    ids[x, y] = 3;
+                    ids[x, y] = biome.caveTileId;
 
+                    // go through the global lodes
                     foreach (Lode globalLode in LodeManager.globalLodes)
                     {
+                        // if lode noise returns true, meaning we are in range 
+                        // and the noise was above the threshold
                         if (Noise.lodeNoise(chunkX + x, chunkY + y, seed, globalLode))
                         {
+                            // set that id in the array to the lode id
                             ids[x, y] = globalLode.tileID;
                         }
                     }
 
+                    // go through the global lodes
                     foreach (Lode biomeLode in biome.biomeLodes)
                     {
+                        // if lode noise returns true, meaning we are in range 
+                        // and the noise was above the threshold
                         if (Noise.lodeNoise(chunkX + x, chunkY + y, seed, biomeLode))
                         {
                             ids[x, y] = biomeLode.tileID;
@@ -63,5 +70,30 @@ public static class TerrainGeneration
 
 
         return ids;
+    }
+
+    public static int[,] generateChunkBackground(int[,] chunkIds, Biome biome)
+    {
+        int[,] backgroundIds = chunkIds;
+
+        // the height of the cave portion of the chunk
+        int caveHeight = Mathf.RoundToInt(LookUpData.chunkHeight * biome.caveRatio);
+
+        // height of the terrain portion of the chunk
+        int terrainHeight = Mathf.RoundToInt(LookUpData.chunkHeight * biome.terrainRatio);
+
+        // go throught each element in the background id array
+        for (int y = 0; y < caveHeight; y++)
+        {
+            for (int x = 0; x < LookUpData.chunkWidth; x++)
+            {
+                // if there is nothing in this space then add the cave tile
+                // nothing in this place means that it is a cave
+                if (backgroundIds[x, y] == 0)
+                    backgroundIds[x, y] = biome.caveTileId;
+            }
+        }
+
+        return backgroundIds;
     }
 }

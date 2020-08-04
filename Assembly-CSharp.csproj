@@ -47,6 +47,7 @@
      <Compile Include="Assets\Scripts\LodeManager.cs" />
      <Compile Include="Assets\Scripts\LookUpData.cs" />
      <Compile Include="Assets\Scripts\Models\Chunk.cs" />
+     <Compile Include="Assets\Scripts\Models\ChunkBackground.cs" />
      <Compile Include="Assets\Scripts\Models\ItemEntity.cs" />
      <Compile Include="Assets\Scripts\Models\World.cs" />
      <Compile Include="Assets\Scripts\Noise.cs" />
