@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     public Animator animator;
 
     public float runSpeed = 40f;
-    public float walkingAnimationCutoff = 0.3f;
 
     float horizontalMove = 0f;
     bool jump = false;
@@ -37,11 +36,18 @@ public class Player : MonoBehaviour
         else
             animator.SetBool("Walking", false);
 
+        if (jump)
+            animator.SetBool("Jump", true);
+        else
+            animator.SetBool("Jump", false);
+
+
 
     }
 
     public void handleMovement()
     {
+        jump = false;
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
         if (Input.GetButtonDown("Jump"))
@@ -50,6 +56,5 @@ public class Player : MonoBehaviour
         }
 
         controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
-        jump = false;
     }
 }
