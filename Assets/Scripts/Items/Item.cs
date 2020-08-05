@@ -14,4 +14,3 @@ public class Item : ScriptableObject
     // the sprite that will show in the inventory
     public Sprite sprite;
 }
-    

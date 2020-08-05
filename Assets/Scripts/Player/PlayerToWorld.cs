@@ -60,10 +60,10 @@ public class PlayerToWorld : MonoBehaviour
     }
 
     // attempts to add a item to the inventory
-    public bool addItemToInventory(Item item)
+    public int addItemToInventory(ItemEntity entity)
     {
         // true if the item was added false if it was not
-        return inventory.addItem(item);
+        return inventory.addItem(entity.item, entity.amount);
     }
 
     // changed the selected item in the inventory by the input amount
@@ -79,13 +79,15 @@ public class PlayerToWorld : MonoBehaviour
         // if that other surface was an itemEntity
         if (col.collider.tag == "ItemEntity")
         {
-
             // get the item that the entity was storing 
-            Item item = col.collider.gameObject.GetComponent<ItemEntity>().item;
+            ItemEntity itemEntity = col.collider.gameObject.GetComponent<ItemEntity>();
 
             // if the item was succefully added to the inventory then destroy it
-            if (addItemToInventory(item))
+            int remainder = addItemToInventory(itemEntity);
+            if (remainder == -1)
                 Destroy(col.collider.gameObject);
+            else
+                itemEntity.amount = remainder;
         }
     }
 }

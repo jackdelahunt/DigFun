@@ -28,5 +28,5 @@ MonoBehaviour:
     minHeight: 55
     maxHeight: 128
     scale: 0.2
-    threshold: 0.5
+    threshold: 0.45
     noiseOffset: 6433
