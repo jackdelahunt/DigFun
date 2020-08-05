@@ -7,7 +7,7 @@ public class World : MonoBehaviour
 {
     // a dictionary that stores the chunkX as the key and
     // the chunk object as the value
-    public Dictionary<int, Chunk> chunks;
+    [SerializeField] public Dictionary<int, Chunk> chunks;
     public GameObject chunkPrefab;
     public GameObject player;
 
@@ -24,16 +24,26 @@ public class World : MonoBehaviour
 
     private void Start()
     {
-        seed = LookUpData.seed;
-        chunks = new Dictionary<int, Chunk>();
+
         player = GameObject.FindGameObjectWithTag("Player");
         refrenceManager = GameObject.FindGameObjectWithTag("RefrenceManager").GetComponent<RefrenceManager>();
         weightedBiomeList = generateWeightedBiomeList(refrenceManager.getBiomes());
 
         setPlayerAtSpawn();
 
-        // call the chunkloader every second
+        // call the chunkloader first then every second
+        updateChunksToLoad();
         InvokeRepeating("updateChunksToLoad", 0f, 1f);
+    }
+
+    // called by the initializer if this is a fresh world as we need new
+    // chunks and a seed
+    public void init()
+    {
+        // access the player prefs file and get the seed created in the menu
+        seed = PlayerPrefs.GetInt("worldSeed");
+
+        chunks = new Dictionary<int, Chunk>();
     }
 
 

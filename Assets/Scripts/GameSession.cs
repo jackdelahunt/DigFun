@@ -25,12 +25,13 @@ public class GameSession : MonoBehaviour
         // and apply that
         try
         {
-            LookUpData.seed = System.Convert.ToInt32(seedInput.text);
+            // the world seed file in player prefs to the seed - try to
+            PlayerPrefs.SetInt("worldSeed", System.Convert.ToInt32(seedInput.text));
         }
         catch (Exception e)
         {
             System.Random prng = new System.Random(DateTime.Now.Millisecond);
-            LookUpData.seed = prng.Next(-100000, 100000);
+            PlayerPrefs.SetInt("worldSeed", prng.Next(-100000, 100000));
         }
 
         SceneManager.LoadScene("Loading");

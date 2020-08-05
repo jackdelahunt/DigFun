@@ -9,10 +9,29 @@ public class PlayerToWorld : MonoBehaviour
     [SerializeField] private RefrenceManager refrenceManager;
     [SerializeField] private GameObject itemEntityPrefab;
 
+    private bool foo = false;
+
     private void Start()
     {
         world = GameObject.FindGameObjectWithTag("World").GetComponent<World>();
         refrenceManager = GameObject.FindGameObjectWithTag("RefrenceManager").GetComponent<RefrenceManager>();
+    }
+
+    void Update()
+    {
+        if (Input.GetAxisRaw("Save") == 1)
+        {
+            if (!foo)
+            {
+                Save save = new Save();
+                save.serialize(world, inventory, transform);
+
+                Load load = new Load();
+                print(JsonUtility.ToJson(load.deserialize(), true));
+
+                foo = true;
+            }
+        }
     }
 
     // tells the world object to get the chunk that we are in and reomve the tile

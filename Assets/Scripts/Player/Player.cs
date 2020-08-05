@@ -41,8 +41,6 @@ public class Player : MonoBehaviour
         else
             animator.SetBool("Jump", false);
 
-
-
     }
 
     public void handleMovement()

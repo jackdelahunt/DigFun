@@ -17,7 +17,7 @@ public class Debug : MonoBehaviour
 
 
 
-    public void Start()
+    public void Awake()
     {
         world = GameObject.FindGameObjectWithTag("World").GetComponent<World>();
     }

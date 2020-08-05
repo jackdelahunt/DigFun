@@ -1,0 +1,70 @@
+{
+    "keys": [
+        -32,
+        -16,
+        0,
+        16,
+        32
+    ],
+    "chunks": [
+        {
+            "instanceID": -24418
+        },
+        {
+            "instanceID": -24440
+        },
+        {
+            "instanceID": -24462
+        },
+        {
+            "instanceID": -24484
+        },
+        {
+            "instanceID": -24506
+        }
+    ],
+    "seed": 69,
+    "items": [
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        },
+        {
+            "instanceID": 0
+        }
+    ],
+    "quantaties": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+    ],
+    "transform": {
+        "instanceID": -24044
+    }
+}

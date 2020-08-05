@@ -8,30 +8,37 @@ using UnityEngine.UI;
 public class UIInventory : MonoBehaviour
 {
     public Inventory playerInventory;
-    
+
     // all of the images
     public Image[] hotbarImages;
 
     // the number counts of each item that are displayed as text
     public TMP_Text[] hotbarCounts;
 
+    // the name diaplay for the current item selected
+    public TMP_Text displayName;
+
     // the item select UI element that moves along the hotbar
     public GameObject itemSelectGameObject;
 
-    public void Start() {
+    public void Start()
+    {
         playerInventory = FindObjectOfType<Inventory>();
 
         // set the initial values of the UI
         updateUIContents();
     }
 
-    public void updateUIContents() {
+    public void updateUIContents()
+    {
 
         // got through each item in the player inventory
-        for(int i = 0; i < playerInventory.items.Length; i++) {
+        for (int i = 0; i < playerInventory.items.Length; i++)
+        {
 
             // if the item is empty
-            if(playerInventory.items[i] == null) {
+            if (playerInventory.items[i] == null)
+            {
 
                 // clear the text
                 hotbarCounts[i].SetText("");
@@ -53,15 +60,30 @@ public class UIInventory : MonoBehaviour
             // display the image
             hotbarImages[i].gameObject.SetActive(true);
         }
+
+        updateDisplayName();
     }
 
-    public void updateItemSelect() {
+    public void updateItemSelect()
+    {
 
         // get the slot that the selected item represents
-        GameObject slotGameObject =  hotbarCounts[playerInventory.selectedItem].gameObject.transform.parent.gameObject;
+        GameObject slotGameObject = hotbarCounts[playerInventory.selectedItem].gameObject.transform.parent.gameObject;
 
         // move the selecte item object to that position
         itemSelectGameObject.transform.position = slotGameObject.transform.position;
+
+        updateDisplayName();
+    }
+
+    public void updateDisplayName()
+    {
+        // if the item is not null then display the name else display nothing
+        if (playerInventory.items[playerInventory.selectedItem] != null)
+            displayName.SetText("" + playerInventory.items[playerInventory.selectedItem].itemName);
+        else
+            displayName.SetText("");
+
     }
 
 }
