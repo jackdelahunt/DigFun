@@ -7,30 +7,10 @@ public class Load
 {
     public LoadedData data;
 
-    public LoadedData deserialize()
+    public void deserialize()
     {
 
-        SavedData savedData = JsonUtility.FromJson<SavedData>(File.ReadAllText("Saves/SaveData.txt"));
 
-        // copy saved data that is the same
-        data.seed = savedData.seed;
-        data.items = savedData.items;
-        data.quantaties = savedData.quantaties;
-        data.transform = savedData.transform;
-
-        // create a dictionary and construct what would have been a 
-        // copy with the saved data
-        Dictionary<int, Chunk> chunks = new Dictionary<int, Chunk>();
-        Chunk[] savedChunks = savedData.chunks;
-
-        for (int i = 0; i < savedData.keys.Length; i++)
-        {
-            chunks.Add(savedData.keys[i], savedData.chunks[i]);
-        }
-
-        data.chunks = chunks;
-
-        return data;
     }
 }
 

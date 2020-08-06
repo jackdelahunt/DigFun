@@ -19,6 +19,11 @@ public class Player : MonoBehaviour
         myRigid = GetComponent<Rigidbody2D>();
     }
 
+    public void initializeAsNewWorld()
+    {
+        transform.position = new Vector3(0, LookUpData.chunkHeight, 0);
+    }
+
     // Update is called once per frame
     void Update()
     {

@@ -29,8 +29,6 @@ public class World : MonoBehaviour
         refrenceManager = GameObject.FindGameObjectWithTag("RefrenceManager").GetComponent<RefrenceManager>();
         weightedBiomeList = generateWeightedBiomeList(refrenceManager.getBiomes());
 
-        setPlayerAtSpawn();
-
         // call the chunkloader first then every second
         updateChunksToLoad();
         InvokeRepeating("updateChunksToLoad", 0f, 1f);
@@ -38,11 +36,12 @@ public class World : MonoBehaviour
 
     // called by the initializer if this is a fresh world as we need new
     // chunks and a seed
-    public void init()
+    public void initializeAsNewWorld()
     {
         // access the player prefs file and get the seed created in the menu
         seed = PlayerPrefs.GetInt("worldSeed");
 
+        // create a fresh dictionary for the chunks
         chunks = new Dictionary<int, Chunk>();
     }
 
@@ -135,11 +134,5 @@ public class World : MonoBehaviour
         // goto the weighted biome list and check which biome this number is and get that biome in the refrence manager
         int noise = Mathf.RoundToInt(Noise.terrainNoise(chunkX, chunkY, seed, LookUpData.biomeGenerationScale, 0) * (weightedBiomeList.Length - 1));
         return refrenceManager.getBiome(weightedBiomeList[noise]);
-    }
-
-    public void setPlayerAtSpawn()
-    {
-        // sets the player to x pos 0 and above the terrain
-        player.transform.position = new Vector3(0, LookUpData.chunkHeight, 0);
     }
 }

@@ -12,18 +12,15 @@ public class Initializer : MonoBehaviour
 
     public void Start()
     {
-        LoadedData loadedData = new Load().deserialize();
-
-
+        //LoadedData loadedData = new Load().deserialize();
 
         Instantiate(refrenceManager);
 
         World worldScript = Instantiate(world).GetComponent<World>();
-        worldScript.chunks = loadedData.chunks;
-        worldScript.seed = loadedData.seed;
+        worldScript.initializeAsNewWorld();
 
         Player playerScript = Instantiate(player).GetComponent<Player>();
-        //playerScript.transform.position = loadedData.transform.position;
+        playerScript.initializeAsNewWorld();
 
         Instantiate(mainCamera);
         Instantiate(UI);

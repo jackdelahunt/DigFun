@@ -11,17 +11,25 @@ public class Save
     public string serialize(World world, Inventory inventory, Transform playerTransform)
     {
         data.keys = new int[world.chunks.Keys.Count];
-        data.chunks = new Chunk[world.chunks.Values.Count];
+        data.chunkTileData = new int[data.keys.Length, LookUpData.chunkWidth, LookUpData.chunkHeight];
 
         // save the chunk data
         int index = 0;
         foreach (KeyValuePair<int, Chunk> pair in world.chunks)
         {
+            for (int y = 0; y < pair.Value.tileIDs.GetLength(1); y++)
+            {
+                for (int x = 0; x < pair.Value.tileIDs.GetLength(0); x++)
+                {
+                    data.chunkTileData[index, x, y] = pair.Value.tileIDs[x, y];
+                }
+            }
             data.keys[index] = pair.Key;
-            data.chunks[index] = pair.Value;
 
             index++;
         }
+
+
 
         // save the world data
         data.seed = world.seed;
@@ -52,7 +60,7 @@ public struct SavedData
 {
     // chunk data
     public int[] keys;
-    public Chunk[] chunks;
+    public int[,,] chunkTileData;
 
     // world dara
     public int seed;
