@@ -104,6 +104,8 @@ public class Inventory : MonoBehaviour
         {
             if (storedItems[i].item == null)
             {
+                // set the adding amount to the max amount we can add based on the current amount in the 
+                // slot, if we can add the whole amount then add it
                 int amountToAdd = addingAmount > LookUpData.maxNumberOfItemsPerSlot ? LookUpData.maxNumberOfItemsPerSlot : addingAmount;
                 storedItems[i].item = item;
                 storedItems[i].amount = amountToAdd;
@@ -123,10 +125,46 @@ public class Inventory : MonoBehaviour
         // return false as we did not add it 
         return addingAmount;
     }
+
+    // returns the amount of an item we have in the inventory
+    public int containsItem(Item item)
+    {
+        int count = 0;
+
+        // go through all the stored items if the item is the one
+        // we are looking for then add the amount to the total count
+        foreach (StoredItem storedItem in storedItems)
+        {
+            if (storedItem.item == item)
+                count += storedItem.amount;
+        }
+
+        return count;
+    }
+
+    public bool isCraftable(Recipe recipe)
+    {
+        // if there is no materials then return false;
+        if (recipe.materials.Count == 0)
+            return false;
+
+        // go through each material in the recipe and if the inventory
+        // contains the item and the correct amount then do not return false
+        // once a material's needs are not met then return false
+        foreach (StoredItem material in recipe.materials)
+        {
+            if (containsItem(material.item) < material.amount)
+                return false;
+        }
+
+        // if we have reached this point thr
+        return true;
+    }
 }
 
+[System.Serializable]
 public struct StoredItem
 {
-    public int amount;
     public Item item;
+    public int amount;
 }

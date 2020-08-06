@@ -73,19 +73,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a61ea83df2dbb4282aca87f2c556cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  quantaties: 
+  storedItems: []
   uIInventory: {fileID: 0}
   selectedItem: 0
+  sand: {fileID: 11400000, guid: cc5d6c21e6ea65a4cba61db91c803c8d, type: 2}
 --- !u!1 &1814741617204924365
 GameObject:
   m_ObjectHideFlags: 0

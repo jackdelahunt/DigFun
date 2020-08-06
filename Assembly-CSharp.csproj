@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\Player\MouseManager.cs" />
      <Compile Include="Assets\Scripts\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerToWorld.cs" />
+     <Compile Include="Assets\Scripts\Recipes\Recipe.cs" />
      <Compile Include="Assets\Scripts\RefrenceManager.cs" />
      <Compile Include="Assets\Scripts\TerrainGeneration.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
