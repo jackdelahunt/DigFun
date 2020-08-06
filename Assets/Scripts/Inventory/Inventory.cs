@@ -5,11 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
 
-    // an array of all the items that the inventory stores
-    public Item[] items;
-
-    // the respective quantaties of each item in the inventory
-    public int[] quantaties;
+    public StoredItem[] storedItems;
 
     // the ui that this inventory needs to use to update the hotbar
     public UIInventory uIInventory;
@@ -22,7 +18,9 @@ public class Inventory : MonoBehaviour
         uIInventory = FindObjectOfType<UIInventory>();
 
         selectedItem = 0;
-        quantaties = new int[items.Length];
+
+        // 9 is the amount items this iventory can hold
+        storedItems = new StoredItem[9];
     }
 
     // get the tileID of the current item selected in the inventory
@@ -30,7 +28,7 @@ public class Inventory : MonoBehaviour
     {
         // if there is a item in the slot then return that id
         // else return the flag -1
-        return items[selectedItem] == null ? -1 : items[selectedItem].tileID;
+        return storedItems[selectedItem].item == null ? -1 : storedItems[selectedItem].item.tileID;
     }
 
     // change the selected
@@ -43,8 +41,8 @@ public class Inventory : MonoBehaviour
         // if the selected item is out of the item array bounds then
         // wrap it to the other end of the array
         if (selectedItem < 0)
-            selectedItem = items.Length - 1;
-        else if (selectedItem > items.Length - 1)
+            selectedItem = storedItems.Length - 1;
+        else if (selectedItem > storedItems.Length - 1)
             selectedItem = 0;
 
         // once this has changed tell the inventory ui to update
@@ -55,11 +53,11 @@ public class Inventory : MonoBehaviour
     // if there is 0 of that item remove it     
     public void decrementCurrentItem()
     {
-        quantaties[selectedItem] -= 1;
+        storedItems[selectedItem].amount -= 1;
 
         // if there is none of the item left net remove it from the items array
-        if (quantaties[selectedItem] <= 0)
-            items[selectedItem] = null;
+        if (storedItems[selectedItem].amount <= 0)
+            storedItems[selectedItem].item = null;
 
         // once this has changed tell the inventory ui to update
         uIInventory.updateUIContents();
@@ -72,22 +70,22 @@ public class Inventory : MonoBehaviour
             return -1;
 
         // going through looking for same items
-        for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < storedItems.Length; i++)
         {
-            if (items[i] == null)
+            if (storedItems[i].item == null)
                 continue;
 
             // go through each item that is the same as ours and add the 
             // amount we can to it, after if we still have some left then continue
-            if (items[i].tileID == item.tileID && quantaties[i] < LookUpData.maxNumberOfItemsPerSlot)
+            if (storedItems[i].item.tileID == item.tileID && storedItems[i].amount < LookUpData.maxNumberOfItemsPerSlot)
             {
                 // if the current amount plus the adding amount is more than max
                 // then set the amount to add as the number it would take to fill the slot
                 // if the amount after the adding is less then max then use the current item amount
-                int amountAddingToThisSlot = quantaties[i] + addingAmount > LookUpData.maxNumberOfItemsPerSlot ? LookUpData.maxNumberOfItemsPerSlot - quantaties[i] : addingAmount;
+                int amountAddingToThisSlot = storedItems[i].amount + addingAmount > LookUpData.maxNumberOfItemsPerSlot ? LookUpData.maxNumberOfItemsPerSlot - storedItems[i].amount : addingAmount;
 
                 // add what we we have space for 
-                quantaties[i] += amountAddingToThisSlot;
+                storedItems[i].amount += amountAddingToThisSlot;
 
                 // then minus the remainder if any
                 addingAmount -= amountAddingToThisSlot;
@@ -102,13 +100,13 @@ public class Inventory : MonoBehaviour
         }
 
         // going through looking for empty slots
-        for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < storedItems.Length; i++)
         {
-            if (items[i] == null)
+            if (storedItems[i].item == null)
             {
                 int amountToAdd = addingAmount > LookUpData.maxNumberOfItemsPerSlot ? LookUpData.maxNumberOfItemsPerSlot : addingAmount;
-                items[i] = item;
-                quantaties[i] = amountToAdd;
+                storedItems[i].item = item;
+                storedItems[i].amount = amountToAdd;
                 addingAmount -= amountToAdd;
 
                 if (addingAmount == 0)
@@ -125,4 +123,10 @@ public class Inventory : MonoBehaviour
         // return false as we did not add it 
         return addingAmount;
     }
+}
+
+public struct StoredItem
+{
+    public int amount;
+    public Item item;
 }

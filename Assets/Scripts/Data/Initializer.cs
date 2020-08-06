@@ -12,8 +12,6 @@ public class Initializer : MonoBehaviour
 
     public void Start()
     {
-        //LoadedData loadedData = new Load().deserialize();
-
         Instantiate(refrenceManager);
 
         World worldScript = Instantiate(world).GetComponent<World>();
