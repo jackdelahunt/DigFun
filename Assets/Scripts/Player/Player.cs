@@ -60,4 +60,12 @@ public class Player : MonoBehaviour
 
         controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
     }
+
+    public void handleInteractions()
+    {
+        if (Input.GetButtonDown("Interact"))
+        {
+            
+        }
+    }
 }

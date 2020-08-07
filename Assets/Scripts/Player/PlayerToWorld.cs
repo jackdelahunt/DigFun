@@ -9,8 +9,6 @@ public class PlayerToWorld : MonoBehaviour
     [SerializeField] private RefrenceManager refrenceManager;
     [SerializeField] private GameObject itemEntityPrefab;
 
-    private bool foo = false;
-
     private void Start()
     {
         world = GameObject.FindGameObjectWithTag("World").GetComponent<World>();

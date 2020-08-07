@@ -12,4 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180a87c24cef6dc4a863f8a0fde47cae, type: 3}
   m_Name: Sand
   m_EditorClassIdentifier: 
-  result: {fileID: 0}
+  materials:
+  - item: {fileID: 11400000, guid: 6ebebef1aecd5ff4eaf3b2ad0ec085b2, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 6b1e09b02bf867f4e83718ab9af23b9b, type: 2}
+    amount: 1
+  result:
+    item: {fileID: 11400000, guid: 021e3c06a9dc369449e907fd1a0c4922, type: 2}
+    amount: 2
