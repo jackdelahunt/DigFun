@@ -8,12 +8,6 @@ public class RefrenceManager : MonoBehaviour
     [SerializeField] private Tile[] tiles;
     [SerializeField] private Item[] items;
     [SerializeField] private Biome[] biomes;
-    public Dictionary<int, InteractableTile> interactables;
-
-    void Start()
-    {
-        interactables.Add(7, new Workbench());
-    }
 
     public Item getItem(int index)
     {
