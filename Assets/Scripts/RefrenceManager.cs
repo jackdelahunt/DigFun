@@ -8,6 +8,7 @@ public class RefrenceManager : MonoBehaviour
     [SerializeField] private Tile[] tiles;
     [SerializeField] private Item[] items;
     [SerializeField] private Biome[] biomes;
+    [SerializeField] private Dictionary<int, GameObject> itemEntities;
 
     public Item getItem(int index)
     {

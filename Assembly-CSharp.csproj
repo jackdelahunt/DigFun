@@ -41,7 +41,7 @@
      <Compile Include="Assets\Scripts\ChunkHelpers.cs" />
      <Compile Include="Assets\Scripts\Data\Initializer.cs" />
      <Compile Include="Assets\Scripts\Data\Load.cs" />
-     <Compile Include="Assets\Scripts\Data\Save.cs" />
+     <Compile Include="Assets\Scripts\Data\Serialize.cs" />
      <Compile Include="Assets\Scripts\Debug.cs" />
      <Compile Include="Assets\Scripts\GameSession.cs" />
      <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />

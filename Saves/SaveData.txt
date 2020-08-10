@@ -1,57 +1,39 @@
 {
-    "keys": [
-        -32,
-        -16,
-        0,
-        16,
-        32,
-	48
-    ],
-    "chunk": {
-        "instanceID": -6026
-    },
-    "seed": 12345,
-    "items": [
+    "chunks": [
         {
-            "instanceID": 0
+            "biomeID": 0,
+            "chunkX": -32,
+            "chunkY": 0,
+            "seed": 12345,
+            "background": {}
         },
         {
-            "instanceID": 0
+            "biomeID": 2,
+            "chunkX": -16,
+            "chunkY": 0,
+            "seed": 12345,
+            "background": {}
         },
         {
-            "instanceID": 0
+            "biomeID": 1,
+            "chunkX": 0,
+            "chunkY": 0,
+            "seed": 12345,
+            "background": {}
         },
         {
-            "instanceID": 0
+            "biomeID": 1,
+            "chunkX": 16,
+            "chunkY": 0,
+            "seed": 12345,
+            "background": {}
         },
         {
-            "instanceID": 0
-        },
-        {
-            "instanceID": 0
-        },
-        {
-            "instanceID": 0
-        },
-        {
-            "instanceID": 0
-        },
-        {
-            "instanceID": 0
+            "biomeID": 0,
+            "chunkX": 32,
+            "chunkY": 0,
+            "seed": 12345,
+            "background": {}
         }
-    ],
-    "quantaties": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-    ],
-    "transform": {
-        "instanceID": -5564
-    }
+    ]
 }

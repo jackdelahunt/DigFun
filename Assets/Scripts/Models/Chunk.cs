@@ -13,7 +13,7 @@ public class Chunk : MonoBehaviour
     public int[,] tileIDs;
 
     // the biome of this chunk
-    public Biome biome;
+    public BiomeRefrence biomeRefrence;
 
     // the xCoord of the chunk
     public int chunkX;
@@ -45,13 +45,13 @@ public class Chunk : MonoBehaviour
     public void init()
     {
         // get the chunk daat from the terrain generator class and set the tilemap to it
-        setTileToIdArray(TerrainGeneration.generateChunkTiles(chunkX, chunkY, seed, biome));
+        setTileToIdArray(TerrainGeneration.generateChunkTiles(chunkX, chunkY, seed, biomeRefrence.biome));
 
         // create the chunk background object
         createChunkBackground();
 
         // set the backgrounds tiles correctly based on our tile id
-        chunkBackground.setTileToIdArray(TerrainGeneration.generateChunkBackground(tileIDs, biome));
+        chunkBackground.setTileToIdArray(TerrainGeneration.generateChunkBackground(tileIDs, biomeRefrence.biome));
     }
 
     public void setLoadStatus(bool loaded)
@@ -197,4 +197,9 @@ public class Chunk : MonoBehaviour
             }
         }
     }
+}
+
+public struct BiomeRefrence {
+    public Biome biome;
+    public int refrence;
 }

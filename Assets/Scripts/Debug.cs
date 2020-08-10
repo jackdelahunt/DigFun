@@ -36,7 +36,7 @@ public class Debug : MonoBehaviour
         playerY.SetText("" + Mathf.RoundToInt(world.player.transform.position.y));
         chunk.SetText("" + playerChunk.chunkX);
         totalChunks.SetText("" + world.chunks.Count);
-        biome.SetText("" + playerChunk.biome.biomeName);
+        biome.SetText("" + playerChunk.biomeRefrence.biome.biomeName);
         seed.SetText("" + world.seed);
         FPS.SetText("" + Mathf.RoundToInt(1 / Time.deltaTime));
     }

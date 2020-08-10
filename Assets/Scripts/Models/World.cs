@@ -1,5 +1,4 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,6 +30,10 @@ public class World : MonoBehaviour
 
         // call the chunkloader first then every second
         updateChunksToLoad();
+
+        Serialize serializer = new Serialize();
+        serializer.serialize(this);
+
         InvokeRepeating("updateChunksToLoad", 0f, 1f);
     }
 
@@ -87,7 +90,7 @@ public class World : MonoBehaviour
             found.chunkX = x;
             found.chunkY = 0;
             found.seed = seed;
-            found.biome = getBiomeAtThisChunk(found.chunkX, found.chunkY);
+            found.biomeRefrence = getBiomeAtThisChunk(found.chunkX, found.chunkY);
             found.init();
 
 
@@ -127,12 +130,17 @@ public class World : MonoBehaviour
         return weightedList.ToArray();
     }
 
-    public Biome getBiomeAtThisChunk(int chunkX, int chunkY)
+    public BiomeRefrence getBiomeAtThisChunk(int chunkX, int chunkY)
     {
 
         // get the noise value at this point and rount it to an int between 0 and the length of the biome list
         // goto the weighted biome list and check which biome this number is and get that biome in the refrence manager
         int noise = Mathf.RoundToInt(Noise.terrainNoise(chunkX, chunkY, seed, LookUpData.biomeGenerationScale, 0) * (weightedBiomeList.Length - 1));
-        return refrenceManager.getBiome(weightedBiomeList[noise]);
+        
+        BiomeRefrence biomeRefrence;
+        biomeRefrence.refrence = weightedBiomeList[noise];
+        biomeRefrence.biome =  refrenceManager.getBiome(biomeRefrence.refrence);
+
+        return biomeRefrence;
     }
 }
