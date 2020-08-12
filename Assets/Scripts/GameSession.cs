@@ -32,6 +32,7 @@ public class GameSession : MonoBehaviour
         {
             System.Random prng = new System.Random(DateTime.Now.Millisecond);
             PlayerPrefs.SetInt("worldSeed", prng.Next(-100000, 100000));
+            print(e);
         }
 
         SceneManager.LoadScene("Loading");

@@ -27,7 +27,7 @@ public class Serialize
 
             // create the savable chunk from the current chunk
             SerializableChunk addingChunk = new SerializableChunk{};
-            addingChunk.tileIDs = pair.Value.tileIDs;
+            //addingChunk.tileIDs = pair.Value.tileIDs;
             addingChunk.biomeID = pair.Value.biomeRefrence.refrence;
             addingChunk.chunkX = pair.Value.chunkX;
             addingChunk.chunkY = pair.Value.chunkY;

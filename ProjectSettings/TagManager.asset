@@ -11,6 +11,7 @@ TagManager:
   - ItemEntity
   - LodeManager
   - SeedTextField
+  - PopupUI
   layers:
   - Default
   - TransparentFX

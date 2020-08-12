@@ -8,7 +8,7 @@ public class RefrenceManager : MonoBehaviour
     [SerializeField] private Tile[] tiles;
     [SerializeField] private Item[] items;
     [SerializeField] private Biome[] biomes;
-    [SerializeField] private Dictionary<int, GameObject> itemEntities;
+    [SerializeField] private GameObject[] blockEntities;
 
     public Item getItem(int index)
     {
@@ -34,5 +34,10 @@ public class RefrenceManager : MonoBehaviour
     public Biome getBiome(int index)
     {
         return biomes[index];
+    }
+
+    public GameObject getBlockEntity(int index)
+    {
+        return blockEntities[index];
     }
 }

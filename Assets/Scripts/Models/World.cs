@@ -31,9 +31,6 @@ public class World : MonoBehaviour
         // call the chunkloader first then every second
         updateChunksToLoad();
 
-        Serialize serializer = new Serialize();
-        serializer.serialize(this);
-
         InvokeRepeating("updateChunksToLoad", 0f, 1f);
     }
 
