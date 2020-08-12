@@ -59,6 +59,6 @@ public class MouseManager : MonoBehaviour
 
 		// if that disance is below the max rang return true
 		float playerToMouseDistance = Vector3.Distance(playerTransform.position, mousePositionAsInt);
-		return playerToMouseDistance < LookUpData.playerMouseRange;
+		return playerToMouseDistance < LookUpData.playerRange;
 	}
 }

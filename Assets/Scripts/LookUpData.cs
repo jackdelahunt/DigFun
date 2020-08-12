@@ -13,7 +13,7 @@
     public static readonly int renderDisctance = 2;
 
     // the range of the mouse from the player
-    public static readonly float playerMouseRange = 3f;
+    public static readonly float playerRange = 3f;
 
     // noise scale for biome generation
     public static readonly float biomeGenerationScale = 0.9f;

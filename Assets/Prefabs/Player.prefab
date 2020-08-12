@@ -76,7 +76,6 @@ MonoBehaviour:
   storedItems: []
   uIInventory: {fileID: 0}
   selectedItem: 0
-  sand: {fileID: 11400000, guid: cc5d6c21e6ea65a4cba61db91c803c8d, type: 2}
 --- !u!1 &1814741617204924365
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,6 +275,10 @@ MonoBehaviour:
   controller: {fileID: 2106069776}
   myRigid: {fileID: 0}
   animator: {fileID: 0}
+  playerToWorld: {fileID: 0}
+  craftingTable:
+    serializedVersion: 2
+    m_Bits: 1024
   runSpeed: 40
 --- !u!114 &4079845383392759559
 MonoBehaviour:

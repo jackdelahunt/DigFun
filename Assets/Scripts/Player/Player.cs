@@ -7,16 +7,18 @@ public class Player : MonoBehaviour
     public CharacterController2D controller;
     public Rigidbody2D myRigid;
     public Animator animator;
+    public PlayerToWorld playerToWorld;
+    public LayerMask craftingTable;
 
     public float runSpeed = 40f;
 
     float horizontalMove = 0f;
     bool jump = false;
 
-    void Start()
-    {
+    public void Awake() {
         animator = GetComponent<Animator>();
         myRigid = GetComponent<Rigidbody2D>();
+        playerToWorld = GetComponent<PlayerToWorld>();
     }
 
     public void initializeAsNewWorld()
@@ -29,6 +31,7 @@ public class Player : MonoBehaviour
     {
         handleMovement();
         checkPlayerAnimations();
+        checkForInteractions();
     }
 
     public void checkPlayerAnimations()
@@ -59,5 +62,16 @@ public class Player : MonoBehaviour
         }
 
         controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
+    }
+
+    public void checkForInteractions() {
+        if(Input.GetButtonDown("Interact")) {
+            print("Find");
+            Collider2D collider = Physics2D.OverlapCircle(transform.position, LookUpData.playerRange, craftingTable);
+            if(collider != null) {
+                Workbench workbench = collider.gameObject.GetComponent<Workbench>();
+                workbench.interacted();
+            }
+        }
     }
 }

@@ -96,6 +96,13 @@ public class Chunk : MonoBehaviour
 
             // change the tile map to fit that change
             tilemap.SetTile(worldPos, tile);
+
+            // check if this tile needs a respective tile entity
+            GameObject blockEntity  = refrenceManager.getBlockEntity(refrenceManager.getItem(itemRefrence));
+            if(blockEntity != null) {
+                Instantiate(blockEntity, new Vector3(worldPos.x, worldPos.y, worldPos.z), new Quaternion());
+            }
+
             return true;
         }
         else
