@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D myRigid;
     public Animator animator;
     public PlayerToWorld playerToWorld;
-    public LayerMask craftingTable;
+    public LayerMask whatIsBlockEntity;
 
     public float runSpeed = 40f;
 
@@ -67,10 +67,10 @@ public class Player : MonoBehaviour
     public void checkForInteractions() {
         if(Input.GetButtonDown("Interact")) {
             print("Find");
-            Collider2D collider = Physics2D.OverlapCircle(transform.position, LookUpData.playerRange, craftingTable);
+            Collider2D collider = Physics2D.OverlapCircle(transform.position, LookUpData.playerRange, whatIsBlockEntity);
             if(collider != null) {
-                Workbench workbench = collider.gameObject.GetComponent<Workbench>();
-                workbench.interacted();
+                BlockEntity blockEntity = (BlockEntity)collider.gameObject.GetComponent(typeof(BlockEntity));
+                blockEntity.interacted();
             }
         }
     }

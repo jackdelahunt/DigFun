@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Workbench : MonoBehaviour
+public class Workbench : MonoBehaviour, BlockEntity
 {
     public GameObject workbenchUI;
 

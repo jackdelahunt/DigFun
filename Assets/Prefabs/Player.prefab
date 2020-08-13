@@ -276,7 +276,7 @@ MonoBehaviour:
   myRigid: {fileID: 0}
   animator: {fileID: 0}
   playerToWorld: {fileID: 0}
-  craftingTable:
+  whatIsBlockEntity:
     serializedVersion: 2
     m_Bits: 1024
   runSpeed: 40
