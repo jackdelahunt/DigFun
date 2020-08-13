@@ -8,6 +8,8 @@ public class Chunk : MonoBehaviour
     private Tilemap tilemap;
     private RefrenceManager refrenceManager;
     public GameObject chunkBackgroundPrefab;
+    public GameObject itemEntityPrefab;
+
 
     // an array of tile ids that refer to the ids of the tiles in the chunk
     public int[,] tileIDs;
@@ -25,7 +27,9 @@ public class Chunk : MonoBehaviour
     public int seed;
 
     // list of all entities item entities in this chunk
-    public List<GameObject> entities;
+    public List<GameObject> itemEntities;
+
+    public List<GameObject> blockEntities;
 
     // the background tile map for this chunk
     public ChunkBackground chunkBackground;
@@ -60,7 +64,7 @@ public class Chunk : MonoBehaviour
         this.loaded = loaded;
 
         // update the entities to react to the load update
-        updateEntities();
+        updateItemEntities();
 
         // load or unload the chunk based on the input
         gameObject.SetActive(loaded);
@@ -96,6 +100,18 @@ public class Chunk : MonoBehaviour
 
             // change the tile map to fit that change
             tilemap.SetTile(worldPos, tile);
+
+            // check if this tile needs a respective tile entity
+            GameObject blockEntity  = refrenceManager.getBlockEntity(refrenceManager.getItem(itemRefrence));
+
+            if(blockEntity != null) {
+
+                // create a copy of the block entity needed and add that to the 
+                // block entity list
+                GameObject createdBlockEntity = Instantiate(blockEntity, new Vector3(worldPos.x + 0.5f, worldPos.y + 0.5f, worldPos.z), new Quaternion(), transform);
+                blockEntities.Add(createdBlockEntity);
+            }
+
             return true;
         }
         else
@@ -128,7 +144,7 @@ public class Chunk : MonoBehaviour
 
         // if this tile is in the chunk bounds then return the tileID 
         // at that location, else return the flag - 1
-        if (isThisTileInThisChunk(localPos))
+        if (isThisTileInThisChunk(localPos) && tilemap.GetTile(worldPos) != null)
         {
 
             // remove that tile from the til map
@@ -139,6 +155,21 @@ public class Chunk : MonoBehaviour
 
             // set the id of the tile in out tileID array to 0
             tileIDs[localPos.x, localPos.y] = 0;
+
+            // create an ItemEntity 
+            GameObject itemObject = Instantiate(itemEntityPrefab, new Vector3(worldPos.x + 0.5f, worldPos.y + 0.5f, worldPos.z), new Quaternion(0f, 0f, 0f, 0f), transform);
+            ItemEntity itemEntity = itemObject.GetComponent<ItemEntity>();
+
+            // set the item of the itemEntity to the item based on the id
+            itemEntity.item = refrenceManager.getItem(idOfThatTile);
+
+            // initzialize the entity	
+            itemEntity.init();
+
+            // add the item object to the chunk entities
+            itemEntities.Add(itemObject);
+
+            // TODO: if the tile had a block entity then remove that entity from the list
 
             // return the id of the tile we broke
             return idOfThatTile;
@@ -167,20 +198,20 @@ public class Chunk : MonoBehaviour
         return xCorrect && yCorrect;
     }
 
-    public void updateEntities()
+    public void updateItemEntities()
     {
         // if this chunk is not active then do not update
         if (!gameObject.activeSelf)
             return;
 
-        // go through each entity in the list
-        for (int i = 0; i < entities.Count; i++)
+        // go through each item entity in the list
+        for (int i = 0; i < itemEntities.Count; i++)
         {
             // if the entity is null or the entity is about to be mergerd
             // with another entity then remove it 
-            if (entities[i] == null || entities[i].GetComponent<ItemEntity>().mergedWithOtherEntity)
+            if (itemEntities[i] == null || itemEntities[i].GetComponent<ItemEntity>().mergedWithOtherEntity)
             {
-                entities.RemoveAt(i);
+                itemEntities.RemoveAt(i);
                 continue;
             }
 
@@ -188,12 +219,12 @@ public class Chunk : MonoBehaviour
             // update it 
             if (loaded)
             {
-                entities[i].SetActive(true);
-                entities[i].GetComponent<ItemEntity>().lookForOtherEntities();
+                itemEntities[i].SetActive(true);
+                itemEntities[i].GetComponent<ItemEntity>().lookForOtherEntities();
             }
             else
             {
-                entities[i].SetActive(false);
+                itemEntities[i].SetActive(false);
             }
         }
     }

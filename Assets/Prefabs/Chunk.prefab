@@ -173,8 +173,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chunkBackgroundPrefab: {fileID: 4089247346441092757, guid: 29838543260eb3a42a0af310603e9467,
     type: 3}
-  biome: {fileID: 0}
+  itemEntityPrefab: {fileID: 69487183766740191, guid: 04d6e427784c1154cb1193b08f956e81,
+    type: 3}
   chunkX: 0
   chunkY: 0
   seed: 0
+  itemEntities: []
+  blockEntities: []
   chunkBackground: {fileID: 0}
+  loaded: 0

@@ -8,7 +8,7 @@ public class RefrenceManager : MonoBehaviour
     [SerializeField] private Tile[] tiles;
     [SerializeField] private Item[] items;
     [SerializeField] private Biome[] biomes;
-    [SerializeField] private GameObject[] blockEntities;
+    [SerializeField] private blockEntityRefrence[] blockEntities;
 
     public Item getItem(int index)
     {
@@ -36,8 +36,18 @@ public class RefrenceManager : MonoBehaviour
         return biomes[index];
     }
 
-    public GameObject getBlockEntity(int index)
+    public GameObject getBlockEntity(Item item)
     {
-        return blockEntities[index];
+        foreach(blockEntityRefrence blockEntityRefrence in blockEntities) {
+            if(blockEntityRefrence.item == item)
+                return blockEntityRefrence.blockEntity;
+        }
+        return null;
     }
+}
+
+[System.Serializable]
+public struct blockEntityRefrence {
+    public Item item;
+    public GameObject blockEntity;
 }

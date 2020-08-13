@@ -66,4 +66,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4b70e0158edc1754b9d438471c7c4f5c, type: 2}
   - {fileID: 11400000, guid: a0b3772d08b476b4181dc4e2df1ef541, type: 2}
   blockEntities:
-  - {fileID: 6876076087291298059, guid: a8d24dd1bd7247e41ab3636da32e6bbf, type: 3}
+  - item: {fileID: 11400000, guid: 8d8830359c0f77b40958cd3ae4a74eb1, type: 2}
+    blockEntity: {fileID: 4363231016739674571, guid: 357ba607aea28e5458713c6357373fea,
+      type: 3}

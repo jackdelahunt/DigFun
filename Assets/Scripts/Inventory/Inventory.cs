@@ -157,7 +157,8 @@ public class Inventory : MonoBehaviour
                 return false;
         }
 
-        // if we have reached this point thr
+        // if we have reached this point and all materials requried have
+        // sufficent amounts in the inventory then return true
         return true;
     }
 }
