@@ -9,16 +9,26 @@ public class Player : MonoBehaviour
     public Animator animator;
     public PlayerToWorld playerToWorld;
     public LayerMask whatIsBlockEntity;
+    public Inventory inventory;
 
+    // is this player able to be interacted with?
+    public bool freeze;
+
+    // run speed of the player 
     public float runSpeed = 40f;
 
+    // the amount of horizontal movement the player is doing this frame
     float horizontalMove = 0f;
+
+    // is the player jumping?
     bool jump = false;
 
     public void Awake() {
         animator = GetComponent<Animator>();
         myRigid = GetComponent<Rigidbody2D>();
         playerToWorld = GetComponent<PlayerToWorld>();
+        inventory = GetComponent<Inventory>();
+
     }
 
     public void initializeAsNewWorld()
@@ -53,6 +63,10 @@ public class Player : MonoBehaviour
 
     public void handleMovement()
     {
+        // if the player is frozen then return
+        if(freeze)
+            return;
+
         jump = false;
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
@@ -66,11 +80,16 @@ public class Player : MonoBehaviour
 
     public void checkForInteractions() {
         if(Input.GetButtonDown("Interact")) {
-            print("Find");
+
+            // look for a block entitty in the reacj of the player        
             Collider2D collider = Physics2D.OverlapCircle(transform.position, LookUpData.playerRange, whatIsBlockEntity);
+
+            // if we hit something
             if(collider != null) {
+
+                // get the entity script and tell it we interacted with it
                 BlockEntity blockEntity = (BlockEntity)collider.gameObject.GetComponent(typeof(BlockEntity));
-                blockEntity.interacted();
+                blockEntity.interacted(this);
             }
         }
     }

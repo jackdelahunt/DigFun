@@ -7,7 +7,6 @@ public class PlayerToWorld : MonoBehaviour
     [SerializeField] private World world;
     [SerializeField] private Inventory inventory;
     [SerializeField] private RefrenceManager refrenceManager;
-    [SerializeField] private GameObject itemEntityPrefab;
 
     private void Start()
     {
@@ -20,28 +19,7 @@ public class PlayerToWorld : MonoBehaviour
     {
         Chunk chunkAtThisPos = world.getChunk(pos);
         // get the id of the item that the tile is that is being removed
-        int tileID = chunkAtThisPos.removeTile(pos);
-
-        // get the item based on the tileID
-        Item tileItem = refrenceManager.getItem(tileID);
-
-        // if the item is actually an item
-        if (tileItem != null)
-        {
-
-            // create a entity 
-            GameObject itemObject = Instantiate(itemEntityPrefab, new Vector3(pos.x + 0.5f, pos.y + 0.5f, pos.z), new Quaternion(0f, 0f, 0f, 0f));
-            ItemEntity itemEntity = itemObject.GetComponent<ItemEntity>();
-
-            // set the item of the itemEntity to the item based on the id
-            itemEntity.item = tileItem;
-
-            // initzialize the entity	
-            itemEntity.init();
-
-            // add the item object to the chunk entities
-            chunkAtThisPos.entities.Add(itemObject);
-        }
+         chunkAtThisPos.removeTile(pos);
     }
 
     public void addTile(Vector3Int pos)

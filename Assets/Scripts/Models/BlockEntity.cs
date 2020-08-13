@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface BlockEntity
 {
-    void interacted();
+    void interacted(Player player);
 } 
