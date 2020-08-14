@@ -33,7 +33,7 @@ public class PlayerToWorld : MonoBehaviour
 
         // if this block was added then decrease the count in the inventory  by one
         // this will not happen if there is already a block in that area
-        if (world.getChunk(pos).addTile(pos, refrenceManager.getTile(IDOfItemSelectedInInventory), IDOfItemSelectedInInventory))
+        if (world.getChunk(pos).addTile(pos, refrenceManager.itemGroups[IDOfItemSelectedInInventory]))
             inventory.decrementCurrentItem();
     }
 

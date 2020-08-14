@@ -29,7 +29,7 @@ public class ChunkBackground : MonoBehaviour
             for (int x = 0; x < tileIDs.GetLength(0); x++)
             {
                 // set all tiles in the tile map to the tile id in the array
-                tilemap.SetTile(new Vector3Int(chunkX + x, chunkY + y, 0), refrenceManager.getTile(tileIDs[x, y]));
+                tilemap.SetTile(new Vector3Int(chunkX + x, chunkY + y, 0), refrenceManager.itemGroups[tileIDs[x, y]].tile);
             }
         }
     }

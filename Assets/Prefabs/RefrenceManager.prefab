@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6828565581986479420}
-  - component: {fileID: 6828565581986479421}
+  - component: {fileID: 5341619151562797433}
   m_Layer: 0
   m_Name: RefrenceManager
   m_TagString: RefrenceManager
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6828565581986479421
+--- !u!114 &5341619151562797433
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,29 +43,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d19f184139e794382bb576abf13a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiles:
-  - {fileID: 11400000, guid: 305eca2d929fbc44cb02243a1b241106, type: 2}
-  - {fileID: 11400000, guid: 6f7f85e6e1fb45440b430dc281980144, type: 2}
-  - {fileID: 11400000, guid: 7a922268509c83146969c4459c819fe3, type: 2}
-  - {fileID: 11400000, guid: ef946a9c2557172428d539be78438c07, type: 2}
-  - {fileID: 11400000, guid: af536bf1f2080b740974b76c1e12f971, type: 2}
-  - {fileID: 11400000, guid: 0f03fe524e48da140ba0ac8e7baf381b, type: 2}
-  - {fileID: 11400000, guid: b69f85e5f03fbd84e94bf02e45aa5128, type: 2}
-  - {fileID: 11400000, guid: e6c550ddf3f220b47a9953f6fccb9d62, type: 2}
-  items:
-  - {fileID: 11400000, guid: 0079e4b79e1546749a1d59e782c36892, type: 2}
-  - {fileID: 11400000, guid: 6ebebef1aecd5ff4eaf3b2ad0ec085b2, type: 2}
-  - {fileID: 11400000, guid: 6304a92ef5eda7749a0911b492f509d1, type: 2}
-  - {fileID: 11400000, guid: 959276f9b3d33df418c9551f1233ab39, type: 2}
-  - {fileID: 11400000, guid: 021e3c06a9dc369449e907fd1a0c4922, type: 2}
-  - {fileID: 11400000, guid: aca85741e030fca4084ecded0845f712, type: 2}
-  - {fileID: 11400000, guid: 6b1e09b02bf867f4e83718ab9af23b9b, type: 2}
-  - {fileID: 11400000, guid: 8d8830359c0f77b40958cd3ae4a74eb1, type: 2}
+  itemGroups:
+  - id: 0
+    item: {fileID: 11400000, guid: 0079e4b79e1546749a1d59e782c36892, type: 2}
+    tile: {fileID: 11400000, guid: 305eca2d929fbc44cb02243a1b241106, type: 2}
+    blockEntity: {fileID: 0}
+    indestructable: 1
+  - id: 1
+    item: {fileID: 11400000, guid: 6ebebef1aecd5ff4eaf3b2ad0ec085b2, type: 2}
+    tile: {fileID: 11400000, guid: 6f7f85e6e1fb45440b430dc281980144, type: 2}
+    blockEntity: {fileID: 0}
+    indestructable: 0
+  - id: 2
+    item: {fileID: 11400000, guid: 6304a92ef5eda7749a0911b492f509d1, type: 2}
+    tile: {fileID: 11400000, guid: 7a922268509c83146969c4459c819fe3, type: 2}
+    blockEntity: {fileID: 0}
+    indestructable: 0
+  - id: 3
+    item: {fileID: 11400000, guid: 959276f9b3d33df418c9551f1233ab39, type: 2}
+    tile: {fileID: 11400000, guid: ef946a9c2557172428d539be78438c07, type: 2}
+    blockEntity: {fileID: 0}
+    indestructable: 0
+  - id: 4
+    item: {fileID: 11400000, guid: 021e3c06a9dc369449e907fd1a0c4922, type: 2}
+    tile: {fileID: 11400000, guid: af536bf1f2080b740974b76c1e12f971, type: 2}
+    blockEntity: {fileID: 0}
+    indestructable: 0
+  - id: 5
+    item: {fileID: 11400000, guid: aca85741e030fca4084ecded0845f712, type: 2}
+    tile: {fileID: 11400000, guid: 0f03fe524e48da140ba0ac8e7baf381b, type: 2}
+    blockEntity: {fileID: 0}
+    indestructable: 0
+  - id: 6
+    item: {fileID: 11400000, guid: 6b1e09b02bf867f4e83718ab9af23b9b, type: 2}
+    tile: {fileID: 11400000, guid: b69f85e5f03fbd84e94bf02e45aa5128, type: 2}
+    blockEntity: {fileID: 0}
+    indestructable: 0
+  - id: 7
+    item: {fileID: 11400000, guid: 8d8830359c0f77b40958cd3ae4a74eb1, type: 2}
+    tile: {fileID: 11400000, guid: e6c550ddf3f220b47a9953f6fccb9d62, type: 2}
+    blockEntity: {fileID: 4363231016739674571, guid: 357ba607aea28e5458713c6357373fea,
+      type: 3}
+    indestructable: 0
   biomes:
   - {fileID: 11400000, guid: 1ba15737f4b426640af6cac2ea99a7da, type: 2}
   - {fileID: 11400000, guid: 4b70e0158edc1754b9d438471c7c4f5c, type: 2}
   - {fileID: 11400000, guid: a0b3772d08b476b4181dc4e2df1ef541, type: 2}
-  blockEntities:
-  - item: {fileID: 11400000, guid: 8d8830359c0f77b40958cd3ae4a74eb1, type: 2}
-    blockEntity: {fileID: 4363231016739674571, guid: 357ba607aea28e5458713c6357373fea,
-      type: 3}
+  recipes: []

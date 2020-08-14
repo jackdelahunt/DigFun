@@ -5,26 +5,9 @@ using UnityEngine.Tilemaps;
 
 public class RefrenceManager : MonoBehaviour
 {
-    [SerializeField] private Tile[] tiles;
-    [SerializeField] private Item[] items;
+    [SerializeField] public ItemGroup[] itemGroups;
     [SerializeField] private Biome[] biomes;
-    [SerializeField] private blockEntityRefrence[] blockEntities;
-
-    public Item getItem(int index)
-    {
-        if (index > 0 && index < items.Length)
-            return items[index];
-        else
-            return null;
-    }
-
-    public Tile getTile(int index)
-    {
-        if (index > 0 && index < tiles.Length)
-            return tiles[index];
-        else
-            return null;
-    }
+    [SerializeField] private Recipe[] recipes;
 
     public Biome[] getBiomes()
     {
@@ -36,13 +19,9 @@ public class RefrenceManager : MonoBehaviour
         return biomes[index];
     }
 
-    public GameObject getBlockEntity(Item item)
+    public Recipe getRecipe(int index)
     {
-        foreach(blockEntityRefrence blockEntityRefrence in blockEntities) {
-            if(blockEntityRefrence.item == item)
-                return blockEntityRefrence.blockEntity;
-        }
-        return null;
+        return recipes[index];
     }
 }
 
@@ -50,4 +29,13 @@ public class RefrenceManager : MonoBehaviour
 public struct blockEntityRefrence {
     public Item item;
     public GameObject blockEntity;
+}
+
+[System.Serializable]
+public struct ItemGroup {
+    public int id;
+    public Item item;
+    public Tile tile;
+    public GameObject blockEntity;
+    public bool indestructable;
 }

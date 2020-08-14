@@ -83,7 +83,7 @@ public class Chunk : MonoBehaviour
     }
 
     // add a tile to a position in this chunk
-    public bool addTile(Vector3Int worldPos, Tile tile, int itemRefrence)
+    public bool addTile(Vector3Int worldPos, ItemGroup itemGroup)
     {
         // get the locaion of this tile but to the local chunk Coord
         Vector3Int localPos = ChunkHelpers.convertWorldCoordToLocalCoord(worldPos, chunkX);
@@ -96,13 +96,13 @@ public class Chunk : MonoBehaviour
         if (tilemap.GetTile(worldPos) == null)
         {
             // set the correct value in the tile id array 
-            tileIDs[localPos.x, localPos.y] = itemRefrence;
+            tileIDs[localPos.x, localPos.y] = itemGroup.id;
 
             // change the tile map to fit that change
-            tilemap.SetTile(worldPos, tile);
+            tilemap.SetTile(worldPos, itemGroup.tile);
 
             // check if this tile needs a respective tile entity
-            GameObject blockEntity  = refrenceManager.getBlockEntity(refrenceManager.getItem(itemRefrence));
+            GameObject blockEntity  = itemGroup.blockEntity;
 
             if(blockEntity != null) {
 
@@ -131,7 +131,7 @@ public class Chunk : MonoBehaviour
             for (int x = 0; x < ids.GetLength(0); x++)
             {
                 // go through each id in the ids array and add it to the tilemap 
-                tilemap.SetTile(convertLocalCoordToWorldCoord(new Vector3Int(x, y, 0)), refrenceManager.getTile(ids[x, y]));
+                tilemap.SetTile(convertLocalCoordToWorldCoord(new Vector3Int(x, y, 0)), refrenceManager.itemGroups[ids[x, y]].tile);
             }
         }
     }
@@ -161,7 +161,7 @@ public class Chunk : MonoBehaviour
             ItemEntity itemEntity = itemObject.GetComponent<ItemEntity>();
 
             // set the item of the itemEntity to the item based on the id
-            itemEntity.item = refrenceManager.getItem(idOfThatTile);
+            itemEntity.item = refrenceManager.itemGroups[idOfThatTile].item;
 
             // initzialize the entity	
             itemEntity.init();
