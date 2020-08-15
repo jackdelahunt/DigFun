@@ -15,8 +15,6 @@ MonoBehaviour:
   materials:
   - itemGroup: {fileID: 11400000, guid: 0f7ebe6407563f146af3fdc1f3675506, type: 2}
     amount: 4
-  - itemGroup: {fileID: 11400000, guid: b6a4580bd6909464ab4ee7c50a897a72, type: 2}
-    amount: 1
   result:
     itemGroup: {fileID: 11400000, guid: ae895fd4009998b4392129d474ee5efb, type: 2}
     amount: 1

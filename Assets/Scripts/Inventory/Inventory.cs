@@ -66,10 +66,43 @@ public class Inventory : MonoBehaviour
         storedItems[selectedItem].amount -= 1;
 
         // if there is none of the item left net remove it from the items array
-        if (storedItems[selectedItem].amount <= 0)
+        if (storedItems[selectedItem].amount <= 0) {
+            storedItems[selectedItem].amount = 0;
             storedItems[selectedItem].itemGroup = null;
+        }
 
         // once this has changed tell the inventory ui to update
+        uIInventory.updateUIContents();
+    }
+
+    // used to remove any item in the inventory with a specified amount
+    public void removeItem(ItemGroup itemGroup, int amount) {
+        
+        // go through each stored item
+        for(int i = 0; i < storedItems.Length; i++) {
+
+            // if this is the item we are looking for
+            if(storedItems[i].itemGroup == itemGroup) {
+                
+                // the amount being removed will either be the amount we are trying to remove or
+                // the amount this slot has left
+                int amountBeingRemovedThisSlot = amount < storedItems[i].amount ? amount : storedItems[i].amount;
+                storedItems[i].amount -= amountBeingRemovedThisSlot;
+                amount -= amountBeingRemovedThisSlot;
+
+                // if the slot is emtpy then clear that slot in the onventory
+                if(storedItems[i].amount <= 0) {
+                    storedItems[i].amount = 0;
+                    storedItems[i].itemGroup = null;
+                }
+
+                // if we have removed a;; of the items needed then stop the loop
+                if(amount == 0)
+                    break;
+            }
+        }
+
+
         uIInventory.updateUIContents();
     }
 

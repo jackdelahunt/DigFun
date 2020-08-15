@@ -22,7 +22,5 @@ public class Workbench : MonoBehaviour, BlockEntity
         ui.updateContent();
 
         player.freeze = workbenchUIGameObject.activeSelf;
-
-        
     }
 }
