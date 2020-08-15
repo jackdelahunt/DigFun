@@ -23,7 +23,6 @@ public class World : MonoBehaviour
 
     private void Start()
     {
-
         player = GameObject.FindGameObjectWithTag("Player");
         refrenceManager = GameObject.FindGameObjectWithTag("RefrenceManager").GetComponent<RefrenceManager>();
         weightedBiomeList = generateWeightedBiomeList(refrenceManager.getBiomes());

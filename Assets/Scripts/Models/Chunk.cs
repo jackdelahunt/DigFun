@@ -88,8 +88,8 @@ public class Chunk : MonoBehaviour
         // get the locaion of this tile but to the local chunk Coord
         Vector3Int localPos = ChunkHelpers.convertWorldCoordToLocalCoord(worldPos, chunkX);
 
-        // if the tile is outside the chunk then do not add it
-        if (!isThisTileInThisChunk(localPos))
+        // if the tile is outside the chunk then do not add it, or it is air
+        if (!isThisTileInThisChunk(localPos) || itemGroup.id == 0)
             return false;
 
         // if there is no tile in this area then add the new one else return false

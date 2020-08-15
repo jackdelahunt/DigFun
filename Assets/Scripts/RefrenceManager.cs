@@ -19,6 +19,10 @@ public class RefrenceManager : MonoBehaviour
         return biomes[index];
     }
 
+    public Recipe[] getRecipes() {
+        return recipes;
+    }
+
     public Recipe getRecipe(int index)
     {
         return recipes[index];

@@ -15,9 +15,7 @@ public class Debug : MonoBehaviour
     public TMP_Text seed;
     public TMP_Text FPS;
 
-
-
-    public void Awake()
+    public void Start()
     {
         world = GameObject.FindGameObjectWithTag("World").GetComponent<World>();
     }

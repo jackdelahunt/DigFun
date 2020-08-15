@@ -46,7 +46,7 @@ MonoBehaviour:
   itemGroups:
   - id: 0
     item: {fileID: 11400000, guid: 0079e4b79e1546749a1d59e782c36892, type: 2}
-    tile: {fileID: 11400000, guid: 305eca2d929fbc44cb02243a1b241106, type: 2}
+    tile: {fileID: 0}
     blockEntity: {fileID: 0}
     indestructable: 1
   - id: 1
@@ -89,4 +89,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1ba15737f4b426640af6cac2ea99a7da, type: 2}
   - {fileID: 11400000, guid: 4b70e0158edc1754b9d438471c7c4f5c, type: 2}
   - {fileID: 11400000, guid: a0b3772d08b476b4181dc4e2df1ef541, type: 2}
-  recipes: []
+  recipes:
+  - {fileID: 11400000, guid: f49ab9b0ab4cc2d4fb7c9377d5a21263, type: 2}

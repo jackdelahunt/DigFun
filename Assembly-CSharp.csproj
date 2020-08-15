@@ -46,7 +46,7 @@
      <Compile Include="Assets\Scripts\GameSession.cs" />
      <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
      <Compile Include="Assets\Scripts\Inventory\UIInventory.cs" />
-     <Compile Include="Assets\Scripts\Items\Item.cs" />
+     <Compile Include="Assets\Scripts\Items\Items\Item.cs" />
      <Compile Include="Assets\Scripts\LodeManager.cs" />
      <Compile Include="Assets\Scripts\LookUpData.cs" />
      <Compile Include="Assets\Scripts\Models\BlockEntity.cs" />
@@ -64,6 +64,7 @@
      <Compile Include="Assets\Scripts\RefrenceManager.cs" />
      <Compile Include="Assets\Scripts\TerrainGeneration.cs" />
      <Compile Include="Assets\Scripts\UI\PopupUI.cs" />
+     <Compile Include="Assets\Scripts\UI\WorkbenchUI.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />

@@ -14,11 +14,11 @@ public class Initializer : MonoBehaviour
     {
         Instantiate(refrenceManager);
 
-        World worldScript = Instantiate(world).GetComponent<World>();
-        worldScript.initializeAsNewWorld();
-
         Player playerScript = Instantiate(player).GetComponent<Player>();
         playerScript.initializeAsNewWorld();
+
+        World worldScript = Instantiate(world).GetComponent<World>();
+        worldScript.initializeAsNewWorld();
 
         Instantiate(mainCamera);
         Instantiate(UI);
