@@ -4407,8 +4407,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   refrenceManager: {fileID: 0}
   playerInventory: {fileID: 0}
-  contentArea: {fileID: 2861000109626603636}
+  recipeContentArea: {fileID: 2861000109626603636}
   craftingIconPrefab: {fileID: 6446051340778101595, guid: f8483630fe8fbc54dad15f8009a377c1,
+    type: 3}
+  materialContentArea: {fileID: 5714361567683203815}
+  materialIconPrefab: {fileID: 6446051340778101595, guid: 1edee1ea38b7b184e80150a59b4e5779,
     type: 3}
 --- !u!1 &5461983784642297337
 GameObject:
