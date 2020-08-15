@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Stone
   m_EditorClassIdentifier: 
   materials:
-  - item: {fileID: 11400000, guid: 6b1e09b02bf867f4e83718ab9af23b9b, type: 2}
+  - itemGroup: {fileID: 11400000, guid: b6a4580bd6909464ab4ee7c50a897a72, type: 2}
     amount: 4
   result:
-    item: {fileID: 11400000, guid: 959276f9b3d33df418c9551f1233ab39, type: 2}
+    itemGroup: {fileID: 11400000, guid: 81129ed9700fde348a18e0ffd5f6cf1f, type: 2}
     amount: 1

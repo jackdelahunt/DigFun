@@ -14,12 +14,11 @@ public class WorkbenchUI : MonoBehaviour
 
 
     public void Awake() {
-        print("START");
         refrenceManager = GameObject.FindGameObjectWithTag("RefrenceManager").GetComponent<RefrenceManager>();
         playerInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
     }
     public void updateContent() {
-        print("UPDATE");
+        
         // first remove all of the contents
         foreach(Transform child in contentArea.transform) {
             GameObject.Destroy(child.gameObject);
@@ -27,7 +26,7 @@ public class WorkbenchUI : MonoBehaviour
 
         foreach(Recipe recipe in refrenceManager.getRecipes()) {
             GameObject recipeCraftingIcon = Instantiate(craftingIconPrefab, contentArea.transform);
-            recipeCraftingIcon.GetComponent<Image>().sprite = recipe.result.item.sprite;
+            recipeCraftingIcon.GetComponent<Image>().sprite = recipe.result.itemGroup.sprite;
         }
     }
 }

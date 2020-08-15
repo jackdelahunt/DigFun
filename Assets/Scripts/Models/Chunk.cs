@@ -160,8 +160,8 @@ public class Chunk : MonoBehaviour
             GameObject itemObject = Instantiate(itemEntityPrefab, new Vector3(worldPos.x + 0.5f, worldPos.y + 0.5f, worldPos.z), new Quaternion(0f, 0f, 0f, 0f), transform);
             ItemEntity itemEntity = itemObject.GetComponent<ItemEntity>();
 
-            // set the item of the itemEntity to the item based on the id
-            itemEntity.item = refrenceManager.itemGroups[idOfThatTile].item;
+            // set the itemGroup of the itemEntity to the item based on the id
+            itemEntity.itemGroup = refrenceManager.itemGroups[idOfThatTile];
 
             // initzialize the entity	
             itemEntity.init();

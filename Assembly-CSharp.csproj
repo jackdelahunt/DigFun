@@ -46,7 +46,7 @@
      <Compile Include="Assets\Scripts\GameSession.cs" />
      <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
      <Compile Include="Assets\Scripts\Inventory\UIInventory.cs" />
-     <Compile Include="Assets\Scripts\Items\Items\Item.cs" />
+     <Compile Include="Assets\Scripts\Items\ItemGroup.cs" />
      <Compile Include="Assets\Scripts\LodeManager.cs" />
      <Compile Include="Assets\Scripts\LookUpData.cs" />
      <Compile Include="Assets\Scripts\Models\BlockEntity.cs" />

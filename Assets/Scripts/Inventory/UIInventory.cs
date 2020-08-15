@@ -37,7 +37,7 @@ public class UIInventory : MonoBehaviour
         {
 
             // if the item is empty
-            if (playerInventory.storedItems[i].item == null)
+            if (playerInventory.storedItems[i].itemGroup == null)
             {
 
                 // clear the text
@@ -55,7 +55,7 @@ public class UIInventory : MonoBehaviour
             hotbarCounts[i].SetText("" + currentAmount);
 
             // set the image to the items sprite
-            hotbarImages[i].sprite = playerInventory.storedItems[i].item.sprite;
+            hotbarImages[i].sprite = playerInventory.storedItems[i].itemGroup.sprite;
 
             // display the image
             hotbarImages[i].gameObject.SetActive(true);
@@ -79,8 +79,8 @@ public class UIInventory : MonoBehaviour
     public void updateDisplayName()
     {
         // if the item is not null then display the name else display nothing
-        if (playerInventory.storedItems[playerInventory.selectedItem].item != null)
-            displayName.SetText("" + playerInventory.storedItems[playerInventory.selectedItem].item.itemName);
+        if (playerInventory.storedItems[playerInventory.selectedItem].itemGroup != null)
+            displayName.SetText("" + playerInventory.storedItems[playerInventory.selectedItem].itemGroup.itemName);
         else
             displayName.SetText("");
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemEntity : MonoBehaviour
 {
     // the item that this itemEntity represents
-    public Item item;
+    public ItemGroup itemGroup;
 
     // the amount of the item this entity stores
     public int amount;
@@ -32,7 +32,7 @@ public class ItemEntity : MonoBehaviour
     {
 
         // set the correct sprite from the object
-        spriteRenderer.sprite = item.sprite;
+        spriteRenderer.sprite = itemGroup.sprite;
 
         // set the scale of the object to the correct scale
         transform.localScale = new Vector3(entityScale.x, entityScale.y, transform.localScale.z);
@@ -56,7 +56,7 @@ public class ItemEntity : MonoBehaviour
             ItemEntity other = colliderList[i].gameObject.GetComponent<ItemEntity>();
 
             // if the other item is the same as this
-            if (other.item.tileID == item.tileID)
+            if (other.itemGroup.id == itemGroup.id)
             {
                 // add the others amount to ours
                 amount += other.amount;

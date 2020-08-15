@@ -13,14 +13,24 @@ public class Inventory : MonoBehaviour
     // the current selected item in the inventory
     public int selectedItem;
 
+    public RefrenceManager refrenceManager;
+
+    public void Awake() {
+        refrenceManager = GameObject.FindGameObjectWithTag("RefrenceManager").GetComponent<RefrenceManager>();
+    }
+
     private void Start()
     {
-        uIInventory = FindObjectOfType<UIInventory>();
+        uIInventory = GameObject.FindGameObjectWithTag("UIInventory").GetComponent<UIInventory>();
 
         selectedItem = 0;
 
         // 9 is the amount items this iventory can hold
         storedItems = new StoredItem[9];
+
+        // give the player a workbench at the start
+        storedItems[0].amount = 1;
+        storedItems[0].itemGroup = refrenceManager.itemGroups[7];
     }
 
     // get the tileID of the current item selected in the inventory
@@ -28,7 +38,7 @@ public class Inventory : MonoBehaviour
     {
         // if there is a item in the slot then return that id
         // else return the flag -1
-        return storedItems[selectedItem].item == null ? -1 : storedItems[selectedItem].item.tileID;
+        return storedItems[selectedItem].itemGroup == null ? -1 : storedItems[selectedItem].itemGroup.id;
     }
 
     // change the selected
@@ -57,27 +67,27 @@ public class Inventory : MonoBehaviour
 
         // if there is none of the item left net remove it from the items array
         if (storedItems[selectedItem].amount <= 0)
-            storedItems[selectedItem].item = null;
+            storedItems[selectedItem].itemGroup = null;
 
         // once this has changed tell the inventory ui to update
         uIInventory.updateUIContents();
     }
 
-    public int addItem(Item item, int addingAmount)
+    public int addItem(ItemGroup addingItemGroup, int addingAmount)
     {
         // if the item we are trying to add is null then return false
-        if (item == null)
+        if (addingItemGroup == null)
             return -1;
 
         // going through looking for same items
         for (int i = 0; i < storedItems.Length; i++)
         {
-            if (storedItems[i].item == null)
+            if (storedItems[i].itemGroup == null)
                 continue;
 
             // go through each item that is the same as ours and add the 
             // amount we can to it, after if we still have some left then continue
-            if (storedItems[i].item.tileID == item.tileID && storedItems[i].amount < LookUpData.maxNumberOfItemsPerSlot)
+            if (storedItems[i].itemGroup.id == addingItemGroup.id && storedItems[i].amount < LookUpData.maxNumberOfItemsPerSlot)
             {
                 // if the current amount plus the adding amount is more than max
                 // then set the amount to add as the number it would take to fill the slot
@@ -102,12 +112,12 @@ public class Inventory : MonoBehaviour
         // going through looking for empty slots
         for (int i = 0; i < storedItems.Length; i++)
         {
-            if (storedItems[i].item == null)
+            if (storedItems[i].itemGroup == null)
             {
                 // set the adding amount to the max amount we can add based on the current amount in the 
                 // slot, if we can add the whole amount then add it
                 int amountToAdd = addingAmount > LookUpData.maxNumberOfItemsPerSlot ? LookUpData.maxNumberOfItemsPerSlot : addingAmount;
-                storedItems[i].item = item;
+                storedItems[i].itemGroup = addingItemGroup;
                 storedItems[i].amount = amountToAdd;
                 addingAmount -= amountToAdd;
 
@@ -127,7 +137,7 @@ public class Inventory : MonoBehaviour
     }
 
     // returns the amount of an item we have in the inventory
-    public int containsItem(Item item)
+    public int containsItem(ItemGroup itemGroup)
     {
         int count = 0;
 
@@ -135,7 +145,7 @@ public class Inventory : MonoBehaviour
         // we are looking for then add the amount to the total count
         foreach (StoredItem storedItem in storedItems)
         {
-            if (storedItem.item == item)
+            if (storedItem.itemGroup == itemGroup)
                 count += storedItem.amount;
         }
 
@@ -153,7 +163,7 @@ public class Inventory : MonoBehaviour
         // once a material's needs are not met then return false
         foreach (StoredItem material in recipe.materials)
         {
-            if (containsItem(material.item) < material.amount)
+            if (containsItem(material.itemGroup) < material.amount)
                 return false;
         }
 
@@ -166,6 +176,6 @@ public class Inventory : MonoBehaviour
 [System.Serializable]
 public struct StoredItem
 {
-    public Item item;
+    public ItemGroup itemGroup;
     public int amount;
 }

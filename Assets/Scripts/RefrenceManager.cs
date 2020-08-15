@@ -28,18 +28,3 @@ public class RefrenceManager : MonoBehaviour
         return recipes[index];
     }
 }
-
-[System.Serializable]
-public struct blockEntityRefrence {
-    public Item item;
-    public GameObject blockEntity;
-}
-
-[System.Serializable]
-public struct ItemGroup {
-    public int id;
-    public Item item;
-    public Tile tile;
-    public GameObject blockEntity;
-    public bool indestructable;
-}

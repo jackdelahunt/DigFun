@@ -64,8 +64,11 @@ public class Player : MonoBehaviour
     public void handleMovement()
     {
         // if the player is frozen then return
-        if(freeze)
+        if(freeze) {
+
+            myRigid.velocity = new Vector2(0 , myRigid.velocity.y);
             return;
+        }
 
         jump = false;
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;

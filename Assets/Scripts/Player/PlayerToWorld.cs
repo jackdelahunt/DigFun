@@ -41,7 +41,7 @@ public class PlayerToWorld : MonoBehaviour
     public int addItemToInventory(ItemEntity entity)
     {
         // true if the item was added false if it was not
-        return inventory.addItem(entity.item, entity.amount);
+        return inventory.addItem(entity.itemGroup, entity.amount);
     }
 
     // changed the selected item in the inventory by the input amount
