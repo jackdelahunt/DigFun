@@ -63,6 +63,10 @@
      <Compile Include="Assets\Scripts\Recipes\Recipe.cs" />
      <Compile Include="Assets\Scripts\RefrenceManager.cs" />
      <Compile Include="Assets\Scripts\TerrainGeneration.cs" />
+     <Compile Include="Assets\Scripts\UI\CraftButton.cs" />
+     <Compile Include="Assets\Scripts\UI\CraftingIcon.cs" />
+     <Compile Include="Assets\Scripts\UI\MaterialIcon.cs" />
+     <Compile Include="Assets\Scripts\UI\PlayerWorkbenchUI.cs" />
      <Compile Include="Assets\Scripts\UI\PopupUI.cs" />
      <Compile Include="Assets\Scripts\UI\WorkbenchUI.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />

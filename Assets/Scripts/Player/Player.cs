@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public PlayerToWorld playerToWorld;
     public LayerMask whatIsBlockEntity;
     public Inventory inventory;
+    public GameObject playerWorkbenchUI;
 
     // is this player able to be interacted with?
     public bool freeze;
@@ -28,7 +29,10 @@ public class Player : MonoBehaviour
         myRigid = GetComponent<Rigidbody2D>();
         playerToWorld = GetComponent<PlayerToWorld>();
         inventory = GetComponent<Inventory>();
+    }
 
+    public void Start() {
+        playerWorkbenchUI = GameObject.FindGameObjectWithTag("PopupUI").GetComponent<PopupUI>().playerWorkbenchUI;
     }
 
     public void initializeAsNewWorld()
@@ -83,16 +87,27 @@ public class Player : MonoBehaviour
 
     public void checkForInteractions() {
         if(Input.GetButtonDown("Interact")) {
+            
+            // if the player workbench is open then close it and do not
+            // interact
+            if(playerWorkbenchUI.activeSelf) {
+                playerWorkbenchUI.SetActive(false);
+                freeze = false;
+                return;
+            }
 
-            // look for a block entitty in the reacj of the player        
+            // look for a block entitty in the range of the player        
             Collider2D collider = Physics2D.OverlapCircle(transform.position, LookUpData.playerRange, whatIsBlockEntity);
 
-            // if we hit something
+            // if we hit something then open that else open the player workbench
             if(collider != null) {
 
                 // get the entity script and tell it we interacted with it
                 BlockEntity blockEntity = (BlockEntity)collider.gameObject.GetComponent(typeof(BlockEntity));
                 blockEntity.interacted(this);
+            } else {
+                playerWorkbenchUI.SetActive(true);
+                freeze = true;
             }
         }
     }

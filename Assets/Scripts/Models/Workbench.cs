@@ -19,10 +19,7 @@ public class Workbench : MonoBehaviour, BlockEntity
 
         // toggle the active state of the workbench ui
         workbenchUIGameObject.SetActive(!workbenchUIGameObject.activeSelf);
-        ui.updateContent();
 
         player.freeze = workbenchUIGameObject.activeSelf;
-
-        
     }
 }

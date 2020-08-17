@@ -5,4 +5,5 @@ using UnityEngine;
 public class PopupUI : MonoBehaviour
 {
     public GameObject workbenchUI;
+    public GameObject playerWorkbenchUI;
 }

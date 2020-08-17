@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1404586894419247585}
   - component: {fileID: 6941960656197601971}
   - component: {fileID: 3331053908884325262}
+  - component: {fileID: 845287323164376382}
   m_Layer: 0
   m_Name: CraftingIcon
   m_TagString: Untagged
@@ -117,4 +118,30 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6941960656197601971}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 845287323164376382}
+        m_MethodName: showRecipe
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &845287323164376382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6446051340778101595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac396b3dc0917e345b325c0e9440ef55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 6941960656197601971}
+  recipe: {fileID: 0}
+  ui: {fileID: 0}
