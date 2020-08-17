@@ -36,7 +36,7 @@ public class WorkbenchUI : MonoBehaviour
         updateContent();
     }
 
-    public void updateContent() {
+    public virtual void updateContent() {
         // first remove all of the contents
         foreach(Transform child in recipeContentArea.transform) {
             GameObject.Destroy(child.gameObject);
@@ -45,9 +45,8 @@ public class WorkbenchUI : MonoBehaviour
         // go though each recipe and make a button for it, if we can craft it
         foreach(Recipe recipe in refrenceManager.getRecipes()) {
             
-            // if the recipe only requires one material and that material only needs 4 items
-            // then that recipe is craftable so instantiate a icon for it
-            if(recipe.materials.Count == 1 && recipe.materials[0].amount <= 4 && playerInventory.isCraftable(recipe)) {
+            // if the recipe is craftable then display it
+            if(playerInventory.isCraftable(recipe)) {
                 GameObject recipeCraftingIcon = Instantiate(craftingIconPrefab, recipeContentArea.transform);
                 recipeCraftingIcon.GetComponent<CraftingIcon>().init(recipe, this);
             }
@@ -70,7 +69,7 @@ public class WorkbenchUI : MonoBehaviour
         }
     }
 
-    public virtual void craft() {
+    public void craft() {
 
         // if we have nothing selected then do not try to craft 
         if(currentSelectedRecipe == null)
