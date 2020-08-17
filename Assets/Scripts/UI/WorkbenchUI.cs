@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 
-public class WorkbenchUI : MonoBehaviour
+public class WorkbenchUI : MonoBehaviour, WorkbenchInterface
 {
     public RefrenceManager refrenceManager;
     public Inventory playerInventory;
@@ -28,6 +28,14 @@ public class WorkbenchUI : MonoBehaviour
         refrenceManager = GameObject.FindGameObjectWithTag("RefrenceManager").GetComponent<RefrenceManager>();
         playerInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
     }
+
+    public void OnEnable() {
+
+        // when the object is set to active then update the
+        // content
+        updateContent();
+    }
+
     public void updateContent() {
         
         // first remove all of the contents
@@ -42,7 +50,7 @@ public class WorkbenchUI : MonoBehaviour
             // then disply the recipe
             if(playerInventory.isCraftable(recipe)) {
                 GameObject recipeCraftingIcon = Instantiate(craftingIconPrefab, recipeContentArea.transform);
-                recipeCraftingIcon.GetComponent<CraftingIcon>().init(recipe);
+                recipeCraftingIcon.GetComponent<CraftingIcon>().init(recipe, this);
             }
 
         }

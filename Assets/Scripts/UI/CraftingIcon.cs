@@ -8,14 +8,12 @@ public class CraftingIcon : MonoBehaviour
 {
     public Image image;
     public Recipe recipe;
-    public WorkbenchUI ui;
+    public WorkbenchInterface ui;
 
-    public void Awake() {
-        ui = GameObject.FindGameObjectWithTag("WorkbenchUI").GetComponent<WorkbenchUI>();
-    }
-
-    public void init(Recipe recipe) {
+    public void init(Recipe recipe, WorkbenchInterface ui) {
         this.recipe = recipe;
+        this.ui = ui;
+
         image.sprite = recipe.result.itemGroup.sprite;
     }
 

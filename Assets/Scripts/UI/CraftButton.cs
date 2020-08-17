@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class CraftButton : MonoBehaviour
 {
-    public WorkbenchUI ui;
+    WorkbenchInterface ui;
+
+    public void Awake() {
+        ui = transform.parent.GetComponent<WorkbenchInterface>();
+    }
 
     public void craft() {
         ui.craft();
