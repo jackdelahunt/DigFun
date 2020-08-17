@@ -22,4 +22,9 @@ MonoBehaviour:
   subSurfaceTileId: 1
   caveTileId: 3
   noiseOffset: 0
+  trees:
+  - tree: {fileID: 11400000, guid: 26004dd0e3f612d4d858be7424eb0634, type: 2}
+    scale: 0.9
+    threshold: 0.65
+    offset: 0
   biomeLodes: []

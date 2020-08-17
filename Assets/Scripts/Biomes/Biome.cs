@@ -10,7 +10,7 @@ public class Biome : ScriptableObject
 
     // how often does this biome generate
     public int weight;
-
+    
     // proportion of of the chunk the terrain takes up
     public float terrainRatio;
 
@@ -34,6 +34,9 @@ public class Biome : ScriptableObject
 
     // offset for the noise function
     public int noiseOffset;
+
+    // list of all trees in the biome
+    public TreeGroup[] trees;
 
     // the lodes that are unique to this biome
     public Lode[] biomeLodes;
@@ -76,4 +79,19 @@ public class Lode
         this.threshold = threshold;
         this.noiseOffset = noiseOffset;
     }
+}
+
+[System.Serializable]
+public struct TreeGroup {
+
+    // what tree does this use
+    public Tree tree;
+
+    // scale for the noise function
+    public float scale;
+
+    // threshold for noise
+    public float threshold;
+
+    public int offset;
 }

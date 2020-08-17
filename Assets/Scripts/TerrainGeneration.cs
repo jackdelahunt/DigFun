@@ -71,8 +71,22 @@ public static class TerrainGeneration
             {
                 ids[x, y] = y <= caveHeight + terrainHeightAtThisPoint - biome.surfaceThickness ? biome.subSurfaceTileId : biome.surfaceTileId;
             }
-        }
 
+            // the surface of the terrain plus one
+            int whereTreesStart = caveHeight + terrainHeightAtThisPoint + 1;
+
+            // try and generate a tree here
+            foreach(TreeGroup treeGroup in biome.trees) {
+                if(Noise.caveNoise(chunkX + x, chunkY, seed, treeGroup.threshold, treeGroup.scale, treeGroup.offset)) {
+                    int additionalHeightFromMin = Mathf.RoundToInt(Noise.terrainNoise(x, chunkY, seed, treeGroup.scale, treeGroup.offset) * (treeGroup.tree.maxHeight - treeGroup.tree.minHeight));
+
+                    for(int y = whereTreesStart; y <= whereTreesStart + treeGroup.tree.minHeight + additionalHeightFromMin; y++) {
+                        ids[x, y] = treeGroup.tree.logId;
+                    }
+                    
+                }
+            }
+        }
 
         return ids;
     }
