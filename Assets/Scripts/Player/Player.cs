@@ -46,6 +46,8 @@ public class Player : MonoBehaviour
         handleMovement();
         checkPlayerAnimations();
         checkForInteractions();
+        getMousePositionAsInt();
+		handleMouseInput();
     }
 
     public void checkPlayerAnimations()
@@ -111,4 +113,61 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    public void handleMouseInput()
+	{
+		// if the mouse is in the range of the player and the player is
+        // not frozen
+		if(!freeze) {
+
+			// if you are clicking left the tell playerToWorld to delete the block
+			// if they are clicking right then try and add a block
+			if (Input.GetButtonDown("Fire1") && isMouseClickInRange()) {
+					playerToWorld.removeTile(getMousePositionAsInt());
+			}
+			else if (Input.GetButtonDown("Fire2") && isMouseClickInRange()) {
+				playerToWorld.addTile(getMousePositionAsInt());
+			}
+		}
+
+		// if the player is scrolling at all then change the selected item
+		if((int)Input.mouseScrollDelta.y != 0) {
+			playerToWorld.changeSelectedItem((int)Input.mouseScrollDelta.y);
+		}
+		
+	}
+
+	public Vector3Int getMousePositionAsInt()
+	{
+		// convert that to use ints
+		return new Vector3Int(Mathf.FloorToInt(getMousePosition().x), Mathf.FloorToInt(getMousePosition().y), 0);
+	}
+
+    public Vector3 getMousePosition() 
+    {
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+        return new Vector3(mousePos.x, mousePos.y, 0);
+    }
+
+    public Vector3Int getPlayerPositionAsInt()
+	{
+		// convert that to use ints
+		return new Vector3Int(Mathf.FloorToInt(transform.position.x), Mathf.FloorToInt(transform.position.y), 0);
+	}
+
+	// returns true if the mouse is in the max mouse range
+	public bool isMouseClickInRange() 
+    {
+        // the position of the tile below the player, y - 1 of player as int
+		Vector3Int tileBelow = new Vector3Int(getPlayerPositionAsInt().x, getPlayerPositionAsInt().y - 1, 0);
+    
+        // if the mouse pos is the same or one below the player int them return false
+        if(getMousePositionAsInt() == tileBelow || getMousePositionAsInt() == getPlayerPositionAsInt())
+            return false;
+        
+        if(Vector3.Distance(getMousePosition(), transform.position) >= LookUpData.playerRange)
+            return false;
+
+        return true;
+	}
 }

@@ -57,7 +57,6 @@
      <Compile Include="Assets\Scripts\Models\World.cs" />
      <Compile Include="Assets\Scripts\Noise.cs" />
      <Compile Include="Assets\Scripts\Player\CharacterController2D.cs" />
-     <Compile Include="Assets\Scripts\Player\MouseManager.cs" />
      <Compile Include="Assets\Scripts\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerToWorld.cs" />
      <Compile Include="Assets\Scripts\Recipes\Recipe.cs" />
