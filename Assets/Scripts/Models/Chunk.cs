@@ -66,6 +66,9 @@ public class Chunk : MonoBehaviour
         // update the entities to react to the load update
         updateItemEntities();
 
+        // update the block entities
+        updateBlockEntities();
+
         // load or unload the chunk based on the input
         gameObject.SetActive(loaded);
     }
@@ -156,6 +159,17 @@ public class Chunk : MonoBehaviour
             // set the id of the tile in out tileID array to 0
             tileIDs[localPos.x, localPos.y] = 0;
 
+            // if the item has an associated blovk entity
+            if(refrenceManager.itemGroups[idOfThatTile].blockEntity != null) {
+
+                // go through each block entity and see if is in the same position as the tile we are removing 
+                foreach(GameObject blockEntity in blockEntities) {
+                    if(Mathf.FloorToInt(blockEntity.transform.position.x) == worldPos.x && Mathf.FloorToInt(blockEntity.transform.position.y) == worldPos.y) {
+                        GameObject.Destroy(blockEntity);
+                    }
+                }
+            }
+
             // create an ItemEntity 
             GameObject itemObject = Instantiate(itemEntityPrefab, new Vector3(worldPos.x + 0.5f, worldPos.y + 0.5f, worldPos.z), new Quaternion(0f, 0f, 0f, 0f), transform);
             ItemEntity itemEntity = itemObject.GetComponent<ItemEntity>();
@@ -225,6 +239,32 @@ public class Chunk : MonoBehaviour
             else
             {
                 itemEntities[i].SetActive(false);
+            }
+        }
+    }
+
+    public void updateBlockEntities() {
+        if(!gameObject.activeSelf)
+            return;
+
+        for(int i = 0; i < blockEntities.Count; i++) {
+
+            // if that block entity has been destroyed then remove it form hte list
+            if (blockEntities[i] == null)
+            {
+                blockEntities.RemoveAt(i);
+                continue;
+            }
+
+            // if the chunk is loaded then set the entity to the load state and 
+            // update it 
+            if (loaded)
+            {
+                blockEntities[i].SetActive(true);
+            }
+            else
+            {
+                blockEntities[i].SetActive(false);
             }
         }
     }
