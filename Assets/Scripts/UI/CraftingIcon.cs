@@ -8,9 +8,9 @@ public class CraftingIcon : MonoBehaviour
 {
     public Image image;
     public Recipe recipe;
-    public WorkbenchInterface ui;
+    public WorkbenchUI ui;
 
-    public void init(Recipe recipe, WorkbenchInterface ui) {
+    public void init(Recipe recipe, WorkbenchUI ui) {
         this.recipe = recipe;
         this.ui = ui;
 

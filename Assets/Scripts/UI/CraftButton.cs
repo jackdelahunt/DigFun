@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CraftButton : MonoBehaviour
 {
-    WorkbenchInterface ui;
+    WorkbenchUI ui;
 
     public void Awake() {
-        ui = transform.parent.GetComponent<WorkbenchInterface>();
+        ui = transform.parent.GetComponent<WorkbenchUI>();
     }
 
     public void craft() {
