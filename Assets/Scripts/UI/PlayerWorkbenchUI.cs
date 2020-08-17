@@ -19,7 +19,7 @@ public class PlayerWorkbenchUI : WorkbenchUI
             
             // if the recipe only requires one material and that material only needs 4 items
             // then that recipe is craftable so instantiate a icon for it
-            if(recipe.materials.Count == 1 && recipe.materials[0].amount <= 4 && playerInventory.isCraftable(recipe)) {
+            if(recipe.materials.Count <= 2 && playerInventory.isCraftable(recipe)) {
                 GameObject recipeCraftingIcon = Instantiate(craftingIconPrefab, recipeContentArea.transform);
                 recipeCraftingIcon.GetComponent<CraftingIcon>().init(recipe, this);
             }

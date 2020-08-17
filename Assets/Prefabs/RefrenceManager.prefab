@@ -53,11 +53,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b6a4580bd6909464ab4ee7c50a897a72, type: 2}
   - {fileID: 11400000, guid: 2fbbc1564d85b6c4baedfe7b33afaf34, type: 2}
   - {fileID: 11400000, guid: 3b5d496d3422b7b408b6ae1833cbeb8e, type: 2}
+  - {fileID: 11400000, guid: 8f477de6ed844d947b4f9775c44094a6, type: 2}
+  - {fileID: 11400000, guid: f7b1dbb3f3abee8419e510648595f71d, type: 2}
   biomes:
   - {fileID: 11400000, guid: 1ba15737f4b426640af6cac2ea99a7da, type: 2}
   - {fileID: 11400000, guid: 4b70e0158edc1754b9d438471c7c4f5c, type: 2}
   - {fileID: 11400000, guid: a0b3772d08b476b4181dc4e2df1ef541, type: 2}
   recipes:
-  - {fileID: 11400000, guid: f49ab9b0ab4cc2d4fb7c9377d5a21263, type: 2}
   - {fileID: 11400000, guid: 3124a449f0c93614a9dd9da14cd36c5b, type: 2}
-  - {fileID: 11400000, guid: b2d6daafcb949054b9c24d09506b5d29, type: 2}
+  - {fileID: 11400000, guid: b8cc409e111bba543b434da3cc381fa6, type: 2}
+  - {fileID: 11400000, guid: 15c3f4d6e3749db47b2163657223023c, type: 2}
