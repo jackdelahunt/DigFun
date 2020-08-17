@@ -150,11 +150,15 @@ public class Chunk : MonoBehaviour
         if (isThisTileInThisChunk(localPos) && tilemap.GetTile(worldPos) != null)
         {
 
-            // remove that tile from the til map
-            tilemap.SetTile(worldPos, null);
-
             // get the id of the tile that is there
             int idOfThatTile = tileIDs[localPos.x, localPos.y];
+
+            // if the tile is indestructable then return minus and do not remove the tile
+            if(refrenceManager.itemGroups[idOfThatTile].indestructable)
+                return -1;
+
+            // remove that tile from the til map
+            tilemap.SetTile(worldPos, null);
 
             // set the id of the tile in out tileID array to 0
             tileIDs[localPos.x, localPos.y] = 0;

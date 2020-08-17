@@ -16,8 +16,13 @@ public static class TerrainGeneration
         // height of the terrain portion of the chunk
         int terrainHeight = Mathf.RoundToInt(LookUpData.chunkHeight * biome.terrainRatio);
 
-        // cave generation
-        for (int y = 0; y < caveHeight; y++)
+        // set the bottom layer to bedrock
+        for(int x = 0; x < LookUpData.chunkWidth; x++) {
+            ids[x, 0] = 8;
+        }
+
+        // cave generation, start at y = 1, becasue bedrock is there
+        for (int y = 1; y < caveHeight; y++)
         {
             for (int x = 0; x < LookUpData.chunkWidth; x++)
             {

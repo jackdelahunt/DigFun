@@ -6,6 +6,7 @@
 5 - Sandstone
 6 - Cobblestone
 7 - Workbench
+8 - Bedrock
 
 0 - grass hills
 1 - desert
