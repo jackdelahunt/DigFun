@@ -48,14 +48,18 @@ public class Chunk : MonoBehaviour
 
     public void init()
     {
-        // get the chunk daat from the terrain generator class and set the tilemap to it
-        setTileToIdArray(TerrainGeneration.generateChunkTiles(chunkX, chunkY, seed, biomeRefrence.biome));
+        int[,] chunkTileIDs;
+        int[,] backgroundTileIDs;
+        // get the chunk data from the terrain generator class and set the tilemap to it
+        chunkTileIDs = TerrainGeneration.generateChunkTiles(chunkX, chunkY, seed, biomeRefrence.biome, out backgroundTileIDs);
+        setTileToIdArray(chunkTileIDs);
+
 
         // create the chunk background object
         createChunkBackground();
 
         // set the backgrounds tiles correctly based on our tile id
-        chunkBackground.setTileToIdArray(TerrainGeneration.generateChunkBackground(tileIDs, biomeRefrence.biome));
+        chunkBackground.setTileToIdArray(backgroundTileIDs);
     }
 
     public void setLoadStatus(bool loaded)
