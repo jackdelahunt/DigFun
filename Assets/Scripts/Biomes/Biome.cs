@@ -38,6 +38,9 @@ public class Biome : ScriptableObject
     // list of all trees in the biome
     public TreeGroup[] trees;
 
+    // list of spawnable flowers
+    public Flower[] flowers;
+
     // the lodes that are unique to this biome
     public Lode[] biomeLodes;
 }
@@ -93,5 +96,13 @@ public struct TreeGroup {
     // threshold for noise
     public float threshold;
 
+    public int offset;
+}
+
+[System.Serializable]
+public struct Flower {
+    public int itemId;
+    public float threshold;
+    public float scale;
     public int offset;
 }

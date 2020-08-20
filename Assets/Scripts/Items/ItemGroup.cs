@@ -14,5 +14,7 @@ public class ItemGroup : ScriptableObject
     public int dropItemId;
     public Tile tile;
     public GameObject blockEntity;
+
+    [Header("Conditions")]
     public bool indestructable;
 }

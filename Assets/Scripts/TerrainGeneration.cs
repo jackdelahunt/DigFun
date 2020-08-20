@@ -112,9 +112,19 @@ public static class TerrainGeneration
 
                         // add a leaf at the top to cap the tree
                         ids[x, whereTreesStart + treeGroup.tree.minHeight + additionalHeightFromMin + 1] = treeGroup.tree.leafId;
-                    }
+                    } 
                 }
             }
+
+            int whereFlowersStart = caveHeight + terrainHeightAtThisPoint + 1;
+            foreach(Flower flower in biome.flowers) {
+                    if(Noise.caveNoise(chunkX + x, chunkY, seed, flower.threshold, flower.scale, flower.offset)) {
+                        if(ids[x, whereFlowersStart] == 0) {
+                            ids[x, whereFlowersStart] = flower.itemId;
+                            break;
+                        }
+                    }
+                }
         }
 
         return ids;
