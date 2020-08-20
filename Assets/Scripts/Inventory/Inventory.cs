@@ -27,10 +27,6 @@ public class Inventory : MonoBehaviour
 
         // 9 is the amount items this iventory can hold
         storedItems = new StoredItem[9];
-
-        // give the player a workbench at the start
-        storedItems[0].amount = 10;
-        storedItems[0].itemGroup = refrenceManager.itemGroups[9];
     }
 
     // get the tileID of the current item selected in the inventory

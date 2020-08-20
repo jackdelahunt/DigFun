@@ -11,6 +11,7 @@ public class ItemGroup : ScriptableObject
     public string itemName;
     public Sprite sprite;
     public int id;
+    public int dropItemId;
     public Tile tile;
     public GameObject blockEntity;
     public bool indestructable;

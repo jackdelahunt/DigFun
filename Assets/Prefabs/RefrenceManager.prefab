@@ -55,6 +55,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3b5d496d3422b7b408b6ae1833cbeb8e, type: 2}
   - {fileID: 11400000, guid: 8f477de6ed844d947b4f9775c44094a6, type: 2}
   - {fileID: 11400000, guid: f7b1dbb3f3abee8419e510648595f71d, type: 2}
+  - {fileID: 11400000, guid: bccf1c781a117e64ba8afaf2024bd9b8, type: 2}
   biomes:
   - {fileID: 11400000, guid: 1ba15737f4b426640af6cac2ea99a7da, type: 2}
   - {fileID: 11400000, guid: 4b70e0158edc1754b9d438471c7c4f5c, type: 2}

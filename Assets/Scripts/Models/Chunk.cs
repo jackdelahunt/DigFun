@@ -178,20 +178,23 @@ public class Chunk : MonoBehaviour
                 }
             }
 
-            // create an ItemEntity 
-            GameObject itemObject = Instantiate(itemEntityPrefab, new Vector3(worldPos.x + 0.5f, worldPos.y + 0.5f, worldPos.z), new Quaternion(0f, 0f, 0f, 0f), transform);
-            ItemEntity itemEntity = itemObject.GetComponent<ItemEntity>();
+            int itemDropId = refrenceManager.itemGroups[idOfThatTile].dropItemId;
 
-            // set the itemGroup of the itemEntity to the item based on the id
-            itemEntity.itemGroup = refrenceManager.itemGroups[idOfThatTile];
+            // if the tile can drop an item
+            if(itemDropId != 0) {
 
-            // initzialize the entity	
-            itemEntity.init();
+                // create an ItemEntity 
+                GameObject itemObject = Instantiate(itemEntityPrefab, new Vector3(worldPos.x + 0.5f, worldPos.y + 0.5f, worldPos.z), new Quaternion(0f, 0f, 0f, 0f), transform);
+                ItemEntity itemEntity = itemObject.GetComponent<ItemEntity>();
 
-            // add the item object to the chunk entities
-            itemEntities.Add(itemObject);
+                itemEntity.itemGroup = refrenceManager.itemGroups[itemDropId];
 
-            // TODO: if the tile had a block entity then remove that entity from the list
+                // initzialize the entity	
+                itemEntity.init();
+
+                // add the item object to the chunk entities
+                itemEntities.Add(itemObject);
+            }
 
             // return the id of the tile we broke
             return idOfThatTile;
