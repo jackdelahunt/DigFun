@@ -125,7 +125,7 @@ public class Player : MonoBehaviour
 			if (Input.GetButtonDown("Fire1") && isMouseClickInRange()) {
 					playerToWorld.removeTile(getMousePositionAsInt());
 			}
-			else if (Input.GetButtonDown("Fire2") && isMouseClickInRange()) {
+			else if (Input.GetButtonDown("Fire2") && isMouseClickInRange() && !isMouseOverPlayer()) {
 				playerToWorld.addTile(getMousePositionAsInt());
 			}
 		}
@@ -158,16 +158,20 @@ public class Player : MonoBehaviour
 	// returns true if the mouse is in the max mouse range
 	public bool isMouseClickInRange() 
     {
-        // the position of the tile below the player, y - 1 of player as int
-		Vector3Int tileBelow = new Vector3Int(getPlayerPositionAsInt().x, getPlayerPositionAsInt().y - 1, 0);
-    
-        // if the mouse pos is the same or one below the player int them return false
-        if(getMousePositionAsInt() == tileBelow || getMousePositionAsInt() == getPlayerPositionAsInt())
-            return false;
-        
         if(Vector3.Distance(getMousePosition(), transform.position) >= LookUpData.playerRange)
             return false;
 
         return true;
 	}
+
+    public bool isMouseOverPlayer() {
+        // the position of the tile below the player, y - 1 of player as int
+		Vector3Int tileBelow = new Vector3Int(getPlayerPositionAsInt().x, getPlayerPositionAsInt().y - 1, 0);
+    
+        // if the mouse pos is the same or one below the player int them return false
+        if(getMousePositionAsInt() == tileBelow || getMousePositionAsInt() == getPlayerPositionAsInt())
+            return true;
+
+        return false;
+    }
 }
