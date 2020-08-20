@@ -25,6 +25,13 @@ public static class Noise
         return terrainNoise(x, y, seed, scale, offset) > threshold;
     }
 
+    // returns the height of a tree based on some noise
+    public static int treeHeightNoise(int x, int y, int seed, TreeGroup treeGroup) {
+        float noise = (terrainNoise(x, y, seed, treeGroup.scale, treeGroup.offset) + terrainNoise(-x, -y, -seed, treeGroup.scale, -treeGroup.offset)) / 2f;
+
+        return Mathf.RoundToInt((treeGroup.tree.maxHeight - treeGroup.tree.minHeight) * noise);
+    }
+
     // returns true if the lode should be generated in the x y position
     public static bool lodeNoise(int x, int y, int seed, Lode lode)
     {

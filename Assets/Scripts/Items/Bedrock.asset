@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: Bedrock
   sprite: {fileID: -2423230811885516303, guid: a67c56d261232de479799bebfe156300, type: 3}
   id: 8
+  dropItemId: 8
   tile: {fileID: 11400000, guid: f5dcad3e415c6354eaaa2e2adb045cb7, type: 2}
   blockEntity: {fileID: 0}
   indestructable: 1

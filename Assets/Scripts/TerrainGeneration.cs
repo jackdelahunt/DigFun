@@ -82,18 +82,37 @@ public static class TerrainGeneration
                 background[x, y] = idOfThisTile;
             }
 
-            // the surface of the terrain plus one
-            int whereTreesStart = caveHeight + terrainHeightAtThisPoint + 1;
+            // so we do not spawn a tree on a chunk border 
+            if( x > 0 && x < ids.GetLength(0) - 1) {
+                // the surface of the terrain plus one
+                int whereTreesStart = caveHeight + terrainHeightAtThisPoint + 1;
 
-            // try and generate a tree here
-            foreach(TreeGroup treeGroup in biome.trees) {
-                if(Noise.caveNoise(chunkX + x, chunkY, seed, treeGroup.threshold, treeGroup.scale, treeGroup.offset)) {
-                    int additionalHeightFromMin = Mathf.RoundToInt(Noise.terrainNoise(x, chunkY, seed, treeGroup.scale, treeGroup.offset) * (treeGroup.tree.maxHeight - treeGroup.tree.minHeight));
+                // try and generate a tree here
+                foreach(TreeGroup treeGroup in biome.trees) {
 
-                    for(int y = whereTreesStart; y <= whereTreesStart + treeGroup.tree.minHeight + additionalHeightFromMin; y++) {
-                        ids[x, y] = treeGroup.tree.logId;
+                    // if a treee is spawnable here
+                    if(Noise.caveNoise(chunkX + x, chunkY, seed, treeGroup.threshold, treeGroup.scale, treeGroup.offset)) {
+
+                        // get the height from the start of the wood
+                        int additionalHeightFromMin = Noise.treeHeightNoise(x, chunkY, seed, treeGroup);
+
+                        // from where trees start to the min height plus additional
+                        for(int y = whereTreesStart; y <= whereTreesStart + treeGroup.tree.minHeight + additionalHeightFromMin; y++) {
+                            
+                            // if we are above the min height add a leaf blcok as the trunk and leaf block to the side
+                            // else just add the log block
+                            if(y > whereTreesStart + treeGroup.tree.minHeight) {
+                                ids[x, y] = treeGroup.tree.leafId;
+                                ids[x + 1, y] = treeGroup.tree.leafId;
+                                ids[x - 1, y] = treeGroup.tree.leafId;
+                            } else {
+                                ids[x, y] = treeGroup.tree.logId;
+                            }
+                        }
+
+                        // add a leaf at the top to cap the tree
+                        ids[x, whereTreesStart + treeGroup.tree.minHeight + additionalHeightFromMin + 1] = treeGroup.tree.leafId;
                     }
-                    
                 }
             }
         }

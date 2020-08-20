@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: Grass
   sprite: {fileID: 3386662938922423588, guid: a67c56d261232de479799bebfe156300, type: 3}
   id: 2
+  dropItemId: 2
   tile: {fileID: 11400000, guid: 7a922268509c83146969c4459c819fe3, type: 2}
   blockEntity: {fileID: 0}
   indestructable: 0

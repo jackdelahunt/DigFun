@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: Birch Log
   sprite: {fileID: 1211998406744890917, guid: a67c56d261232de479799bebfe156300, type: 3}
   id: 9
+  dropItemId: 11
   tile: {fileID: 11400000, guid: 1b29455136a8c984ba5232331bdb574c, type: 2}
   blockEntity: {fileID: 0}
   indestructable: 0

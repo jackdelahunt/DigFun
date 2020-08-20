@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: Workbench
   sprite: {fileID: -5082647686934749709, guid: a67c56d261232de479799bebfe156300, type: 3}
   id: 7
+  dropItemId: 7
   tile: {fileID: 11400000, guid: e6c550ddf3f220b47a9953f6fccb9d62, type: 2}
   blockEntity: {fileID: 4363231016739674571, guid: 357ba607aea28e5458713c6357373fea,
     type: 3}

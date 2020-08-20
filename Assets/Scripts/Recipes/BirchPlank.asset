@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BirchPlank
   m_EditorClassIdentifier: 
   materials:
-  - itemGroup: {fileID: 11400000, guid: 8f477de6ed844d947b4f9775c44094a6, type: 2}
+  - itemGroup: {fileID: 11400000, guid: bccf1c781a117e64ba8afaf2024bd9b8, type: 2}
     amount: 1
   result:
     itemGroup: {fileID: 11400000, guid: f7b1dbb3f3abee8419e510648595f71d, type: 2}

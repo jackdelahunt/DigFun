@@ -25,6 +25,6 @@ MonoBehaviour:
   trees:
   - tree: {fileID: 11400000, guid: 26004dd0e3f612d4d858be7424eb0634, type: 2}
     scale: 0.9
-    threshold: 0.65
+    threshold: 0.55
     offset: 0
   biomeLodes: []

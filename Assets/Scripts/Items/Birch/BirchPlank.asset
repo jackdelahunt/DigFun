@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: BirchPlank
   sprite: {fileID: 6155212226941906339, guid: a67c56d261232de479799bebfe156300, type: 3}
   id: 10
+  dropItemId: 10
   tile: {fileID: 11400000, guid: 1c5131ae96950254dbcc30db2eaa40ec, type: 2}
   blockEntity: {fileID: 0}
   indestructable: 0

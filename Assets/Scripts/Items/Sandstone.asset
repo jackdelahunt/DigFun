@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: Sandstone
   sprite: {fileID: 6708733205153277002, guid: a67c56d261232de479799bebfe156300, type: 3}
   id: 5
+  dropItemId: 5
   tile: {fileID: 11400000, guid: 0f03fe524e48da140ba0ac8e7baf381b, type: 2}
   blockEntity: {fileID: 0}
   indestructable: 0

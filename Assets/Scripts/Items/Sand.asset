@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: Sand
   sprite: {fileID: 8553092956536608252, guid: a67c56d261232de479799bebfe156300, type: 3}
   id: 4
+  dropItemId: 4
   tile: {fileID: 11400000, guid: af536bf1f2080b740974b76c1e12f971, type: 2}
   blockEntity: {fileID: 0}
   indestructable: 0

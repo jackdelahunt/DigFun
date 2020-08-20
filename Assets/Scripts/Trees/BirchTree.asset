@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BirchTree
   m_EditorClassIdentifier: 
   logId: 9
-  leafId: 0
-  maxHeight: 5
-  minHeight: 3
+  leafId: 12
+  maxHeight: 12
+  minHeight: 4

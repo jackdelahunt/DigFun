@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0361650072771e84b8b3a56d008ff739, type: 3}
   m_Name: BirchWood
   m_EditorClassIdentifier: 
-  itemName: 
-  sprite: {fileID: 0}
-  id: 0
-  dropItemId: 0
-  tile: {fileID: 0}
+  itemName: Birch Wood
+  sprite: {fileID: -2950032572879587788, guid: a67c56d261232de479799bebfe156300, type: 3}
+  id: 11
+  dropItemId: 11
+  tile: {fileID: 11400000, guid: b155b4bb3c2fdfb4bad649fa78e8c6f6, type: 2}
   blockEntity: {fileID: 0}
   indestructable: 0

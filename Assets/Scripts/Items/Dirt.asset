@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: Dirt
   sprite: {fileID: 6128299156075563123, guid: a67c56d261232de479799bebfe156300, type: 3}
   id: 1
+  dropItemId: 1
   tile: {fileID: 11400000, guid: 6f7f85e6e1fb45440b430dc281980144, type: 2}
   blockEntity: {fileID: 0}
   indestructable: 0

@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: Stone
   sprite: {fileID: -6110656803992641779, guid: a67c56d261232de479799bebfe156300, type: 3}
   id: 3
+  dropItemId: 3
   tile: {fileID: 11400000, guid: ef946a9c2557172428d539be78438c07, type: 2}
   blockEntity: {fileID: 0}
   indestructable: 0

@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: Cobblestone
   sprite: {fileID: 6813553822765877458, guid: a67c56d261232de479799bebfe156300, type: 3}
   id: 6
+  dropItemId: 6
   tile: {fileID: 11400000, guid: b69f85e5f03fbd84e94bf02e45aa5128, type: 2}
   blockEntity: {fileID: 0}
   indestructable: 0
