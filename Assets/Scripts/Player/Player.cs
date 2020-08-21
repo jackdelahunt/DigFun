@@ -123,10 +123,14 @@ public class Player : MonoBehaviour
 			// if you are clicking left the tell playerToWorld to delete the block
 			// if they are clicking right then try and add a block
 			if (Input.GetButtonDown("Fire1") && isMouseClickInRange()) {
-					playerToWorld.removeTile(getMousePositionAsInt());
+                
+                // create a timed event for the left click that must be complete to do again
+                Vector3Int mousePos = getMousePositionAsInt();
+                TimedEvent.create(() => removeTile(mousePos), 1f, "leftClick");
+
 			}
 			else if (Input.GetButtonDown("Fire2") && isMouseClickInRange() && !isMouseOverPlayer()) {
-				playerToWorld.addTile(getMousePositionAsInt());
+				placeTile(getMousePositionAsInt());
 			}
 		}
 
@@ -173,5 +177,13 @@ public class Player : MonoBehaviour
             return true;
 
         return false;
+    }
+
+    public void removeTile(Vector3Int pos) {
+        playerToWorld.removeTile(pos);
+    }
+
+    public void placeTile(Vector3Int pos) {
+        playerToWorld.addTile(pos);
     }
 }

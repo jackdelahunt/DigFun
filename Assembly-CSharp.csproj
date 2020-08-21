@@ -42,8 +42,6 @@
      <Compile Include="Assets\Scripts\Data\Initializer.cs" />
      <Compile Include="Assets\Scripts\Data\Load.cs" />
      <Compile Include="Assets\Scripts\Data\Serialize.cs" />
-     <Compile Include="Assets\Scripts\Debug.cs" />
-     <Compile Include="Assets\Scripts\GameSession.cs" />
      <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
      <Compile Include="Assets\Scripts\Inventory\UIInventory.cs" />
      <Compile Include="Assets\Scripts\Items\ItemGroup.cs" />
@@ -52,7 +50,10 @@
      <Compile Include="Assets\Scripts\Models\BlockEntity.cs" />
      <Compile Include="Assets\Scripts\Models\Chunk.cs" />
      <Compile Include="Assets\Scripts\Models\ChunkBackground.cs" />
+     <Compile Include="Assets\Scripts\Models\Debug.cs" />
+     <Compile Include="Assets\Scripts\Models\GameSession.cs" />
      <Compile Include="Assets\Scripts\Models\ItemEntity.cs" />
+     <Compile Include="Assets\Scripts\Models\RefrenceManager.cs" />
      <Compile Include="Assets\Scripts\Models\Workbench.cs" />
      <Compile Include="Assets\Scripts\Models\World.cs" />
      <Compile Include="Assets\Scripts\Noise.cs" />
@@ -60,8 +61,8 @@
      <Compile Include="Assets\Scripts\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerToWorld.cs" />
      <Compile Include="Assets\Scripts\Recipes\Recipe.cs" />
-     <Compile Include="Assets\Scripts\RefrenceManager.cs" />
      <Compile Include="Assets\Scripts\TerrainGeneration.cs" />
+     <Compile Include="Assets\Scripts\TimedEvent.cs" />
      <Compile Include="Assets\Scripts\Trees\Tree.cs" />
      <Compile Include="Assets\Scripts\UI\CraftButton.cs" />
      <Compile Include="Assets\Scripts\UI\CraftingIcon.cs" />
