@@ -21,6 +21,7 @@ ScriptsOnlyBuild:
     - PopupUI
     - Recipe
     - RefrenceManager
+    - Tree
     - UIInventory
     - Workbench
     - WorkbenchUI
@@ -29,7 +30,6 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridBrush
-    - UnityEditor.Tilemaps.GridBrushEditor
     - UnityEditor.Tilemaps.GridPaintPaletteClipboard
     - UnityEditor.Tilemaps.GridPaintPaletteWindow
     - UnityEditor.Tilemaps.GridPaintingState
@@ -93,15 +93,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11544}
     - Class: 114
-      Script: {instanceID: 12218}
+      Script: {instanceID: 12220}
     - Class: 114
-      Script: {instanceID: 13284}
+      Script: {instanceID: 13288}
     - Class: 114
-      Script: {instanceID: 13604}
+      Script: {instanceID: 13608}
     - Class: 114
-      Script: {instanceID: 13708}
+      Script: {instanceID: 13712}
     - Class: 114
-      Script: {instanceID: 14324}
+      Script: {instanceID: 14328}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -174,53 +174,55 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11742}
     - Class: 114
-      Script: {instanceID: 11956}
+      Script: {instanceID: 11958}
     - Class: 114
-      Script: {instanceID: 12026}
+      Script: {instanceID: 12028}
     - Class: 114
-      Script: {instanceID: 12046}
+      Script: {instanceID: 12048}
     - Class: 114
-      Script: {instanceID: 12218}
+      Script: {instanceID: 12220}
     - Class: 114
-      Script: {instanceID: 12262}
+      Script: {instanceID: 12264}
     - Class: 114
-      Script: {instanceID: 12478}
+      Script: {instanceID: 12480}
     - Class: 114
-      Script: {instanceID: 12514}
-    - Class: 114
-      Script: {instanceID: 12576}
+      Script: {instanceID: 12516}
     - Class: 114
       Script: {instanceID: 12578}
     - Class: 114
-      Script: {instanceID: 12738}
+      Script: {instanceID: 12580}
     - Class: 114
-      Script: {instanceID: 12740}
+      Script: {instanceID: 12682}
     - Class: 114
-      Script: {instanceID: 12820}
+      Script: {instanceID: 12742}
     - Class: 114
-      Script: {instanceID: 12848}
+      Script: {instanceID: 12744}
     - Class: 114
-      Script: {instanceID: 12866}
+      Script: {instanceID: 12824}
     - Class: 114
-      Script: {instanceID: 12950}
+      Script: {instanceID: 12852}
     - Class: 114
-      Script: {instanceID: 13284}
+      Script: {instanceID: 12870}
     - Class: 114
-      Script: {instanceID: 13604}
+      Script: {instanceID: 12954}
     - Class: 114
-      Script: {instanceID: 13694}
+      Script: {instanceID: 13288}
     - Class: 114
-      Script: {instanceID: 13708}
+      Script: {instanceID: 13608}
     - Class: 114
-      Script: {instanceID: 13886}
+      Script: {instanceID: 13698}
     - Class: 114
-      Script: {instanceID: 14232}
+      Script: {instanceID: 13712}
     - Class: 114
-      Script: {instanceID: 14324}
+      Script: {instanceID: 13890}
     - Class: 114
-      Script: {instanceID: 14356}
+      Script: {instanceID: 14236}
     - Class: 114
-      Script: {instanceID: 14404}
+      Script: {instanceID: 14328}
+    - Class: 114
+      Script: {instanceID: 14360}
+    - Class: 114
+      Script: {instanceID: 14408}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -279,25 +281,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11594}
     - Class: 114
-      Script: {instanceID: 11882}
+      Script: {instanceID: 11884}
     - Class: 114
-      Script: {instanceID: 12218}
+      Script: {instanceID: 12220}
     - Class: 114
-      Script: {instanceID: 12272}
+      Script: {instanceID: 12274}
     - Class: 114
-      Script: {instanceID: 13284}
+      Script: {instanceID: 13288}
     - Class: 114
-      Script: {instanceID: 13302}
+      Script: {instanceID: 13306}
     - Class: 114
-      Script: {instanceID: 13604}
+      Script: {instanceID: 13608}
     - Class: 114
-      Script: {instanceID: 13708}
+      Script: {instanceID: 13712}
     - Class: 114
-      Script: {instanceID: 13810}
+      Script: {instanceID: 13814}
     - Class: 114
-      Script: {instanceID: 13986}
+      Script: {instanceID: 13990}
     - Class: 114
-      Script: {instanceID: 14324}
+      Script: {instanceID: 14328}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -335,7 +337,7 @@ ScriptsOnlyBuild:
     className: Button
   - hash:
       serializedVersion: 2
-      Hash: a7d19935f330306b0f84c2cf35cc8def
+      Hash: 25a93b3cb0568359e6e84d659ccf264c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ItemGroup
@@ -539,7 +541,7 @@ ScriptsOnlyBuild:
     className: PixelPerfectCamera
   - hash:
       serializedVersion: 2
-      Hash: 07c1aec5eed7271dfdb902ff8d384cc1
+      Hash: 7cfb1d7b45263beb13bbddbe8dffc1b3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Biome
@@ -657,6 +659,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.Animation.Runtime.dll
     namespaceName: UnityEngine.U2D.Animation
     className: SpriteSkinEntity
+  - hash:
+      serializedVersion: 2
+      Hash: 7a615bab4afa2eedcb41a379c834af39
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Tree
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -956,4 +964,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/Loading.unity
   - Assets/Scenes/Main.unity
-  playerPath: C:/Users/Jack Delahunt/Desktop/Alpha V1.5 Win x86/Terrain.exe
+  playerPath: C:/Users/Jack Delahunt/Desktop/build/DigFun.exe

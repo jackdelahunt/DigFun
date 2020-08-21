@@ -23,6 +23,11 @@ MonoBehaviour:
   caveTileId: 3
   noiseOffset: 0
   trees: []
+  flowers:
+  - itemId: 15
+    threshold: 0.6
+    scale: 0.2
+    offset: 234
   biomeLodes:
   - lodeName: Sandstone
     tileID: 5

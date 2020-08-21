@@ -29,7 +29,11 @@ MonoBehaviour:
     offset: 0
   flowers:
   - itemId: 13
-    threshold: 0.5
+    threshold: 0.6
     scale: 0.3
     offset: 453453
+  - itemId: 14
+    threshold: 0.6
+    scale: 0.3
+    offset: 23442
   biomeLodes: []
